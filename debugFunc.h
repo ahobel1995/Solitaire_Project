@@ -1,0 +1,2 @@
+void hiddenPrint();
+void deckPrint();
