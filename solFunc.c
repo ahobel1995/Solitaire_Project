@@ -47,3 +47,18 @@ void deckResetShuffle(int Deck[53]){
         }
     }
 }
+
+void frameGen(int play[19][7], int hidden[19][7]){
+    int i, j;
+    // system("clear");
+    for(i=0; i<19; i++){
+        for(j=0; j<7; j++){
+            if (hidden[i][j] == 99){
+                printf("XX ");
+            } else{
+                printf("%2.d ", play[i][j]);
+            }
+        }
+        printf("\n");
+    }
+}

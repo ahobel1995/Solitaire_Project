@@ -6,7 +6,7 @@ void hiddenPrint(int HIDDEN[19][7]){
     int i, j;
     for(i=0; i<19; i++){
         for(j=0; j<7; j++){
-            printf("%d ", HIDDEN[i][j]);
+            printf("%2.d ", HIDDEN[i][j]);
         }
         printf("\n");
     }
