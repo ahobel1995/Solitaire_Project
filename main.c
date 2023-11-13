@@ -23,6 +23,8 @@ int main() {
         // hiddenPrint(Hidden);
         playGen(Play, Deck);
         // hiddenPrint(Play);
+
+
         printf("Would you like to play again? (y=1,n=0) ");
     } while (yesNo == 1);
     return 0;
