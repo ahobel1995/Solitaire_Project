@@ -19,5 +19,3 @@ void deckPrint(int Deck[53]){
     }
     printf("\n");
 }
-
-//

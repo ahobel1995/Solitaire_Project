@@ -47,5 +47,3 @@ void deckResetShuffle(int Deck[53]){
         }
     }
 }
-
-//
