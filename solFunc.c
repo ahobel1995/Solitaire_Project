@@ -54,29 +54,31 @@ void frameGen(int play[19][7], int hidden[19][7]){
     for(i=0; i<19; i++){
         for(j=0; j<7; j++){
             if (hidden[i][j] == 99){
+                printf("\033[0;42m");
                 printf(" XXX");
+                printf("\033[0m");
             } else{
                 switch (play[i][j]) {
                     case 1 ... 13: {
-                        printf("\\033[0;31m");
+                        printf("\033[0;31m");
                         printf("    %c%2.d", 3, play[i][j]);
                         printf("\033[0m");
                         break;
                     }
                     case 14 ... 26: {
-                        printf("\\033[0;30m");
+                        printf("\033[0;30m");
                         printf("    %c%2.d", 4, play[i][j]-13);
                         printf("\033[0m");
                         break;
                     }
                     case 27 ... 39: {
-                        printf("\\033[0;31m");
+                        printf("\033[0;31m");
                         printf("    %c%2.d", 5, play[i][j]-26);
                         printf("\033[0m");
                         break;
                     }
                     case 40 ... 52: {
-                        printf("\\033[0;30m");
+                        printf("\033[0;30m");
                         printf("    %c%2.d", 6, play[i][j]-39);
                         printf("\033[0m");
                         break;
