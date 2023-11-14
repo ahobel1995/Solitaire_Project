@@ -6,6 +6,7 @@
 
 int main() {
     int yesNo, Deck[53], Hidden[19][7], Play[19][7], inc=0;
+    int dropDeck[4];
     time_t t;
     srand(time(&t));
     do {
@@ -23,6 +24,7 @@ int main() {
         // hiddenPrint(Hidden);
         playGen(Play, Deck);
         // hiddenPrint(Play);
+        dropDeckReset(dropDeck);
         frameGen(Play, Hidden, Deck, inc);
         printf("Would you like to play again? (y=1,n=0) ");
     } while (yesNo == 1);

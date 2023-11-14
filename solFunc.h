@@ -4,3 +4,4 @@ void playGen();
 void frameGen();
 void faceCardPrint();
 void numCardPrint();
+void dropDeckReset();

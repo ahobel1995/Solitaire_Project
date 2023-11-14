@@ -53,12 +53,23 @@ void deckResetShuffle(int deck[53]) {
 
 void frameGen(int play[19][7], int hidden[19][7], int deck[53], int inc) {
     int i, j;
+    setlocale(LC_CTYPE, "");
     system("clear");
+
     // Print Draw Deck:
     printf("\033[0;30m\033[48;5;240m");  // Black text, grey background
     printf("Top of Draw Deck: ");
     numCardPrint(deck[inc + 30]);
     printf("\033[0m"); // Reset text to default
+
+    // Print Drop Decks:
+    printf(" Drop Decks: ");
+    for(i=0; i<4; i++){
+        printf("\033[0;30m\033[48;5;240m");  // Black text, grey background
+        numCardPrint(dropDeck[i]);
+        printf("\033[0m"); // Reset text to default
+    }
+
     // Print Game Board:
     printf("\n");
     for (i = 0; i < 19; i++) {
@@ -154,4 +165,11 @@ void faceCardPrint(int card) {
             break;
     }
     printf(" %lc %c", suitSymbol, faceChar);
+}
+
+void dropDeckReset(int dropDeck) {
+    int i;
+    for (i = 0; i < 4; i++) {
+        dropDeck[i] = 0;
+    }
 }
