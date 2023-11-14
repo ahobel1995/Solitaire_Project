@@ -5,66 +5,65 @@
 #include <locale.h>
 #include "solFunc.h"
 
-void hiddenGen(int HIDDEN[19][7]) {
+void hiddenGen(int hidden[19][7]) {
     int count = 1, i, j;
     for (i = 0; i < 19; i++) {
         for (j = 0; j < 7; j++) {
-            HIDDEN[i][j] = 0;
+            hidden[i][j] = 0;
         }
     }
     for (i = 0; i < 6; i++) {
         for (j = 6; j >= count; j--) {
-            HIDDEN[i][j] = 99;
+            hidden[i][j] = 99;
         }
         count++;
     }
 }
 
-void playGen(int PLAY[19][7], int Deck[53]) {
+void playGen(int play[19][7], int deck[53]) {
     int count = 0, i, j, a = 1;
     for (i = 0; i < 19; i++) {
         for (j = 0; j < 7; j++) {
-            PLAY[i][j] = 0;
+            play[i][j] = 0;
         }
     }
     for (i = 0; i < 7; i++) {
         for (j = 6; j >= count; j--) {
-            PLAY[i][j] = Deck[a];
+            play[i][j] = deck[a];
             a++;
         }
         count++;
     }
 }
 
-void deckResetShuffle(int Deck[53]) {
+void deckResetShuffle(int deck[53]) {
     int x, count;
     for (x = 0; x < 53; x++) {
-        Deck[x] = x;
+        deck[x] = x;
     }
     for (count = 0; count <= 2; count++) {
         for (x = 51; x > 0; x--) {
             int r = rand() % x + 1;
-            int temp = Deck[x];
-            Deck[x] = Deck[r];
-            Deck[r] = temp;
+            int temp = deck[x];
+            deck[x] = deck[r];
+            deck[r] = temp;
         }
     }
 }
 
 void frameGen(int play[19][7], int hidden[19][7], int deck[53], int inc) {
     int i, j;
-    setlocale(LC_CTYPE, "");
     system("clear");
     // Print Draw Deck:
     printf("\033[0;30m\033[48;5;240m");  // Black text, grey background
     printf("Top of Draw Deck: ");
-    numCardPrint(deck[inc+30]);
+    numCardPrint(deck[inc + 30]);
     printf("\033[0m"); // Reset text to default
     // Print Game Board:
     printf("\n");
     for (i = 0; i < 19; i++) {
         for (j = 0; j < 7; j++) {
-            if(hidden[i][j] == 99){
+            if (hidden[i][j] == 99) {
                 numCardPrint(hidden[i][j]);
             } else {
                 numCardPrint(play[i][j]);
