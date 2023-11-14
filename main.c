@@ -25,7 +25,7 @@ int main() {
         playGen(Play, Deck);
         // hiddenPrint(Play);
         dropDeckReset(dropDeck);
-        frameGen(Play, Hidden, Deck, inc);
+        frameGen(Play, Hidden, Deck, dropDeck, inc);
         printf("Would you like to play again? (y=1,n=0) ");
     } while (yesNo == 1);
     return 0;
