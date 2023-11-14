@@ -65,7 +65,7 @@ void frameGen(int play[19][7], int hidden[19][7]){
                 switch (play[i][j]) {
                     case 1 ... 13: {
                         printf("\033[0;31m\033[48;5;240m");  // Red text, grey background
-                        if (play[i][j]%13 == 0 || play[i][j]%13 > 10){
+                        if (play[i][j]%13 == 0 || play[i][j]%13 > 10 || play[i][j]%13 == 1){
                             faceCardPrint(play[i][j]);
                         } else {
                             printf(" %lc%2.d", 0x2665, play[i][j]%13); // Hearts
@@ -75,7 +75,7 @@ void frameGen(int play[19][7], int hidden[19][7]){
                     }
                     case 14 ... 26: {
                         printf("\033[0;30m\033[48;5;240m");  // Black text, grey background
-                        if (play[i][j]%13 == 0 || play[i][j]%13 > 10){
+                        if (play[i][j]%13 == 0 || play[i][j]%13 > 10 || play[i][j]%13 == 1){
                             faceCardPrint(play[i][j]);
                         } else {
                             printf(" %lc%2.d", 0x2663, play[i][j]%13); // Clubs
@@ -85,7 +85,7 @@ void frameGen(int play[19][7], int hidden[19][7]){
                     }
                     case 27 ... 39: {
                         printf("\033[0;31m\033[48;5;240m");  // Red text, grey background
-                        if (play[i][j]%13 == 0 || play[i][j]%13 > 10){
+                        if (play[i][j]%13 == 0 || play[i][j]%13 > 10 || play[i][j]%13 == 1){
                             faceCardPrint(play[i][j]);
                         } else {
                             printf(" %lc%2.d", 0x2666, play[i][j]%13); // Diamonds
@@ -95,7 +95,7 @@ void frameGen(int play[19][7], int hidden[19][7]){
                     }
                     case 40 ... 52: {
                         printf("\033[0;30m\033[48;5;240m");  // Black text, grey background
-                        if (play[i][j]%13 == 0 || play[i][j]%13 > 10){
+                        if (play[i][j]%13 == 0 || play[i][j]%13 > 10 || play[i][j]%13 == 1){
                             faceCardPrint(play[i][j]);
                         } else {
                             printf(" %lc%2.d", 0x2660, play[i][j]%13); // Spades
@@ -117,7 +117,6 @@ void frameGen(int play[19][7], int hidden[19][7]){
 }
 
 void faceCardPrint(int card){
-    int cardRank = card % 13;
     wchar_t suitSymbol;
     char faceChar;
 
@@ -130,7 +129,7 @@ void faceCardPrint(int card){
     } else if (card >= 40 && card <= 52) {
         suitSymbol = 0x2660; // Spades
     }
-    switch(cardRank){
+    switch(card%13){
         case 0:
             faceChar = 'K';
             break;
