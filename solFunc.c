@@ -63,8 +63,10 @@ void frameGen(int play[19][7], int hidden[19][7], int deck[53], int inc) {
     // Print Game Board:
     for (i = 0; i < 19; i++) {
         for (j = 0; j < 7; j++) {
-            numCardPrint(hidden[i][j]);
             numCardPrint(play[i][j]);
+            if(hidden[i][j] == 99){
+                numCardPrint(hidden[i][j]);
+            }
         }
     }
 }
@@ -73,43 +75,43 @@ void numCardPrint(int card) {
     switch (card) {
         case 1 ... 13:
             printf("\033[0;31m\033[48;5;240m");  // Red text, grey background
-            if (play[i][j] % 13 == 0 || play[i][j] % 13 > 10 || play[i][j] % 13 == 1) {
-                faceCardPrint(play[i][j]);
+            if (card % 13 == 0 || card % 13 > 10 || card % 13 == 1) {
+                faceCardPrint(card);
             } else {
-                printf(" %lc%2.d", 0x2665, play[i][j] % 13); // Hearts
+                printf(" %lc%2.d", 0x2665, card % 13); // Hearts
             }
             printf("\033[0m"); // Reset text to default
             break;
         case 14 ... 26:
             printf("\033[0;30m\033[48;5;240m");  // Black text, grey background
-            if (play[i][j] % 13 == 0 || play[i][j] % 13 > 10 || play[i][j] % 13 == 1) {
-                faceCardPrint(play[i][j]);
+            if (card % 13 == 0 || card % 13 > 10 || card % 13 == 1) {
+                faceCardPrint(card);
             } else {
-                printf(" %lc%2.d", 0x2663, play[i][j] % 13); // Clubs
+                printf(" %lc%2.d", 0x2663, pcard % 13); // Clubs
             }
             printf("\033[0m"); // Reset text to default
             break;
         case 27 ... 39:
             printf("\033[0;31m\033[48;5;240m");  // Red text, grey background
-            if (play[i][j] % 13 == 0 || play[i][j] % 13 > 10 || play[i][j] % 13 == 1) {
-                faceCardPrint(play[i][j]);
+            if (card % 13 == 0 || card % 13 > 10 || card % 13 == 1) {
+                faceCardPrint(card);
             } else {
-                printf(" %lc%2.d", 0x2666, play[i][j] % 13); // Diamonds
+                printf(" %lc%2.d", 0x2666, card % 13); // Diamonds
             }
             printf("\033[0m"); // Reset text to default
             break;
         case 40 ... 52:
             printf("\033[0;30m\033[48;5;240m");  // Black text, grey background
-            if (play[i][j] % 13 == 0 || play[i][j] % 13 > 10 || play[i][j] % 13 == 1) {
-                faceCardPrint(play[i][j]);
+            if (card % 13 == 0 || card % 13 > 10 || card % 13 == 1) {
+                faceCardPrint(card);
             } else {
-                printf(" %lc%2.d", 0x2660, play[i][j] % 13); // Spades
+                printf(" %lc%2.d", 0x2660, card % 13); // Spades
             }
             printf("\033[0m"); // Reset text to default
             break;
         case 99:
             printf("\033[0;32m\033[48;5;240m");  // Green text, grey background
-            printf(" XXX");
+            printf(" XXX"); // Hidden card
             printf("\033[0m");
             break;
         default: {
