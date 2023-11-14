@@ -141,7 +141,7 @@ void faceCardPrint(int card){
             break;
         case 1:
             faceChar = 'A';
-            return;
+            break;
     }
     printf(" %lc %c", suitSymbol, faceChar); // Face cards
 }
