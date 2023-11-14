@@ -68,7 +68,7 @@ void frameGen(int play[19][7], int hidden[19][7]){
                         if (play[i][j]%13 == 0 || play[i][j]%13 > 10){
                             faceCardPrint(play[i][j]);
                         } else {
-                            printf(" %lc%2.d", 0x2665, play[i][j]); // Hearts
+                            printf(" %lc%2.d", 0x2665, play[i][j]%13); // Hearts
                         }
                         printf("\033[0m"); // Reset text to default
                         break;
@@ -78,7 +78,7 @@ void frameGen(int play[19][7], int hidden[19][7]){
                         if (play[i][j]%13 == 0 || play[i][j]%13 > 10){
                             faceCardPrint(play[i][j]);
                         } else {
-                            printf(" %lc%2.d", 0x2663, play[i][j]); // Clubs
+                            printf(" %lc%2.d", 0x2663, play[i][j]%13); // Clubs
                         }
                         printf("\033[0m"); // Reset text to default
                         break;
@@ -88,7 +88,7 @@ void frameGen(int play[19][7], int hidden[19][7]){
                         if (play[i][j]%13 == 0 || play[i][j]%13 > 10){
                             faceCardPrint(play[i][j]);
                         } else {
-                            printf(" %lc%2.d", 0x2666, play[i][j]); // Diamonds
+                            printf(" %lc%2.d", 0x2666, play[i][j]%13); // Diamonds
                         }
                         printf("\033[0m"); // Reset text to default
                         break;
@@ -98,7 +98,7 @@ void frameGen(int play[19][7], int hidden[19][7]){
                         if (play[i][j]%13 == 0 || play[i][j]%13 > 10){
                             faceCardPrint(play[i][j]);
                         } else {
-                            printf(" %lc%2.d", 0x2660, play[i][j]); // Spades
+                            printf(" %lc%2.d", 0x2660, play[i][j]%13); // Spades
                         }
                         printf("\033[0m"); // Reset text to default
                         break;
