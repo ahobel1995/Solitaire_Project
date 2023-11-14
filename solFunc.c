@@ -5,6 +5,13 @@
 #include <locale.h>
 #include "solFunc.h"
 
+void dropDeckReset(int dropDeck[4]) {
+    int i;
+    for (i = 0; i < 4; i++) {
+        dropDeck[i] = 0;
+    }
+}
+
 void hiddenGen(int hidden[19][7]) {
     int count = 1, i, j;
     for (i = 0; i < 19; i++) {
@@ -167,9 +174,3 @@ void faceCardPrint(int card) {
     printf(" %lc %c", suitSymbol, faceChar);
 }
 
-void dropDeckReset(int dropDeck) {
-    int i;
-    for (i = 0; i < 4; i++) {
-        dropDeck[i] = 0;
-    }
-}
