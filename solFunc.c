@@ -68,6 +68,7 @@ void frameGen(int play[19][7], int hidden[19][7], int deck[53], int inc) {
                 numCardPrint(hidden[i][j]);
             }
         }
+        printf("/n");
     }
 }
 
@@ -87,7 +88,7 @@ void numCardPrint(int card) {
             if (card % 13 == 0 || card % 13 > 10 || card % 13 == 1) {
                 faceCardPrint(card);
             } else {
-                printf(" %lc%2.d", 0x2663, pcard % 13); // Clubs
+                printf(" %lc%2.d", 0x2663, card % 13); // Clubs
             }
             printf("\033[0m"); // Reset text to default
             break;
