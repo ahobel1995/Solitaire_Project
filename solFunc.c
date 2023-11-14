@@ -1,6 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <wchar.h>
+#include <locale.h>
 
 void hiddenGen(int HIDDEN[19][7]) {
     int count=1, i, j;
@@ -50,41 +52,45 @@ void deckResetShuffle(int Deck[53]){
 
 void frameGen(int play[19][7], int hidden[19][7]){
     int i, j;
+    setlocale(LC_CTYPE, "");
+
     // system("clear");
     for(i=0; i<19; i++){
         for(j=0; j<7; j++){
             if (hidden[i][j] == 99){
-                printf("\033[0;42m");
+                printf("\033[0;32m\033[48;5;240m");  // Grey background
                 printf(" XXX");
                 printf("\033[0m");
-            } else{
+            } else {
                 switch (play[i][j]) {
                     case 1 ... 13: {
-                        printf("\033[0;31m");
-                        printf("    %c%2.d", 3, play[i][j]);
+                        printf("\033[0;31m\033[48;5;240m");  // Red text, grey background
+                        printf(" %lc%2.d", 0x2665, play[i][j]);  // Heart
                         printf("\033[0m");
                         break;
                     }
                     case 14 ... 26: {
-                        printf("\033[0;30m");
-                        printf("    %c%2.d", 4, play[i][j]-13);
+                        printf("\033[0;30m\033[48;5;240m");  // Black text, grey background
+                        printf(" %lc%2.d", 0x2663, play[i][j]-13);  // Club
                         printf("\033[0m");
                         break;
                     }
                     case 27 ... 39: {
-                        printf("\033[0;31m");
-                        printf("    %c%2.d", 5, play[i][j]-26);
+                        printf("\033[0;31m\033[48;5;240m");  // Red text, grey background
+                        printf(" %lc%2.d", 0x2666, play[i][j]-26);  // Diamond
                         printf("\033[0m");
                         break;
                     }
                     case 40 ... 52: {
-                        printf("\033[0;30m");
-                        printf("    %c%2.d", 6, play[i][j]-39);
+                        printf("\033[0;30m\033[48;5;240m");  // Black text, grey background
+                        printf(" %lc%2.d", 0x2660, play[i][j]-39);  // Spade
                         printf("\033[0m");
                         break;
                     }
                     default : {
+                        printf("\033[48;5;240m");
                         printf("    ");
+                        printf("\033[0m");
                         break;
                     }
                 }
