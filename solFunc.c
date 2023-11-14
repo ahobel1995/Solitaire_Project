@@ -10,11 +10,12 @@ void dropDeckReset(int dropDeck[4]) {
     for (i = 0; i < 4; i++) {
         dropDeck[i] = 0;
     }
-
+/*
     dropDeck[0]=1;
     dropDeck[1]=14;
     dropDeck[2]=27;
     dropDeck[3]=40;
+*/
       // For testing purposes
 }
 
@@ -166,7 +167,7 @@ void faceCardPrint(int card) {
     }
 
     switch (card % 13) {
-        case 0:             // Card 13 evaluates as 0, in *deck array 13 is King.
+        case 0:             // Card 13 % 13 evaluates as 0, in deck array 13 is King.
             faceChar = 'K';
             break;
         case 11:
@@ -181,4 +182,3 @@ void faceCardPrint(int card) {
     }
     printf(" %lc %c", suitSymbol, faceChar);
 }
-
