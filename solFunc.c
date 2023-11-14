@@ -68,7 +68,7 @@ void frameGen(int play[19][7], int hidden[19][7], int deck[53], int inc) {
                 numCardPrint(hidden[i][j]);
             }
         }
-        printf("/n");
+        printf("\n");
     }
 }
 
