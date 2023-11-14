@@ -118,7 +118,7 @@ void frameGen(int play[19][7], int hidden[19][7]){
 
 void faceCardPrint(int card){
     int cardRank = card % 13;
-    long char suitSymbol;
+    wchar_t suitSymbol;
     char faceChar;
 
     if (card >= 1 && card <= 13) {
