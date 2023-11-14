@@ -70,12 +70,12 @@ void frameGen(int play[19][7], int hidden[19][7], int deck[53], int dropDeck[4],
     printf("\033[0m"); // Reset text to default
 
     // Print Drop Decks:
-    printf(" Drop Decks: ");
+    printf("\033[0;30m\033[48;5;240m"); // Black text, grey background
+    printf("\nDrop Decks: ");
     for(i=0; i<4; i++){
-        printf("\033[0;30m\033[48;5;240m");  // Black text, grey background
         numCardPrint(dropDeck[i]);
-        printf("\033[0m"); // Reset text to default
     }
+    printf("\033[0m"); // Reset text to default
 
     // Print Game Board:
     printf("\n");
