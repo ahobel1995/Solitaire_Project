@@ -5,7 +5,7 @@
 #include "debugFunc.h"
 
 int main() {
-    int yesNo, Deck[53], Hidden[19][7], Play[19][7];
+    int yesNo, Deck[53], Hidden[19][7], Play[19][7], inc=0;
     time_t t;
     srand(time(&t));
     printf("Welcome to Solitaire! Would you like to play? (y=1, n=0) ");
@@ -23,7 +23,7 @@ int main() {
         // hiddenPrint(Hidden);
         playGen(Play, Deck);
         // hiddenPrint(Play);
-        frameGen(Play, Hidden);
+        frameGen(Play, Hidden, Deck, inc);
 
 
         printf("Would you like to play again? (y=1,n=0) ");
