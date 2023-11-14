@@ -118,8 +118,8 @@ void frameGen(int play[19][7], int hidden[19][7]){
 
 void faceCardPrint(int card){
     int cardRank = card % 13;
-    long char suitSymbol = ' ';
-    char faceChar = ' ';
+    long char suitSymbol;
+    char faceChar;
 
     if (card >= 1 && card <= 13) {
         suitSymbol = 0x2665; // Hearts
