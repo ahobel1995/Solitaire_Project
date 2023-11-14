@@ -65,7 +65,7 @@ void frameGen(int play[19][7], int hidden[19][7]){
                 switch (play[i][j]) {
                     case 1 ... 13: {
                         printf("\033[0;31m\033[48;5;240m");  // Red text, grey background
-                        if (((play[i][j]-1)%13)+1 > 10){
+                        if (play[i][j]%13 == 0 || play[i][j]%13 > 10){
                             faceCardPrint(play[i][j]);
                         } else {
                             printf(" %lc%2.d", 0x2665, play[i][j]); // Hearts
@@ -75,7 +75,7 @@ void frameGen(int play[19][7], int hidden[19][7]){
                     }
                     case 14 ... 26: {
                         printf("\033[0;30m\033[48;5;240m");  // Black text, grey background
-                        if (((play[i][j]-1)%13)+1 > 10){
+                        if (play[i][j]%13 == 0 || play[i][j]%13 > 10){
                             faceCardPrint(play[i][j]);
                         } else {
                             printf(" %lc%2.d", 0x2663, play[i][j]); // Clubs
@@ -85,7 +85,7 @@ void frameGen(int play[19][7], int hidden[19][7]){
                     }
                     case 27 ... 39: {
                         printf("\033[0;31m\033[48;5;240m");  // Red text, grey background
-                        if (((play[i][j]-1)%13)+1 > 10){
+                        if (play[i][j]%13 == 0 || play[i][j]%13 > 10){
                             faceCardPrint(play[i][j]);
                         } else {
                             printf(" %lc%2.d", 0x2666, play[i][j]); // Diamonds
@@ -95,7 +95,7 @@ void frameGen(int play[19][7], int hidden[19][7]){
                     }
                     case 40 ... 52: {
                         printf("\033[0;30m\033[48;5;240m");  // Black text, grey background
-                        if (((play[i][j]-1)%13)+1 > 10){
+                        if (play[i][j]%13 == 0 || play[i][j]%13 > 10){
                             faceCardPrint(play[i][j]);
                         } else {
                             printf(" %lc%2.d", 0x2660, play[i][j]); // Spades
@@ -132,16 +132,16 @@ void faceCardPrint(int card){
     }
     switch(cardRank){
         case 0:
-            faceChar = "K";
+            faceChar = 'K';
             break;
         case 11:
-            faceChar = "J";
+            faceChar = 'J';
             break;
         case 12:
-            faceChar = "Q";
+            faceChar = 'Q';
             break;
         case 1:
-            faceChar = "A";
+            faceChar = 'A';
             return;
     }
     printf(" %lc %c", suitSymbol, faceChar); // Face cards
