@@ -70,7 +70,7 @@ void frameGen(int play[19][7], int hidden[19][7]){
                         printf("\033[0;31m\033[48;5;240m");  // Red text, grey background
                         if (play[i][j]%13 > 10){
                             faceCardPrint(play[i][j]);
-                        } if-else (play[i][j]%13 == 1){
+                        } else if (play[i][j]%13 == 1){
                             printf(" %lc%s", 0x2665, " A");
                         } else {
                             printf(" %lc%2.d", 0x2665, play[i][j]); // Hearts
@@ -85,7 +85,7 @@ void frameGen(int play[19][7], int hidden[19][7]){
                         printf("\033[0;31m\033[48;5;240m");  // Red text, grey background
                         if (play[i][j]%13 > 10){
                             faceCardPrint(play[i][j]);
-                        } if-else (play[i][j]%13 == 1){
+                        } else if (play[i][j]%13 == 1){
                             printf(" %lc%s", 0x2663, " A");
                         } else {
                             printf(" %lc%2.d", 0x2663, play[i][j]); // Hearts
@@ -100,7 +100,7 @@ void frameGen(int play[19][7], int hidden[19][7]){
                         printf("\033[0;31m\033[48;5;240m");  // Red text, grey background
                         if (play[i][j]%13 > 10){
                             faceCardPrint(play[i][j]);
-                        } if-else (play[i][j]%13 == 1){
+                        } else if (play[i][j]%13 == 1){
                             printf(" %lc%s", 0x2666, " A");
                         } else {
                             printf(" %lc%2.d", 0x2666, play[i][j]); // Hearts
@@ -115,7 +115,7 @@ void frameGen(int play[19][7], int hidden[19][7]){
                         printf("\033[0;31m\033[48;5;240m");  // Red text, grey background
                         if (play[i][j]%13 > 10){
                             faceCardPrint(play[i][j]);
-                        } if-else (play[i][j]%13 == 1){
+                        } else if (play[i][j]%13 == 1){
                             printf(" %lc%s", 0x2660, " A");
                         } else {
                             printf(" %lc%2.d", 0x2660, play[i][j]); // Hearts
