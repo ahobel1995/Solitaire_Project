@@ -132,16 +132,16 @@ void faceCardPrint(int card){
     }
     switch(cardRank){
         case 0:
-            faceChar = 'K';
+            faceChar = "K";
             break;
         case 11:
-            faceChar = 'J';
+            faceChar = "J";
             break;
         case 12:
-            faceChar = 'Q';
+            faceChar = "Q";
             break;
         case 1:
-            faceChar = 'A'
+            faceChar = "A";
             return;
     }
     printf(" %lc %c", suitSymbol, faceChar); // Face cards
