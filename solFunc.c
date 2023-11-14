@@ -61,6 +61,7 @@ void frameGen(int play[19][7], int hidden[19][7], int deck[53], int inc) {
     numCardPrint(deck[inc+30]);
     printf("\033[0m"); // Reset text to default
     // Print Game Board:
+    printf("\n");
     for (i = 0; i < 19; i++) {
         for (j = 0; j < 7; j++) {
             numCardPrint(play[i][j]);
