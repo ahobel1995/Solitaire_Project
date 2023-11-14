@@ -153,7 +153,7 @@ void faceCardPrint(int card){
                     break;
                 }
             }
-            break
+            break;
         }
         case 14 ... 26: {
             switch(card%13){
@@ -170,7 +170,7 @@ void faceCardPrint(int card){
                     break;
                 }
             }
-            break
+            break;
         }
         case 27 ... 39: {
             switch(card%13){
@@ -187,7 +187,7 @@ void faceCardPrint(int card){
                     break;
                 }
             }
-            break
+            break;
         }
         case 40 ... 52: {
             switch(card%13){
@@ -204,7 +204,7 @@ void faceCardPrint(int card){
                     break;
                 }
             }
-            break
+            break;
         }
     }
 }
