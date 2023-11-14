@@ -82,13 +82,13 @@ void frameGen(int play[19][7], int hidden[19][7]){
                         if (play[i][j]%13 > 10){
                             faceCardPrint(play[i][j]);
                         }
-                        printf("\033[0;31m\033[48;5;240m");  // Red text, grey background
+                        printf("\033[0;30m\033[48;5;240m");  // Black text, grey background
                         if (play[i][j]%13 > 10){
                             faceCardPrint(play[i][j]);
                         } else if (play[i][j]%13 == 1){
                             printf(" %lc%s", 0x2663, " A");
                         } else {
-                            printf(" %lc%2.d", 0x2663, play[i][j]); // Hearts
+                            printf(" %lc%2.d", 0x2663, play[i][j]); // Clubs
                         }
                         printf("\033[0m"); // Reset text to default
                         break;
@@ -103,7 +103,7 @@ void frameGen(int play[19][7], int hidden[19][7]){
                         } else if (play[i][j]%13 == 1){
                             printf(" %lc%s", 0x2666, " A");
                         } else {
-                            printf(" %lc%2.d", 0x2666, play[i][j]); // Hearts
+                            printf(" %lc%2.d", 0x2666, play[i][j]); // Diamonds
                         }
                         printf("\033[0m"); // Reset text to default
                         break;
@@ -112,13 +112,13 @@ void frameGen(int play[19][7], int hidden[19][7]){
                         if (play[i][j]%13 > 10){
                             faceCardPrint(play[i][j]);
                         }
-                        printf("\033[0;31m\033[48;5;240m");  // Red text, grey background
+                        printf("\033[0;30m\033[48;5;240m");  // Black text, grey background
                         if (play[i][j]%13 > 10){
                             faceCardPrint(play[i][j]);
                         } else if (play[i][j]%13 == 1){
                             printf(" %lc%s", 0x2660, " A");
                         } else {
-                            printf(" %lc%2.d", 0x2660, play[i][j]); // Hearts
+                            printf(" %lc%2.d", 0x2660, play[i][j]); // Spades
                         }
                         printf("\033[0m"); // Reset text to default
                         break;
@@ -141,15 +141,15 @@ void faceCardPrint(int card){
         case 1 ... 13: {
             switch(card%13){
                 case 11: {
-                    printf(" %lc%s", 0x2665, " J");
+                    printf(" %lc %c", 0x2665, "J");
                     break;
                 }
                 case 12: {
-                    printf(" %lc%s", 0x2665, " Q");
+                    printf(" %lc %c", 0x2665, "Q");
                     break;
                 }
                 case 13: {
-                    printf(" %lc%s", 0x2665, " K");
+                    printf(" %lc %c", 0x2665, "K");
                     break;
                 }
             }
@@ -158,15 +158,15 @@ void faceCardPrint(int card){
         case 14 ... 26: {
             switch(card%13){
                 case 11: {
-                    printf(" %lc%s", 0x2663, " J");
+                    printf(" %lc %c", 0x2663, "J");
                     break;
                 }
                 case 12: {
-                    printf(" %lc%s", 0x2663, " Q");
+                    printf(" %lc %c", 0x2663, "Q");
                     break;
                 }
                 case 13: {
-                    printf(" %lc%s", 0x2663, " K");
+                    printf(" %lc %c", 0x2663, "K");
                     break;
                 }
             }
@@ -175,15 +175,15 @@ void faceCardPrint(int card){
         case 27 ... 39: {
             switch(card%13){
                 case 11: {
-                    printf(" %lc%s", 0x2666, " J");
+                    printf(" %lc %c", 0x2666, "J");
                     break;
                 }
                 case 12: {
-                    printf(" %lc%s", 0x2666, " Q");
+                    printf(" %lc %c", 0x2666, "Q");
                     break;
                 }
                 case 13: {
-                    printf(" %lc%s", 0x2666, " K");
+                    printf(" %lc %c", 0x2666, "K");
                     break;
                 }
             }
@@ -192,15 +192,15 @@ void faceCardPrint(int card){
         case 40 ... 52: {
             switch(card%13){
                 case 11: {
-                    printf(" %lc%s", 0x2660, " J");
+                    printf(" %lc %c", 0x2660, "J");
                     break;
                 }
                 case 12: {
-                    printf(" %lc%s", 0x2660, " Q");
+                    printf(" %lc %c", 0x2660, "Q");
                     break;
                 }
                 case 13: {
-                    printf(" %lc%s", 0x2660, " K");
+                    printf(" %lc %c", 0x2660, "K");
                     break;
                 }
             }
