@@ -42,5 +42,6 @@ int main() {
     } while (yesNo == 1);
     system("clear");
     gigaChad();
+    mikeDisappointed();
     return 0;
 }
