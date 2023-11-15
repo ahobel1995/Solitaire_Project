@@ -72,19 +72,21 @@ void frameGen(int play[19][7], int hidden[19][7], int deck[53], int dropDeck[4],
 
     // Print Draw Deck:
     printf("\033[0;30m\033[48;5;240m");  // Black text, grey background
+    printf("                ");
     printf("Top of Draw Deck: ");
     numCardPrint(deck[inc + 30]);
     printf("\033[0;30m\033[48;5;240m");  // Black text, grey background
-    printf("                                      ");  // For style to match length of horizontal lines
+    printf("                ");  // For style to match length of horizontal lines
     printf("\033[0m"); // Reset text to default
 
     // Print Drop Decks:
     printf("\033[0;30m\033[48;5;240m"); // Black text, grey background
-    printf("\nDrop Decks: ");
+    printf("\n                Drop Decks: ");
     for(i=0; i<4; i++){
         numCardPrint(dropDeck[i]);
     }
     printf("\033[0;30m\033[48;5;240m"); // Black text, grey background
+    printf("                \n");
     // For style to match length of horizontal lines:
     printf("\n                                                            ");
     printf("\033[0m"); // Reset text to default
@@ -92,6 +94,7 @@ void frameGen(int play[19][7], int hidden[19][7], int deck[53], int dropDeck[4],
     // Print Game Board:
     printf("\n");
     for (i = 0; i < 19; i++) {
+        printf("\033[0;30m\033[48;5;240m"); // Black text, grey background
         printf("                ");
         for (j = 0; j < 7; j++) {
             /*
@@ -102,21 +105,20 @@ void frameGen(int play[19][7], int hidden[19][7], int deck[53], int dropDeck[4],
                 numCardPrint(play[i][j]);
             //}
         }
+        printf("\033[0;30m\033[48;5;240m"); // Black text, grey background
         printf("                \n");
     }
 
     // Print Instructions:
-    printf("\033[0;30m\033[48;5;240m"); // Black text, grey background
-    printf("                            ");
-    printf("\n");
-    printf("Instructions:               \n");
-    printf("1. Enter the column number of the card you want to move. \n");
-    printf("2. Enter the row number of the card you want to move. \n");
+    printf("                                                            \n");
+    printf("Instructions:                                               \n");
+    printf("1. Enter the column number of the card you want to move.    \n");
+    printf("2. Enter the row number of the card you want to move.       \n");
     printf("3. Enter the column number of the card you want to move to. \n");
-    printf("4. Enter 0 to draw a card from the draw deck. \n");
-    printf("5. Enter 100 to cycle to the next draw deck card. \n");
-    printf("6. Enter 99 to reset the game. \n");
-    printf("7. Enter 98 to quit the game. \n");
+    printf("4. Enter 0 to draw a card from the draw deck.               \n");
+    printf("5. Enter 100 to cycle to the next draw deck card.           \n");
+    printf("6. Enter 99 to reset the game.                              \n");
+    printf("7. Enter 98 to quit the game.                               \n");
     printf("\033[0m"); // Reset text to default
 }
 
