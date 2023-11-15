@@ -6,4 +6,6 @@ set(CMAKE_C_STANDARD 11)
 add_executable(Project main.c
         solFunc.c
         debugFunc.c
-        debugFunc.h)
+        debugFunc.h
+        gameLogic.c
+        gameLogic.h)
