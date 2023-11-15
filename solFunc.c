@@ -88,11 +88,9 @@ void frameGen(int play[19][7], int hidden[19][7], int deck[53], int dropDeck[4],
     printf("\033[0;30m\033[48;5;240m"); // Black text, grey background
     printf("                \n");
     // For style to match length of horizontal lines:
-    printf("\n                                                            ");
-    printf("\033[0m"); // Reset text to default
+    printf("                                                            \n");
 
     // Print Game Board:
-    printf("\n");
     for (i = 0; i < 19; i++) {
         printf("\033[0;30m\033[48;5;240m"); // Black text, grey background
         printf("                ");
