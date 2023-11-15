@@ -75,8 +75,9 @@ void frameGen(int play[19][7], int hidden[19][7], int deck[53], int dropDeck[4],
     printf("\033[0;30m\033[48;5;240m");  // Black text, grey background
     printf("Top of Draw Deck: ");
     numCardPrint(deck[inc + 30]);
-    printf("                    ");  // For style to match length of horizontal lines
+    printf("    ");
     printf("\033[0m"); // Reset text to default
+    printf("                ");  // For style to match length of horizontal lines
 
     // Print Drop Decks:
     printf("\n                ");
@@ -85,9 +86,6 @@ void frameGen(int play[19][7], int hidden[19][7], int deck[53], int dropDeck[4],
     for(i=0; i<4; i++){
         numCardPrint(dropDeck[i]);
     }
-    printf("\033[0;30m\033[48;5;240m"); // Black text, grey background
-    printf("    ");
-    printf("\033[0m"); // Reset text to default
     printf("                \n");
     // For style to match length of horizontal lines:
     printf("                ");
