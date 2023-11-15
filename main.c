@@ -33,6 +33,9 @@ int main() {
         // GAME GOES HERE:
         while(game == 0){
             frameGen(Play, Hidden, Deck, dropDeck, inc);
+
+            // DEBUGGING:
+            game = 1;
         }
 
         printf("Would you like to play again? (y=1,n=0) ");
