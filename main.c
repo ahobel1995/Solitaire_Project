@@ -41,7 +41,7 @@ int main() {
         printf("Would you like to play again? (y=1,n=0) ");
     } while (yesNo == 1);
     system("clear");
-    switch (rand()%1){
+    switch (rand()%2){
         case 0:
             gigaChad();
             break;
