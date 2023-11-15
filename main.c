@@ -3,6 +3,7 @@
 #include <time.h>
 #include "solFunc.h"
 #include "debugFunc.h"
+#include "gameLogic.h"
 
 int main() {
     int yesNo, Deck[53], Hidden[19][7], Play[19][7], inc=0;
