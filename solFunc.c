@@ -71,11 +71,10 @@ void frameGen(int play[19][7], int hidden[19][7], int deck[53], int dropDeck[4],
     system("clear");
 
     // Print Draw Deck:
-    printf("\033[0;30m\033[48;5;240m");  // Black text, grey background
     printf("                ");
+    printf("\033[0;30m\033[48;5;240m");  // Black text, grey background
     printf("Top of Draw Deck: ");
     numCardPrint(deck[inc + 30]);
-    printf("\033[0;30m\033[48;5;240m");  // Black text, grey background
     printf("                    ");  // For style to match length of horizontal lines
     printf("\033[0m"); // Reset text to default
 
@@ -110,6 +109,7 @@ void frameGen(int play[19][7], int hidden[19][7], int deck[53], int dropDeck[4],
     }
 
     // Print Instructions:
+    printf("\033[0;30m\033[48;5;240m"); // Black text, grey background
     printf("                                                            \n");
     printf("Instructions:                                               \n");
     printf("1. Enter the column number of the card you want to move.    \n");
