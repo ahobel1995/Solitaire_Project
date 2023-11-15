@@ -90,12 +90,12 @@ void frameGen(int play[19][7], int hidden[19][7], int deck[53], int dropDeck[4],
     // For style to match length of horizontal lines:
     printf("                ");
     printf("\033[0;30m\033[48;5;240m"); // Black text, grey background
-    printf("                            \n");
+    printf("                            ");
     printf("\033[0m"); // Reset text to default
 
     // Print Game Board:
     for (i = 0; i < 19; i++) {
-        printf("                ");
+        printf("\n                ");
         for (j = 0; j < 7; j++) {
             /*
             if (hidden[i][j] == 99) {
@@ -105,12 +105,11 @@ void frameGen(int play[19][7], int hidden[19][7], int deck[53], int dropDeck[4],
                 numCardPrint(play[i][j]);
             //}
         }
-        printf("\n");
     }
 
     // Print Instructions:
     printf("\033[0;30m\033[48;5;240m"); // Black text, grey background
-    printf("\nInstructions:                                               \n");
+    printf("\n\nInstructions:                                               \n");
     printf("1. Enter the column number of the card you want to move.    \n");
     printf("2. Enter the row number of the card you want to move.       \n");
     printf("3. Enter the column number of the card you want to move to. \n");
