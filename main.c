@@ -6,7 +6,8 @@
 #include "gameLogic.h"
 
 int main() {
-    int yesNo, Deck[53], Hidden[19][7], Play[19][7], inc=0;
+    int yesNo, game=0, inc=0;
+    int Deck[53], Hidden[19][7], Play[19][7];
     int dropDeck[4];
     time_t t;
     srand(time(&t));
@@ -19,6 +20,8 @@ int main() {
         if (yesNo == 0) {
             break;
         }
+        // RESET FUNCTIONS:
+
         deckResetShuffle(Deck);
         // deckPrint(Deck);
         hiddenGen(Hidden);
@@ -26,9 +29,15 @@ int main() {
         playGen(Play, Deck);
         // hiddenPrint(Play);
         dropDeckReset(dropDeck);
-        frameGen(Play, Hidden, Deck, dropDeck, inc);
+
+        // GAME GOES HERE:
+        while(game == 0){
+            frameGen(Play, Hidden, Deck, dropDeck, inc);
+        }
 
         printf("Would you like to play again? (y=1,n=0) ");
     } while (yesNo == 1);
+    system("clear");
+    printf("Thanks for playing!\n");
     return 0;
 }
