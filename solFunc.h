@@ -6,3 +6,4 @@ void frameGen();
 void faceCardPrint();
 void numCardPrint();
 void gigaChad();
+void mikeDisappointed();
