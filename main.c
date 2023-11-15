@@ -41,6 +41,6 @@ int main() {
         printf("Would you like to play again? (y=1,n=0) ");
     } while (yesNo == 1);
     system("clear");
-    printf("Thanks for playing!\n");
+    gigaChad();
     return 0;
 }
