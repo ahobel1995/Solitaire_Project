@@ -7,7 +7,7 @@
 
 int main() {
     int yesNo, game=0, inc=0;
-    int Deck[53], Hidden[19][7], Play[19][7];
+    int deck[53], hidden[19][7], play[19][7];
     int dropDeck[4];
     time_t t;
     srand(time(&t));
@@ -22,20 +22,20 @@ int main() {
         }
         // RESET FUNCTIONS:
 
-        deckResetShuffle(Deck);
+        deckResetShuffle(deck);
         // deckPrint(Deck);
-        hiddenGen(Hidden);
+        hiddenGen(hidden);
         // hiddenPrint(Hidden);
-        playGen(Play, Deck);
+        playGen(play, deck);
         // hiddenPrint(Play);
         dropDeckReset(dropDeck);
 
         // GAME GOES HERE:
         while(game == 0){
-            frameGen(Play, Hidden, Deck, dropDeck, inc);
+            frameGen(play, hidden, deck, dropDeck, inc);
 
             // DEBUGGING:
-            game = 1;
+            break;
         }
 
         printf("Would you like to play again? (y=1,n=0) ");
