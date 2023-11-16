@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <time.h>
 #include "solFunc.h"
-#include "debugFunc.h"
 #include "gameLogic.h"
 
 int main() {
@@ -24,11 +23,8 @@ int main() {
         // RESET FUNCTIONS:
 
         deckResetShuffle(deck);
-        // deckPrint(Deck);
         hiddenGen(hidden);
-        // hiddenPrint(Hidden);
         playGen(play, deck);
-        // hiddenPrint(Play);
         dropDeckReset(dropDeck);
 
         // GAME GOES HERE:
