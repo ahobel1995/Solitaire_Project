@@ -79,7 +79,7 @@ int main() {
                  */
             }
             cardMoveEval(play, hidden, playerCardChoice, playerMoveChoice);
-            // frameGen(play, hidden, deck, dropDeck, inc);
+            frameGen(play, hidden, deck, dropDeck, inc);
             break;
         }
 
