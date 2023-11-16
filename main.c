@@ -9,7 +9,7 @@ int main() {
     int yesNo, moveYesNo, game = 0, inc = 0;
     int deck[53], hidden[31][7], play[31][7];
     int dropDeck[4];
-    int playerCardChoice[2], playerMoveChoice[2], i;
+    int playerCardChoice[2], playerMoveChoice[2], i, j;
     time_t t;
     srand(time(&t));
     printf("Welcome to Solitaire! Would you like to play? (y=1, n=0) ");
@@ -24,9 +24,6 @@ int main() {
         // RESET FUNCTIONS:
 
         deckResetShuffle(deck);
-        for (i = 0; i < 52; i++) {
-            printf("%d ", deck[i]);
-        }
         sleep(10);
         hiddenGen(hidden);
         playGen(play, deck);
@@ -35,6 +32,22 @@ int main() {
         // GAME GOES HERE:
         while (game == 0) {
             frameGen(play, hidden, deck, dropDeck, inc);
+
+            //DEBUG
+            for(i = 0; i < 19; i++) {
+                for(j = 0; j < 7; j++) {
+                    if(play[j][i] != 0) {
+                        printf("%2.d ", play[i][j]);
+                    }
+                }
+                printf("\n");
+            }
+
+            for(i = 0; i<53; i++) {
+                printf("%d ", deck[i]);
+            }
+            //DEBUG
+
             printf("Would you like to move a card? (y=1, n=0) ");
             while (scanf("%d", &moveYesNo) != 1 || (moveYesNo != 1 && moveYesNo != 0)) {
                 while (getchar() != '\n');
