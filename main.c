@@ -60,7 +60,7 @@ int main() {
 
                 playerCardChoice[0] = playerCardChoice[0] - 1;
                 playerCardChoice[1] = playerCardChoice[1] - 1;
-                playerMoveChoice[0] = playerMoveChoice[0] - 1;
+                playerMoveChoice[1] = playerMoveChoice[1] - 1;
 
                 for (i = 19; i > 0; i--) {
                     playerMoveChoice[0] = i - 1;
