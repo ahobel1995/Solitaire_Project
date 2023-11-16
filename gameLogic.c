@@ -40,3 +40,41 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
         return;
     }
 }
+
+void playerMoveDecision(int play[19][7], int playerCardChoice[2], int playerMoveChoice[2]){
+    printf("Please input the column you would like to select for a move: ");
+    while (scanf("%d", &playerCardChoice[1]) != 1 || playerCardChoice[1] < 1 || playerCardChoice[1] > 7) {
+        while (getchar() != '\n');
+        printf("Error. Please input a number between 1 and 7: ");
+    }
+    printf("Please input the row of the card you would like to move: ");
+    while (scanf("%d", &playerCardChoice[0]) != 1 || playerCardChoice[0] < 1 || playerCardChoice[0] > 19) {
+        while (getchar() != '\n');
+        printf("Error. Please input a number between 1 and 19: ");
+    }
+    printf("Please input the column you would like to move to: ");
+    while (scanf("%d", &playerMoveChoice[1]) != 1 || playerMoveChoice[1] < 1 || playerMoveChoice[1] > 7) {
+        while (getchar() != '\n');
+        printf("Error. Please input a number between 1 and 7: ");
+    }
+
+    playerCardChoice[0] = playerCardChoice[0] - 1;
+    playerCardChoice[1] = playerCardChoice[1] - 1;
+    playerMoveChoice[1] = playerMoveChoice[1] - 1;
+
+    for (i = 19; i > 0; i--) {
+        playerMoveChoice[0] = i - 1;
+        if (play[playerMoveChoice[0]][playerMoveChoice[1]] != 0) {
+            playerMoveChoice[0] = i;
+            break;
+        }
+    }
+    /*
+    printf("\n%d", play[playerCardChoice[0]][playerCardChoice[1]]);
+    printf("\n%d", play[playerMoveChoice[0]][playerMoveChoice[1]]);
+    printf("\n%d", play[playerMoveChoice[0]-1][playerMoveChoice[1]]);
+    printf("\n%d", play[playerMoveChoice[0]-1][playerMoveChoice[1]]%13);
+    printf("\n%d", (play[playerMoveChoice[0]-1][playerMoveChoice[1]]-1)%13-1);
+    printf("\n%d", (play[playerCardChoice[0]][playerCardChoice[1]]-1)%13);
+     */
+}
