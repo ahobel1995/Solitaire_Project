@@ -63,7 +63,7 @@ int main() {
                 for (i = 19; i > 0; i--) {
                     if (play[i-1][playerCardChoice[1]] != 0) {
                         playerCardChoice[1] = i-1;
-                        break;
+                        continue;
                     }
                 }
             }
