@@ -7,9 +7,9 @@
 
 int main() {
     int yesNo, game = 0, inc = 0;
-    int deck[53], hidden[19][7], play[19][7];
+    int deck[53], hidden[31][7], play[31][7];
     int dropDeck[4];
-    int playerCardChoice[2], playerMoveChoice[2], i, num1, num2;
+    int playerCardChoice[2], playerMoveChoice[2];
     time_t t;
     srand(time(&t));
     printf("Welcome to Solitaire! Would you like to play? (y=1, n=0) ");
