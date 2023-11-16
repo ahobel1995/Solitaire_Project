@@ -85,6 +85,6 @@ void playerMoveDecision(int play[19][7], int playerCardChoice[2], int playerMove
     printf("\nPlayer Move Above: %d", play[playerMoveChoice[0]-1][playerMoveChoice[1]]);
     printf("\nPlayer Move Above mod: %d", play[playerMoveChoice[0]-1][playerMoveChoice[1]]%13);
     printf("\nPlayer Move Above mod-1: %d", (play[playerMoveChoice[0]-1][playerMoveChoice[1]]-1)%13-1);
-    printf("\nPlayer Choice mod: %d", (play[playerCardChoice[0]][playerCardChoice[1]]-1)%13);
-
+    printf("\nPlayer Choice mod: %d\n", (play[playerCardChoice[0]][playerCardChoice[1]]-1)%13);
+    sleep(5);
 }
