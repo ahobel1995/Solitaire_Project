@@ -9,6 +9,7 @@ int main() {
     int yesNo, game=0, inc=0;
     int deck[53], hidden[19][7], play[19][7];
     int dropDeck[4];
+    int playerCardChoice[2], playerMoveChoice[2];
     time_t t;
     srand(time(&t));
     printf("Welcome to Solitaire! Would you like to play? (y=1, n=0) ");
@@ -33,7 +34,22 @@ int main() {
         // GAME GOES HERE:
         while(game == 0){
             frameGen(play, hidden, deck, dropDeck, inc);
-
+            printf("Would you like to move a card? (y=1, n=0) ");
+            while (scanf("%d", &yesNo) != 1 || (yesNo != 1 && yesNo != 0)) {
+                while (getchar() != '\n');
+                printf("Error. Please input a 1 or 0: ");
+            }
+            if (yesNo == 0) {
+                break;
+            } else {
+                // DEBUGGING
+                playerCardChoice[0] = 3;
+                playerCardChoice[1] = 3;
+                playerMoveChoice[0] = 5;
+                playerMoveChoice[1] = 4;
+            }
+            cardMove(play, hidden, playerCardChoice, playerMoveChoice);
+            frameGen(play, hidden, deck, dropDeck, inc);
             // DEBUGGING:
             break;
         }
