@@ -48,7 +48,7 @@ int main() {
                 playerMoveChoice[0] = 5;
                 playerMoveChoice[1] = 4;
             }
-            cardMove(play, hidden, playerCardChoice, playerMoveChoice);
+            cardMoveEval(play, hidden, playerCardChoice, playerMoveChoice);
             frameGen(play, hidden, deck, dropDeck, inc);
             // DEBUGGING:
             break;
