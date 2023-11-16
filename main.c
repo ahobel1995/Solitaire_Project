@@ -41,16 +41,31 @@ int main() {
             }
             if (yesNo == 0) {
                 break;
-            } else {
-                // DEBUGGING
-                playerCardChoice[0] = 3;
-                playerCardChoice[1] = 3;
-                playerMoveChoice[0] = 5;
-                playerMoveChoice[1] = 4;
+            } else { //Player Card Choice:
+                printf("Please input the column you would like to select for a move: ");
+                while (scanf("%d-1", &playerCardChoice[1]) != 1 || playerCardChoice[1] < 0 || playerCardChoice[1] > 6) {
+                    while (getchar() != '\n');
+                    printf("Error. Please input a number between 1 and 7: ");
+                }
+                printf("Please input the row of the card you would like to move: ");
+                while (scanf("%d-1", &playerCardChoice[1]) != 1 || playerCardChoice[1] < 0 || playerCardChoice[1] > 18) {
+                    while (getchar() != '\n');
+                    printf("Error. Please input a number between 1 and 19: ");
+                }
+                printf("Please input the column you would like to move to: ");
+                while (scanf("%d-1", &playerMoveChoice[1]) != 1 || playerMoveChoice[1] < 0 || playerMoveChoice[1] > 6) {
+                    while (getchar() != '\n');
+                    printf("Error. Please input a number between 1 and 7: ");
+                }
+                for (int i = 18; i >= 0; i--) {
+                    if (play[i][playerCardChoice[1]] != 0) {
+                        playerCardChoice[1] = i;
+                        break;
+                    }
+                }
             }
             cardMoveEval(play, hidden, playerCardChoice, playerMoveChoice);
             frameGen(play, hidden, deck, dropDeck, inc);
-            // DEBUGGING:
             break;
         }
 
