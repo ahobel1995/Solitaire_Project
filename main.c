@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <unistd.h>
 #include "solFunc.h"
 #include "gameLogic.h"
 
@@ -8,7 +9,7 @@ int main() {
     int yesNo, moveYesNo, game = 0, inc = 0;
     int deck[53], hidden[31][7], play[31][7];
     int dropDeck[4];
-    int playerCardChoice[2], playerMoveChoice[2];
+    int playerCardChoice[2], playerMoveChoice[2], i;
     time_t t;
     srand(time(&t));
     printf("Welcome to Solitaire! Would you like to play? (y=1, n=0) ");
@@ -23,6 +24,10 @@ int main() {
         // RESET FUNCTIONS:
 
         deckResetShuffle(deck);
+        for (i = 0; i < 52; i++) {
+            printf("%d ", deck[i]);
+        }
+        sleep(10);
         hiddenGen(hidden);
         playGen(play, deck);
         dropDeckReset(dropDeck);
