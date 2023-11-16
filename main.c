@@ -64,10 +64,12 @@ int main() {
 
                 for (i = 19; i > 0; i--) {
                     if (play[i-1][playerMoveChoice[1]] != 0) {
-                        playerMoveChoice[1] = i-1;
+                        playerMoveChoice[1] = i+1;
                         break;
                     }
                 }
+                printf("%d", play[playerCardChoice[0]][playerCardChoice[1]]);
+                printf("%d", play[playerMoveChoice[0]][playerMoveChoice[1]]);
             }
             cardMoveEval(play, hidden, playerCardChoice, playerMoveChoice);
             // frameGen(play, hidden, deck, dropDeck, inc);
