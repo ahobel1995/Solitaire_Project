@@ -65,7 +65,7 @@ int main() {
                 for (i = 19; i > 0; i--) {
                     playerMoveChoice[0] = i - 1;
                     if (play[playerMoveChoice[0]][playerMoveChoice[1]] != 0) {
-                        playerMoveChoice[0] = i - 1;
+                        playerMoveChoice[0] = i;
                         break;
                     }
                 }
