@@ -71,6 +71,9 @@ int main() {
                 }
                 printf("\n%d", play[playerCardChoice[0]][playerCardChoice[1]]);
                 printf("\n%d", play[playerMoveChoice[0]][playerMoveChoice[1]]);
+                printf("\n%d", play[playerMoveChoice[0]-1][playerMoveChoice[1]]);
+                printf("\n%d", play[playerMoveChoice[0]-1][playerMoveChoice[1]]%13);
+                printf("\n%d", play[playerCardChoice[0]][playerCardChoice[1]]%13);
             }
             cardMoveEval(play, hidden, playerCardChoice, playerMoveChoice);
             // frameGen(play, hidden, deck, dropDeck, inc);
