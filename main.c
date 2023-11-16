@@ -80,7 +80,6 @@ int main() {
             }
             cardMoveEval(play, hidden, playerCardChoice, playerMoveChoice);
             frameGen(play, hidden, deck, dropDeck, inc);
-            break;
         }
 
         printf("Would you like to play again? (y=1,n=0) ");

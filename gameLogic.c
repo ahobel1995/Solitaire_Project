@@ -19,7 +19,7 @@ void cardMove(int play[19][7], int hidden[19][7], int cardPos[2], int cardMovePo
 void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMovePos[2]) {
     if (play[cardPos[0]][cardPos[1]] == 0) {
         printf("Error. Please choose a card.\n");
-        sleep(10);
+        sleep(3);
         return;
         // The following check is to ensure the card is one lower, opposite suit, and not a king for a valid move.
     } else if (play[cardPos[0]][cardPos[1]] % 13 == play[cardMovePos[0] - 1][cardMovePos[1]] % 13 - 1 &&
@@ -36,8 +36,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
         printf("Valid move.\n");
     } else {
         printf("Error. Please choose a valid move position.\n");
-        sleep(10);
+        sleep(3);
         return;
     }
-    sleep(10);
 }
