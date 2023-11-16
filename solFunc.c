@@ -10,13 +10,6 @@ void dropDeckReset(int dropDeck[4]) {
     for (i = 0; i < 4; i++) {
         dropDeck[i] = 0;
     }
-/*
-    dropDeck[0]=1;
-    dropDeck[1]=14;
-    dropDeck[2]=27;
-    dropDeck[3]=40;
-*/
-      // For testing purposes
 }
 
 void hiddenGen(int hidden[19][7]) {
@@ -94,13 +87,16 @@ void frameGen(int play[19][7], int hidden[19][7], int deck[53], int dropDeck[4],
     printf("\033[0m"); // Reset text to default
 
     // Print Game Board:
-    for (i = 0; i < 19; i++) {
-        printf("\n                ");
+    for (i = 0; i <= 19; i++) {
+        printf("\n              %2.d", i + 1);
         for (j = 0; j < 7; j++) {
             if (hidden[i][j] == 99) {
                 numCardPrint(hidden[i][j]);
+            } else if (i == 0) {
+                printf("\033[0;30m\033[48;5;240m"); // Black text, grey background
+                printf("  %2.d", j + 1);
             } else {
-                numCardPrint(play[i][j]);
+                numCardPrint(play[i-1][j]);
             }
         }
     }
