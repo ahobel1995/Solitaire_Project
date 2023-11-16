@@ -57,9 +57,11 @@ int main() {
                     while (getchar() != '\n');
                     printf("Error. Please input a number between 1 and 7: ");
                 }
+                /*
                 playerCardChoice[0] = playerCardChoice[0];
                 playerCardChoice[1] = playerCardChoice[1];
                 playerMoveChoice[0] = playerMoveChoice[0];
+                 */
                 for (i = 19; i > 0; i--) {
                     if (play[i-1][playerCardChoice[1]] != 0) {
                         playerCardChoice[1] = i-1;
