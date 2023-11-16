@@ -42,6 +42,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
 }
 
 void playerMoveDecision(int play[19][7], int playerCardChoice[2], int playerMoveChoice[2]){
+    int i;
     printf("Please input the column you would like to select for a move: ");
     while (scanf("%d", &playerCardChoice[1]) != 1 || playerCardChoice[1] < 1 || playerCardChoice[1] > 7) {
         while (getchar() != '\n');
