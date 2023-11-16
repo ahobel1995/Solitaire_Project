@@ -9,7 +9,7 @@
 void cardMove(int play[19][7], int hidden[19][7], int cardPos[2], int cardMovePos[2]) {
     int i;
     int temp[13];
-    for (i = 0; i < 14; i++) {
+    for (i = 0; i < 13; i++) {
         if (play[cardPos[0]+i][cardPos[1]] == 0) {
             break;
         }
@@ -17,7 +17,7 @@ void cardMove(int play[19][7], int hidden[19][7], int cardPos[2], int cardMovePo
         play[cardPos[0]+i][cardPos[1]] = 0;
     }
     play[cardPos[0]][cardPos[1]] = 0;
-    for (i = 0; i < 14; i++) {
+    for (i = 0; i < 13; i++) {
         play[cardMovePos[0]+i][cardMovePos[1]] = temp[i];
     }
     if (hidden[cardPos[0] - 1][cardPos[1]] == 99) {
