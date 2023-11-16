@@ -25,7 +25,7 @@ void cardMove(int play[19][7], int hidden[19][7], int cardPos[2], int cardMovePo
     }
     for (i=0; i<19; i++) {
         for (j=0; j<7; j++) {
-            if (play[i][j] > 52 && play[i][j] < 0) {
+            if (play[i][j] > 52 || play[i][j] < 0) {
                 play[i][j] = 0;
             }
         }
