@@ -7,7 +7,7 @@
 #include "gameLogic.h"
 
 void cardMove(int play[19][7], int hidden[19][7], int cardPos[2], int cardMovePos[2]) {
-    int i;
+    int i, j;
     int temp[13];
     for (i = 0; i < 13; i++) {
         if (play[cardPos[0]+i][cardPos[1]] == 0) {
@@ -22,6 +22,13 @@ void cardMove(int play[19][7], int hidden[19][7], int cardPos[2], int cardMovePo
     }
     if (hidden[cardPos[0] - 1][cardPos[1]] == 99) {
         hidden[cardPos[0] - 1][cardPos[1]] = 0;
+    }
+    for (i=0; i<19; i++) {
+        for (j=0; j<7; j++) {
+            if (play[i][j] > 52 && play[i][j] < 0) {
+                play[i][j] = 0;
+            }
+        }
     }
 }
 
