@@ -43,20 +43,23 @@ int main() {
                 break;
             } else { //Player Card Choice:
                 printf("Please input the column you would like to select for a move: ");
-                while (scanf("%d-1", &playerCardChoice[1]) != 1 || playerCardChoice[1] < 0 || playerCardChoice[1] > 6) {
+                while (scanf("%d", &playerCardChoice[1]) != 1 || playerCardChoice[1] < 1 || playerCardChoice[1] > 7) {
                     while (getchar() != '\n');
                     printf("Error. Please input a number between 1 and 7: ");
                 }
                 printf("Please input the row of the card you would like to move: ");
-                while (scanf("%d-1", &playerCardChoice[1]) != 1 || playerCardChoice[1] < 0 || playerCardChoice[1] > 18) {
+                while (scanf("%d", &playerCardChoice[0]) != 1 || playerCardChoice[0] < 1 || playerCardChoice[0] > 19) {
                     while (getchar() != '\n');
                     printf("Error. Please input a number between 1 and 19: ");
                 }
                 printf("Please input the column you would like to move to: ");
-                while (scanf("%d-1", &playerMoveChoice[1]) != 1 || playerMoveChoice[1] < 0 || playerMoveChoice[1] > 6) {
+                while (scanf("%d", &playerMoveChoice[1]) != 1 || playerMoveChoice[1] < 1 || playerMoveChoice[1] > 7) {
                     while (getchar() != '\n');
                     printf("Error. Please input a number between 1 and 7: ");
                 }
+                playerCardChoice[0] = playerCardChoice[0] - 1;
+                playerCardChoice[1] = playerCardChoice[1] - 1;
+                playerMoveChoice[0] = playerMoveChoice[0] - 1;
                 for (i = 19; i > 0; i--) {
                     if (play[i-1][playerCardChoice[1]] != 0) {
                         playerCardChoice[1] = i-1;
