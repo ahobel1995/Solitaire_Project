@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 #include <math.h>
+#include <unistd.h>
 #include "solFunc.h"
 #include "gameLogic.h"
 
@@ -31,5 +32,5 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
         printf("Error. Please choose a valid move position.\n");
         return;
     }
-    pause("Press enter to continue.");
+    sleep(10);
 }
