@@ -79,7 +79,7 @@ void playerMoveDecision(int play[19][7], int playerCardChoice[2], int playerMove
             break;
         }
     }
-    /*
+
     printf("\n%d", play[playerCardChoice[0]][playerCardChoice[1]]);
     printf("\n%d", play[playerMoveChoice[0]][playerMoveChoice[1]]);
     printf("\n%d", play[playerMoveChoice[0]-1][playerMoveChoice[1]]);
