@@ -78,7 +78,6 @@ int main() {
                 printf("\n%d", (play[playerCardChoice[0]][playerCardChoice[1]]-1)%13);
             }
             cardMoveEval(play, hidden, playerCardChoice, playerMoveChoice);
-            frameGen(play, hidden, deck, dropDeck, inc);
         }
 
         printf("Would you like to play again? (y=1,n=0) ");
