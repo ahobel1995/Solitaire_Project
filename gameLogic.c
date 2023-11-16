@@ -21,8 +21,8 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
         return;
         // This next check is to check for opposing colors amd to ensure the card is one value lower.
     } else if (play[cardPos[0]][cardPos[1]] % 13 == play[cardPos[0] - 1][cardPos[1]] % 13 + 1 &&
-               (int) ceil(play[cardPos[0]][cardPos[1]] / 13) % 2 ==
-               (int) ceil(play[cardPos[0] - 1][cardPos[1]] / 13) % 2) {
+               (int) floor((double)play[cardPos[0]][cardPos[1]] / 13) % 2 ==
+               (int) floor((double)play[cardPos[0] - 1][cardPos[1]] / 13) % 2) {
         cardMove(play, hidden, cardPos, cardMovePos);
     } else {
         printf("Error. Please choose a valid move position.\n");
