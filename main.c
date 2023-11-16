@@ -73,7 +73,10 @@ int main() {
                 printf("\n%d", play[playerMoveChoice[0]][playerMoveChoice[1]]);
                 printf("\n%d", play[playerMoveChoice[0]-1][playerMoveChoice[1]]);
                 printf("\n%d", play[playerMoveChoice[0]-1][playerMoveChoice[1]]%13);
+                printf("\n%d", play[playerMoveChoice[0]-1][playerMoveChoice[1]]%13-1);
                 printf("\n%d", play[playerCardChoice[0]][playerCardChoice[1]]%13);
+                printf("\n%d", play[cardPos[0]][cardPos[1]] / 13 % 2);
+                printf("\n%d", play[cardMovePos[0] - 1][cardMovePos[1]] / 13 % 2);
             }
             cardMoveEval(play, hidden, playerCardChoice, playerMoveChoice);
             // frameGen(play, hidden, deck, dropDeck, inc);
