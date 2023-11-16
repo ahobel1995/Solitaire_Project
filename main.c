@@ -24,7 +24,6 @@ int main() {
         // RESET FUNCTIONS:
 
         deckResetShuffle(deck);
-        sleep(10);
         hiddenGen(hidden);
         playGen(play, deck);
         dropDeckReset(dropDeck);
@@ -34,16 +33,14 @@ int main() {
             frameGen(play, hidden, deck, dropDeck, inc);
 
             //DEBUG
-            for(i = 0; i < 19; i++) {
-                for(j = 0; j < 7; j++) {
-                    if(play[j][i] != 0) {
-                        printf("%2.d ", play[i][j]);
-                    }
+            for (i = 0; i < 19; i++) {
+                for (j = 0; j < 7; j++) {
+                    printf("%2.d ", play[i][j]);
                 }
                 printf("\n");
             }
 
-            for(i = 0; i<53; i++) {
+            for (i = 0; i < 53; i++) {
                 printf("%d ", deck[i]);
             }
             //DEBUG
