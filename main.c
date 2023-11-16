@@ -9,7 +9,7 @@ int main() {
     int yesNo, game=0, inc=0;
     int deck[53], hidden[19][7], play[19][7];
     int dropDeck[4];
-    int playerCardChoice[2], playerMoveChoice[2];
+    int playerCardChoice[2], playerMoveChoice[2], i;
     time_t t;
     srand(time(&t));
     printf("Welcome to Solitaire! Would you like to play? (y=1, n=0) ");
@@ -57,7 +57,7 @@ int main() {
                     while (getchar() != '\n');
                     printf("Error. Please input a number between 1 and 7: ");
                 }
-                for (int i = 18; i >= 0; i--) {
+                for (i = 18; i >= 0; i--) {
                     if (play[i][playerCardChoice[1]] != 0) {
                         playerCardChoice[1] = i;
                         break;
