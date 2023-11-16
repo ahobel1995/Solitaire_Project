@@ -6,7 +6,7 @@
 #include "gameLogic.h"
 
 int main() {
-    int yesNo, game=0, inc=0;
+    int yesNo, game = 0, inc = 0;
     int deck[53], hidden[19][7], play[19][7];
     int dropDeck[4];
     int playerCardChoice[2], playerMoveChoice[2], i;
@@ -32,7 +32,7 @@ int main() {
         dropDeckReset(dropDeck);
 
         // GAME GOES HERE:
-        while(game == 0){
+        while (game == 0) {
             frameGen(play, hidden, deck, dropDeck, inc);
             printf("Would you like to move a card? (y=1, n=0) ");
             while (scanf("%d", &yesNo) != 1 || (yesNo != 1 && yesNo != 0)) {
@@ -63,8 +63,9 @@ int main() {
                 playerMoveChoice[0] = playerMoveChoice[0] - 1;
 
                 for (i = 19; i > 0; i--) {
-                    if (play[i-1][playerMoveChoice[1]] != 0) {
-                        playerMoveChoice[0] = i-1;
+                    playerMoveChoice[0] = i - 1;
+                    if (play[playerMoveChoice[0]][playerMoveChoice[1]] != 0) {
+                        playerMoveChoice[0] = i;
                         break;
                     }
                 }
@@ -79,7 +80,7 @@ int main() {
         printf("Would you like to play again? (y=1,n=0) ");
     } while (yesNo == 1);
     system("clear");
-    switch (rand()%2){
+    switch (rand() % 2) {
         case 0:
             gigaChad();
             break;
