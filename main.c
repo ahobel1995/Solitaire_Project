@@ -69,7 +69,7 @@ int main() {
                         break;
                     }
                 }
-                num1 = play[cardPos[0]][cardPos[1]] / 13 % 2;
+                num1 = 13/12 // play[cardPos[0]][cardPos[1]] / 13 % 2;
                 num2 = play[cardMovePos[0] - 1][cardMovePos[1]] / 13 % 2;
                 printf("\n%d", play[playerCardChoice[0]][playerCardChoice[1]]);
                 printf("\n%d", play[playerMoveChoice[0]][playerMoveChoice[1]]);
