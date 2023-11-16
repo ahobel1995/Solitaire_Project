@@ -48,10 +48,6 @@ int main() {
         }
 
         printf("Would you like to play again? (y=1,n=0) ");
-        while (scanf("%d", &yesNo) != 1 || (yesNo != 1 && yesNo != 0)) {
-            while (getchar() != '\n');
-            printf("Error. Please input a 1 or 0: ");
-        }
     } while (yesNo == 1);
     system("clear");
     switch (rand() % 2) {
