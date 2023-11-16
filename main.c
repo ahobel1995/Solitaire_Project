@@ -43,6 +43,7 @@ int main() {
             for (i = 0; i < 53; i++) {
                 printf("%d ", deck[i]);
             }
+            printf("\n");
             //DEBUG
 
             printf("Would you like to move a card? (y=1, n=0) ");
