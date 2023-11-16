@@ -9,7 +9,7 @@ int main() {
     int yesNo, game = 0, inc = 0;
     int deck[53], hidden[19][7], play[19][7];
     int dropDeck[4];
-    int playerCardChoice[2], playerMoveChoice[2], i;
+    int playerCardChoice[2], playerMoveChoice[2], i, num1, num2;
     time_t t;
     srand(time(&t));
     printf("Welcome to Solitaire! Would you like to play? (y=1, n=0) ");
@@ -69,14 +69,16 @@ int main() {
                         break;
                     }
                 }
+                num1 = play[cardPos[0]][cardPos[1]] / 13 % 2;
+                num2 = play[cardMovePos[0] - 1][cardMovePos[1]] / 13 % 2;
                 printf("\n%d", play[playerCardChoice[0]][playerCardChoice[1]]);
                 printf("\n%d", play[playerMoveChoice[0]][playerMoveChoice[1]]);
                 printf("\n%d", play[playerMoveChoice[0]-1][playerMoveChoice[1]]);
                 printf("\n%d", play[playerMoveChoice[0]-1][playerMoveChoice[1]]%13);
                 printf("\n%d", play[playerMoveChoice[0]-1][playerMoveChoice[1]]%13-1);
                 printf("\n%d", play[playerCardChoice[0]][playerCardChoice[1]]%13);
-                printf("\n%d", play[cardPos[0]][cardPos[1]] / 13 % 2);
-                printf("\n%d", play[cardMovePos[0] - 1][cardMovePos[1]] / 13 % 2);
+                printf("\n%d", num1);
+                printf("\n%d", num2);
             }
             cardMoveEval(play, hidden, playerCardChoice, playerMoveChoice);
             // frameGen(play, hidden, deck, dropDeck, inc);
