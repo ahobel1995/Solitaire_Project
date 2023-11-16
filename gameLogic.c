@@ -31,7 +31,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
         sleep(3);
         return;
         // The following check is to ensure the card is one lower, opposite suit, and not a king for a valid move.
-    } else if ((play[cardPos[0]][cardPos[1]] - 1) % 13 == ((play[cardMovePos[0] - 1][cardMovePos[1]] - 1) % 13) - 1 &&
+    } else if ((play[cardPos[0]][cardPos[1]]) % 13 == ((play[cardMovePos[0] - 1][cardMovePos[1]] - 1) % 13) &&
                (((play[cardPos[0]][cardPos[1]] >= 1 && play[cardPos[0]][cardPos[1]] <= 13) ||
                  (play[cardPos[0]][cardPos[1]] >= 27 && play[cardPos[0]][cardPos[1]] <= 39)) !=
                 ((play[cardMovePos[0] - 1][cardMovePos[1]] >= 1 && play[cardMovePos[0] - 1][cardMovePos[1]] <= 13) ||
@@ -84,7 +84,7 @@ void playerMoveDecision(int play[19][7], int playerCardChoice[2], int playerMove
     printf("\nPlayer Move: %d", play[playerMoveChoice[0]][playerMoveChoice[1]]);
     printf("\nPlayer Move Above: %d", play[playerMoveChoice[0]-1][playerMoveChoice[1]]);
     printf("\nPlayer Move Above mod: %d", play[playerMoveChoice[0]-1][playerMoveChoice[1]]%13);
-    printf("\nPlayer Move Above mod - 1: %d", ((play[playerMoveChoice[0]-1][playerMoveChoice[1]]-1)%13)-1);
-    printf("\nPlayer Choice mod: %d\n", (play[playerCardChoice[0]][playerCardChoice[1]]-1)%13);
+    printf("\nPlayer Move Above mod - 1: %d", ((play[playerMoveChoice[0]-1][playerMoveChoice[1]])%13)-1);
+    printf("\nPlayer Choice mod: %d\n", (play[playerCardChoice[0]][playerCardChoice[1]])%13);
     sleep(10);
 }
