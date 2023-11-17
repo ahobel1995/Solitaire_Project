@@ -93,6 +93,7 @@ void frameGen(int play[19][7], int hidden[19][7], int deck[53], int dropDeck[4],
             if (i == 0) {
                 printf("\033[0;30m\033[48;5;240m"); // Black text, grey background
                 printf("  %2.d", j + 1);
+                printf("\033[0m"); // Reset text to default
             } else if (hidden[i-1][j] == 99){
                 numCardPrint(hidden[i-1][j]);
             } else {
