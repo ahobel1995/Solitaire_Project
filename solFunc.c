@@ -90,11 +90,11 @@ void frameGen(int play[19][7], int hidden[19][7], int deck[53], int dropDeck[4],
     for (i = 0; i <= 19; i++) {
         printf("\n              %2.d", i + 1);
         for (j = 0; j < 7; j++) {
-            if (hidden[i][j] == 99) {
-                numCardPrint(hidden[i][j]);
-            } else if (i == 0) {
+            if (i == 0) {
                 printf("\033[0;30m\033[48;5;240m"); // Black text, grey background
                 printf("  %2.d", j + 1);
+            } else if (hidden[i-1][j] == 99){
+                numCardPrint(hidden[i][j]);
             } else {
                 numCardPrint(play[i-1][j]);
             }
