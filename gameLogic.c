@@ -230,6 +230,7 @@ void deckPull(int play[21][7], int deck[53], int cardPos[2], int *draw, int hidd
                 play[cardPos[0]][cardPos[1]] = deck[*draw];
                 deck[*draw] = 0;
                 draw++;
+                /*
                 for (i = 0; i <= 1; i++) {
                     while (deck[*draw] == 0) {
                         *draw += 1;
@@ -239,10 +240,12 @@ void deckPull(int play[21][7], int deck[53], int cardPos[2], int *draw, int hidd
                         }
                     }
                 }
+                */
                 break;
             case 2:
                 printf("You have cycled the deck.\n");
                 *draw += 1;
+                /*
                 if (*draw < 53) {
                     for (i = 0; i <= 1; i++) {
                         while (deck[*draw] == 0) {
@@ -256,8 +259,8 @@ void deckPull(int play[21][7], int deck[53], int cardPos[2], int *draw, int hidd
                 } else {
                     *draw = 30;
                 }
-                // Call to frameGen may need to be updated if it also uses draw
-                frameGen(play, hidden, *deck, dropDeck, *draw);
+                 */
+                frameGen(play, hidden, deck, dropDeck, (*draw);
                 break;
             case 3:
                 printf("You have reset to the start menu.\n");
