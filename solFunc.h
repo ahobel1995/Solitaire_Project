@@ -7,3 +7,4 @@ void faceCardPrint();
 void numCardPrint();
 void gigaChad();
 void mikeDisappointed();
+void drawDeckReset();

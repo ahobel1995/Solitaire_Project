@@ -7,7 +7,7 @@
 
 int main() {
     int yesNo, moveYesNo, game = 0, inc = 0;
-    int deck[53], hidden[31][7], play[31][7];
+    int deck[53], hidden[21][7], play[21][7], drawDeck;
     int dropDeck[4];
     int playerCardChoice[2], playerMoveChoice[2], i, j, eval;
     time_t t;
@@ -27,25 +27,11 @@ int main() {
         hiddenGen(hidden);
         playGen(play, deck);
         dropDeckReset(dropDeck);
+        drawDeckReset(play, deck, drawDeck);
 
         // GAME GOES HERE:
         while (game == 0) {
             frameGen(play, hidden, deck, dropDeck, inc);
-            /*
-            //DEBUG
-            for (i = 0; i < 19; i++) {
-                for (j = 0; j < 7; j++) {
-                    printf("%2.d ", play[i][j]);
-                }
-                printf("\n");
-            }
-
-            for (i = 0; i < 53; i++) {
-                printf("%d ", deck[i]);
-            }
-            printf("\n");
-            //DEBUG
-            */
             printf("Would you like to move a card? (y=1, n=0) ");
             while (scanf("%d", &moveYesNo) != 1 || (moveYesNo != 1 && moveYesNo != 0)) {
                 while (getchar() != '\n');
@@ -55,7 +41,7 @@ int main() {
             if (moveYesNo == 0) {
                 break;
             } else {
-                playerMoveDecision(play, playerCardChoice, playerMoveChoice);
+                playerMoveDecision(play, drawDeck, deck, playerCardChoice, playerMoveChoice, inc);
                 cardMoveEval(play, hidden, playerCardChoice, playerMoveChoice, dropDeck);
             }
         }

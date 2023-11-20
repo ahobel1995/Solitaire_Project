@@ -53,16 +53,24 @@ void cardMoveDrop(int play[19][7], int hidden[19][7], int cardPos[2], int dropDe
 }
 
 void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMovePos[2], int dropDeck[4]) {
-    if (play[cardPos[0]][cardPos[1]] == 0) {
+        // This checks if the card is hidden.
+    if (hidden[cardPos[0]][cardPos[1]] == 99) {
+        printf("Error. You cannot choose a hidden card.\n");
+        sleep(3);
+        return;
+    }
+
+        // This checks if the card selected is not empty.
+    else if (play[cardPos[0]][cardPos[1]] == 0) {
         printf("Error. Please choose a card.\n");
         sleep(3);
+        return;
 
         // Drop Deck evaluation
     } else if (cardMovePos[1] == 7) {
-        if (play[cardPos[0]][cardPos[1]+1] == 0) {
+        if (play[cardPos[0]][cardPos[1] + 1] == 0) {
             printf("Invalid Selection. Your card must be singular and not in a stack for the drop deck.\n");
             sleep(3);
-            return;
         } else {
             switch (play[cardPos[0]][cardPos[1]]) {
                 case 1 ... 13 :
@@ -102,8 +110,8 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
                     }
                     break;
             }
-            return;
         }
+        return;
 
         // The following check is to ensure the card is one value lower, opposite suit for a valid move.
     } else if ((play[cardPos[0]][cardPos[1]] - 1) % 13 == ((play[cardMovePos[0] - 1][cardMovePos[1]] - 1) % 13 - 1) &&
@@ -122,6 +130,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
         sleep(3);
         return;
 
+        // Catch all error if nothing else is working.
     } else {
         printf("Error. Please choose a valid move position.\n");
         sleep(3);
@@ -129,20 +138,29 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
     }
 }
 
-int playerMoveDecision(int play[19][7], int playerCardChoice[2], int playerMoveChoice[2]) {
-    int i;
-    printf("Please input the column you would like to select for a move (1-7): ");
-    while (scanf("%d", &playerCardChoice[1]) != 1 || playerCardChoice[1] < 1 || playerCardChoice[1] > 7) {
+int playerMoveDecision(int play[19][7], int deckPull, int deck[53], int playerCardChoice[2], int playerMoveChoice[2], int inc) {
+    int i, drawDeckChoice;
+    printf("Would you like to pull from the draw deck? (y=1, n=0) ");
+    while (scanf("%d", &drawDeckChoice) != 1 || (drawDeckChoice != 1 && drawDeckChoice != 0)) {
         while (getchar() != '\n');
-        printf("Error. Please input a number between 1 and 7: ");
+        printf("Error. Please input a 1 or 0: ");
     }
-    printf("Please input the row of the card you would like to move (1-19): ");
-    while (scanf("%d", &playerCardChoice[0]) != 1 || playerCardChoice[0] < 1 || playerCardChoice[0] > 19) {
-        while (getchar() != '\n');
-        printf("Error. Please input a number between 1 and 19: ");
+    if (drawDeckChoice == 1) {
+        deckPull(play, drawDeckChoice, playerMoveChoice, inc);
+    } else {
+        printf("Please input the column you would like to select for a move (1-7): ");
+        while (scanf("%d", &playerCardChoice[1]) != 1 || playerCardChoice[1] < 1 || playerCardChoice[1] > 7) {
+            while (getchar() != '\n');
+            printf("Error. Please input a number between 1 and 7: ");
+        }
+        printf("Please input the row of the card you would like to move (1-19): ");
+        while (scanf("%d", &playerCardChoice[0]) != 1 || playerCardChoice[0] < 1 || playerCardChoice[0] > 19) {
+            while (getchar() != '\n');
+            printf("Error. Please input a number between 1 and 19: ");
+        }
     }
     printf("Please input the column you would like to move to (1-8), 8 is for drop deck: ");
-    while (scanf("%d", &playerMoveChoice[1]) != 1 || playerMoveChoice[1] < 1 || playerMoveChoice[1] > 8) {
+    while (scanf("%d", &playerMoveChoice[1]) != 1 || playerMoveChoice[1] < 1 || playerMoveChoice[1] > 9) {
         while (getchar() != '\n');
         printf("Error. Please input a number between 1 and 8 (8 for the drop decks): ");
     }
@@ -173,4 +191,46 @@ int playerMoveDecision(int play[19][7], int playerCardChoice[2], int playerMoveC
     //DEBUG
     */
     return 0;
+}
+
+void deckPull(deck[53], drawDeck, cardPos, inc) {
+    int deckPullChoice;
+    printf("Deck Pull choices: (1: select the card, 2:cycle deck, 3:reset to start menu\n");
+    while(scanf("%d", &deckPullChoice) != 1 || deckPullChoice < 1 || deckPullChoice > 3) {
+        while(getchar() != '\n');
+        printf("Error. Please input a number between 1 and 3: ");
+    }
+    switch (deckPullChoice) {
+        case 1:
+            printf("You have selected the card.\n");
+            play[21][7] = drawDeck;
+            drawDeck = deck[inc + 30];
+            deck[inc + 30] = 0;
+            while (deck[inc + 30] == 0) {
+                inc++;
+            }
+            drawDeck = deck[inc + 30];
+            sleep(3);
+            return;
+        case 2:
+            printf("You have cycled the deck.\n");
+            if (inc + 30 <= 53) {
+                while (deck[inc + 30] == 0) {
+                    inc++;
+                }
+                drawDeck = deck[inc + 30];
+            } else {
+                inc = 0;
+                drawDeck = deck[inc + 30];
+            }
+            inc++;
+            sleep(3);
+            break;
+        case 3:
+            printf("You have reset to the start menu.\n");
+            sleep(3);
+            return;
+    }
+    sleep(3);
+    return;
 }
