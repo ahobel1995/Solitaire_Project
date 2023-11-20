@@ -172,17 +172,12 @@ void playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int
             playerCardChoice[1]--;
             playerMoveChoice[1]--;
 
-            if (playerMoveChoice[1] < 8) {
-                for (i = 19; i > 0; i--) {
-                    playerMoveChoice[0] = i - 1;
-                    if (play[playerMoveChoice[0]][playerMoveChoice[1]] != 0) {
-                        playerMoveChoice[0] = i;
-                        break;
-                    }
-                    return;
+            for (i = 19; i > 0; i--) {
+                playerMoveChoice[0] = i - 1;
+                if (play[playerMoveChoice[0]][playerMoveChoice[1]] != 0) {
+                    playerMoveChoice[0] = i;
+                    break;
                 }
-            } else {
-                playerMoveChoice[0] = 0;
                 return;
             }
         }
@@ -195,6 +190,8 @@ void playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int
             printf("Error. Please input a number between 1 and 8 (8 for the drop decks): ");
         }
 
+        playerCardChoice[0]--;
+        playerCardChoice[1]--;
         playerMoveChoice[1]--;
 
         if (playerMoveChoice[1] < 8) {
@@ -207,7 +204,7 @@ void playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int
             }
         }
     }
-    /*
+
     //DEBUG
     printf("\nPlayer Choice: %d", play[playerCardChoice[0]][playerCardChoice[1]]);
     printf("\nPlayer Move: %d", play[playerMoveChoice[0]][playerMoveChoice[1]]);
@@ -216,7 +213,7 @@ void playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int
     printf("\nPlayer Move Above mod - 1: %d", ((play[playerMoveChoice[0]-1][playerMoveChoice[1]]-1)%13)-1);
     printf("\nPlayer Choice mod: %d\n", (play[playerCardChoice[0]][playerCardChoice[1]]-1)%13);
     //DEBUG
-    */
+
 }
 
 int deckPull(int play[21][7], int deck[53], int drawDeck, int cardPos, int inc, int hidden[21][7], int dropDeck[4]) {
