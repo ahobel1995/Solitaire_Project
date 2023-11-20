@@ -248,7 +248,7 @@ int deckPull(int play[21][7], int deck[53], int drawDeck, int cardPos, int inc) 
                 }
                 inc++;
                 sleep(3);
-                framgen(play, hidden, deck, dropDeck, drawDeck);
+                framegen(play, hidden, deck, dropDeck, drawDeck);
                 break;
             case 3:
                 printf("You have reset to the start menu.\n");
