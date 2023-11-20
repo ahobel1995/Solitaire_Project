@@ -238,14 +238,15 @@ int deckPull(int play[21][7], int deck[53], int drawDeck, int cardPos, int inc, 
                 return;
             case 2:
                 printf("You have cycled the deck.\n");
-                if (inc + 30 <= 53) {
-                    while (deck[inc + 30] == 0) {
+                if (inc <= 53) {
+                    while (deck[inc] == 0) {
                         inc++;
                     }
-                    drawDeck = deck[inc + 30];
+                    printf("drawDeck: %d\n", drawDeck);
+                    drawDeck = deck[inc];
                 } else {
-                    inc = 0;
-                    drawDeck = deck[inc + 30];
+                    inc = 30;
+                    drawDeck = deck[inc];
                 }
                 inc++;
                 sleep(3);

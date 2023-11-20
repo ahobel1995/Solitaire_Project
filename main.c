@@ -5,7 +5,7 @@
 #include "gameLogic.h"
 
 int main() {
-    int yesNo, moveYesNo, game = 0, inc = 0;
+    int yesNo, moveYesNo, game = 0, inc = 30;
     int deck[53], hidden[19][7], play[21][7];
     int dropDeck[4];
     int playerCardChoice[2], playerMoveChoice[2], i, j;
@@ -26,7 +26,7 @@ int main() {
         hiddenGen(hidden);
         playGen(play, deck);
         dropDeckReset(dropDeck);
-        int drawDeck = deck[inc + 30];
+        int drawDeck = deck[inc];
 
         // GAME GOES HERE:
         while (game == 0) {
