@@ -138,7 +138,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
     }
 }
 
-int playerMoveDecision(int play[19][7], int deckPull, int deck[53], int playerCardChoice[2], int playerMoveChoice[2], int inc) {
+int playerMoveDecision(int play[19][7], int drawDeck, int deck[53], int playerCardChoice[2], int playerMoveChoice[2], int inc) {
     int i, drawDeckChoice;
     printf("Would you like to pull from the draw deck? (y=1, n=0) ");
     while (scanf("%d", &drawDeckChoice) != 1 || (drawDeckChoice != 1 && drawDeckChoice != 0)) {
@@ -146,7 +146,7 @@ int playerMoveDecision(int play[19][7], int deckPull, int deck[53], int playerCa
         printf("Error. Please input a 1 or 0: ");
     }
     if (drawDeckChoice == 1) {
-        deckPull(play, drawDeckChoice, playerMoveChoice, inc);
+        deckPull(play, deck, drawDeck, playerCardChoice, inc);
     } else {
         printf("Please input the column you would like to select for a move (1-7): ");
         while (scanf("%d", &playerCardChoice[1]) != 1 || playerCardChoice[1] < 1 || playerCardChoice[1] > 7) {
@@ -193,7 +193,7 @@ int playerMoveDecision(int play[19][7], int deckPull, int deck[53], int playerCa
     return 0;
 }
 
-void deckPull(deck[53], drawDeck, cardPos, inc) {
+void deckPull(play[53], deck[53], drawDeck, cardPos, inc) {
     int deckPullChoice;
     printf("Deck Pull choices: (1: select the card, 2:cycle deck, 3:reset to start menu\n");
     while(scanf("%d", &deckPullChoice) != 1 || deckPullChoice < 1 || deckPullChoice > 3) {
