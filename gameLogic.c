@@ -45,6 +45,9 @@ void cardMoveDrop(int play[19][7], int cardPos[2], int dropDeck[4]) {
             break;
     }
     play[cardPos[0]][cardPos[1]] = 0;
+    if (hidden[cardPos[0] - 1][cardPos[1]] == 99) {
+        hidden[cardPos[0] - 1][cardPos[1]] = 0;
+    }
     printf("Drop Deck Updated.\n");
     sleep(3);
 }
