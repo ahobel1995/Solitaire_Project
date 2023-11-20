@@ -88,6 +88,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
                     } else {
                         printf("Invalid move. Please Select Valid Card for Clubs Drop Deck.\n");
                         sleep(3);
+                    }
                     break;
                 case 27 ... 39 :
                     if (play[cardMovePos[0]][cardMovePos[1]]%13 == (dropDeck[2] + 1)%13) {
@@ -112,7 +113,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
     } else {
         printf("Error. Please choose a valid move position.\n");
         sleep(3);
-    }d
+    }
 }
 
 int playerMoveDecision(int play[19][7], int playerCardChoice[2], int playerMoveChoice[2]) {
