@@ -148,8 +148,8 @@ int playerMoveDecision(int play[19][7], int drawDeck, int deck[53], int playerCa
         }
         if (drawDeckChoice == 1) {
             deckPullChoice = deckPull(play, deck, drawDeck, playerCardChoice, inc);
-            if (deckPullChoice == 3){
-                continue;
+            if (deckPullChoice == 3) {
+                continue; // This will restart the loop if deckPullChoice is 3
             }
         } else {
             printf("Please input the column you would like to select for a move (1-7): ");
@@ -277,7 +277,7 @@ int deckPull(int play[21][7], int deck[53], int drawDeck, int cardPos, int inc) 
         case 3:
             printf("You have reset to the start menu.\n");
             sleep(3);
-            return;
+            break;
     }
     sleep(3);
     return deckPullChoice;
