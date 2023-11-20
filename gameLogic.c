@@ -143,6 +143,7 @@ void playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int
                         int playerCardChoice[2], int playerMoveChoice[2], int inc) {
     int i, drawDeckChoice, deckPullChoice = 0;
     do {
+        deckPullChoice = 0;
         printf("Would you like to enter draw deck menu? (y=1, n=0) ");
         while (scanf("%d", &drawDeckChoice) != 1 || (drawDeckChoice != 1 && drawDeckChoice != 0)) {
             while (getchar() != '\n');
@@ -178,9 +179,11 @@ void playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int
                         playerMoveChoice[0] = i;
                         break;
                     }
+                    return;
                 }
             } else {
                 playerMoveChoice[0] = 0;
+                return;
             }
         }
     } while (deckPullChoice == 3);
