@@ -27,9 +27,10 @@ int main() {
         hiddenGen(hidden);
         playGen(play, deck);
         dropDeckReset(dropDeck);
-        int drawDeck = deck[inc + 30];
+        int drawDeck = deck[30];
         inc = 1;
         printf("%d", drawDeck);
+        printf("%d", deck[inc + 30]);
         sleep(3);
 
         // GAME GOES HERE:
