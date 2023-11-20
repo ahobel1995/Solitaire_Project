@@ -216,7 +216,7 @@ void playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int
 
 }
 
-int deckPull(int play[21][7], int deck[53], int cardPos, int inc, int hidden[21][7], int dropDeck[4]) {
+int deckPull(int play[21][7], int deck[53], int cardPos[2], int inc, int hidden[21][7], int dropDeck[4]) {
     int deckPullChoice;
     do {
         printf("Deck Pull choices: (1: select the card, 2:cycle deck, 3:reset to start menu\n");
