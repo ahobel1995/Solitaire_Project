@@ -114,7 +114,7 @@ void frameGen(int play[21][7], int hidden[21][7], int deck[53], int dropDeck[4],
     printf("6. Enter 99 to reset the game.                              \n");
     printf("7. Enter 98 to quit the game.                               \n");
     printf("\033[0m"); // Reset text to default
-    for (i = 0; i < 3; i++) {
+    for (i = 0; i <= 3; i++) {
         for (j = 1; j <= 13; j++) {
             printf("%2.d ", deck[i * 13 + j]);
         }
