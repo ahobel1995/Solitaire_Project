@@ -180,27 +180,26 @@ void playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int
                     break;
                 }
             }
+            return;
         }
     } while (deckPullChoice == 3);
 
     printf("DeckPullChoice: %d\n", deckPullChoice);
     sleep(3);
 
-    if (deckPullChoice == 1) {
-        printf("Please input the column you would like to move to (1-8), 8 is for drop deck: ");
-        while (scanf("%d", &playerMoveChoice[1]) != 1 || playerMoveChoice[1] < 1 || playerMoveChoice[1] > 9) {
-            while (getchar() != '\n');
-            printf("Error. Please input a number between 1 and 8 (8 for the drop decks): ");
-        }
+    printf("Please input the column you would like to move to (1-8), 8 is for drop deck: ");
+    while (scanf("%d", &playerMoveChoice[1]) != 1 || playerMoveChoice[1] < 1 || playerMoveChoice[1] > 9) {
+        while (getchar() != '\n');
+        printf("Error. Please input a number between 1 and 8 (8 for the drop decks): ");
+    }
 
-        playerMoveChoice[1]--;
+    playerMoveChoice[1]--;
 
-        for (i = 19; i > 0; i--) {
-            playerMoveChoice[0] = i - 1;
-            if (play[playerMoveChoice[0]][playerMoveChoice[1]] != 0) {
-                playerMoveChoice[0] = i;
-                break;
-            }
+    for (i = 19; i > 0; i--) {
+        playerMoveChoice[0] = i - 1;
+        if (play[playerMoveChoice[0]][playerMoveChoice[1]] != 0) {
+            playerMoveChoice[0] = i;
+            break;
         }
     }
 
