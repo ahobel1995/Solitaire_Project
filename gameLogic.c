@@ -57,14 +57,14 @@ int cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMov
     if (hidden[cardPos[0]][cardPos[1]] == 99) {
         printf("Error. You cannot choose a hidden card.\n");
         sleep(3);
-        return;
+        return draw;
     }
 
         // This checks if the card selected is not empty.
     else if (play[cardPos[0]][cardPos[1]] == 0) {
         printf("Error. Please choose a card.\n");
         sleep(3);
-        return;
+        return draw;
 
         // Drop Deck evaluation
     } else if (cardMovePos[1] == 7) {
@@ -202,7 +202,7 @@ int cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMov
     } else {
         printf("Error. Please choose a valid move position.\n");
         sleep(3);
-        return;
+        return draw;
     }
 }
 
