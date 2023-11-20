@@ -178,7 +178,6 @@ void playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int
                     playerMoveChoice[0] = i;
                     break;
                 }
-                return;
             }
         }
     } while (deckPullChoice == 3);
