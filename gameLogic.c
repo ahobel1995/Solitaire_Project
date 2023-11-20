@@ -53,7 +53,7 @@ void cardMoveDrop(int play[19][7], int hidden[19][7], int cardPos[2], int dropDe
 }
 
 void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMovePos[2], int dropDeck[4]) {
-        // This checks if the card is hidden.
+    // This checks if the card is hidden.
     if (hidden[cardPos[0]][cardPos[1]] == 99) {
         printf("Error. You cannot choose a hidden card.\n");
         sleep(3);
@@ -139,9 +139,10 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
     }
 }
 
-void playerMoveDecision(int play[19][7], int drawDeck, int deck[53], int playerCardChoice[2], int playerMoveChoice[2], int inc) {
-    int i, drawDeckChoice, deckPullChoice=0;
-    do{
+void playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int drawDeck, int deck[53],
+                        int playerCardChoice[2], int playerMoveChoice[2], int inc) {
+    int i, drawDeckChoice, deckPullChoice = 0;
+    do {
         printf("Would you like to enter draw deck menu? (y=1, n=0) ");
         while (scanf("%d", &drawDeckChoice) != 1 || (drawDeckChoice != 1 && drawDeckChoice != 0)) {
             while (getchar() != '\n');
@@ -215,14 +216,14 @@ void playerMoveDecision(int play[19][7], int drawDeck, int deck[53], int playerC
     */
 }
 
-int deckPull(int play[21][7], int deck[53], int drawDeck, int cardPos, int inc) {
+int deckPull(int play[21][7], int deck[53], int drawDeck, int cardPos, int inc, int hidden[21][7], int dropDeck[4]) {
     int deckPullChoice;
     do {
-    printf("Deck Pull choices: (1: select the card, 2:cycle deck, 3:reset to start menu\n");
-    while(scanf("%d", &deckPullChoice) != 1 || deckPullChoice < 1 || deckPullChoice > 3) {
-        while(getchar() != '\n');
-        printf("Error. Please input a number between 1 and 3: ");
-    }
+        printf("Deck Pull choices: (1: select the card, 2:cycle deck, 3:reset to start menu\n");
+        while (scanf("%d", &deckPullChoice) != 1 || deckPullChoice < 1 || deckPullChoice > 3) {
+            while (getchar() != '\n');
+            printf("Error. Please input a number between 1 and 3: ");
+        }
         switch (deckPullChoice) {
             case 1:
                 printf("You have selected the card.\n");

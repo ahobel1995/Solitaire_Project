@@ -41,7 +41,7 @@ int main() {
             if (moveYesNo == 0) {
                 break;
             } else {
-                playerMoveDecision(play, drawDeck, deck, playerCardChoice, playerMoveChoice, inc);
+                playerMoveDecision(play, hidden, drawDeck, dropDeck, deck, playerCardChoice, playerMoveChoice, inc);
                 cardMoveEval(play, hidden, playerCardChoice, playerMoveChoice, dropDeck);
             }
         }
