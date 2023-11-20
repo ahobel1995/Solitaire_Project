@@ -120,7 +120,7 @@ void frameGen(int play[21][7], int hidden[21][7], int deck[53], int dropDeck[4],
         }
         printf("\n");
     }
-    printf("draw: %d\ndeck draw: %d", draw, deck[draw]);
+    printf("draw: %d\ndeck draw: %d\n", draw, deck[draw]);
 }
 
 void numCardPrint(int card) {
