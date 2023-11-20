@@ -59,7 +59,7 @@ void deckResetShuffle(int deck[53]) {
     }
 }
 
-void framegen(int play[21][7], int hidden[21][7], int deck[53], int dropDeck[4], int drawCard) {
+void frameGen(int play[21][7], int hidden[21][7], int deck[53], int dropDeck[4], int drawCard) {
     int i, j;
     setlocale(LC_CTYPE, "");
     system("clear");
