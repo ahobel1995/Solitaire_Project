@@ -235,7 +235,7 @@ int deckPull(int play[21][7], int deck[53], int cardPos[2], int draw, int hidden
                 for (i = 0; i <= 1; i++) {
                     while (deck[draw] == 0) {
                         draw++;
-                        if (draw == 54) {
+                        if (draw == 53) {
                             draw = 30;
                             break;
                         }
@@ -249,7 +249,7 @@ int deckPull(int play[21][7], int deck[53], int cardPos[2], int draw, int hidden
                     for (i = 0; i <= 1; i++) {
                         while (deck[draw] == 0) {
                             draw++;
-                            if (draw == 54) {
+                            if (draw == 53) {
                                 draw = 30;
                                 break;
                             }
