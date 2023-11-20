@@ -263,8 +263,8 @@ void deckPull(int play[21][7], int deck[53], int cardPos[2], int *draw, int hidd
             case 3:
                 printf("You have reset to the start menu.\n");
                 break;
-        }
                  */
+        }
     } while (deckPullChoice == 2);
     sleep(3);
 }
