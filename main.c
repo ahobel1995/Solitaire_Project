@@ -29,6 +29,8 @@ int main() {
         dropDeckReset(dropDeck);
         int drawDeck = deck[inc + 30];
         inc = 1;
+        printf("%d", drawDeck);
+        sleep(3);
 
         // GAME GOES HERE:
         while (game == 0) {
