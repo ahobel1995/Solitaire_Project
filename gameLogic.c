@@ -151,6 +151,7 @@ void playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int
         }
         if (drawDeckChoice == 1) {
             deckPullChoice = deckPull(play, deck, drawDeck, playerCardChoice, inc);
+            break;
         } else {
             printf("Please input the column you would like to select for a move (1-7): ");
             while (scanf("%d", &playerCardChoice[1]) != 1 || playerCardChoice[1] < 1 || playerCardChoice[1] > 7) {
@@ -181,6 +182,9 @@ void playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int
             }
         }
     } while (deckPullChoice == 3);
+
+    printf("DeckPullChoice: %d\n", deckPullChoice);
+    sleep(3);
 
     if (deckPullChoice == 1) {
         printf("Please input the column you would like to move to (1-8), 8 is for drop deck: ");
