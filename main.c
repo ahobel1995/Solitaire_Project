@@ -5,7 +5,7 @@
 #include "gameLogic.h"
 
 int main() {
-    int yesNo, moveYesNo, game = 0, inc = 30;
+    int yesNo, moveYesNo, game = 0, draw = 30;
     int deck[53], hidden[19][7], play[21][7], dropDeck[4];
     int playerCardChoice[2], playerMoveChoice[2], i, j;
     time_t t;
@@ -25,11 +25,10 @@ int main() {
         hiddenGen(hidden);
         playGen(play, deck);
         dropDeckReset(dropDeck);
-        int drawDeck = deck[inc];
 
         // GAME GOES HERE:
         while (game == 0) {
-            frameGen(play, hidden, deck, dropDeck, drawDeck);
+            frameGen(play, hidden, deck, dropDeck, draw);
             printf("Would you like to move a card? (y=1, n=0) ");
             while (scanf("%d", &moveYesNo) != 1 || (moveYesNo != 1 && moveYesNo != 0)) {
                 while (getchar() != '\n');
@@ -39,7 +38,7 @@ int main() {
             if (moveYesNo == 0) {
                 break;
             } else {
-                playerMoveDecision(play, hidden, drawDeck, dropDeck, deck, playerCardChoice, playerMoveChoice, inc);
+                playerMoveDecision(play, hidden, dropDeck, deck, playerCardChoice, playerMoveChoice, draw);
                 cardMoveEval(play, hidden, playerCardChoice, playerMoveChoice, dropDeck);
             }
         }

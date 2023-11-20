@@ -139,8 +139,8 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
     }
 }
 
-void playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int drawDeck, int deck[53],
-                        int playerCardChoice[2], int playerMoveChoice[2], int inc) {
+void playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int deck[53],
+                        int playerCardChoice[2], int playerMoveChoice[2], int draw) {
     int i, drawDeckChoice, deckPullChoice = 0;
     do {
         deckPullChoice = 0;
@@ -150,7 +150,7 @@ void playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int
             printf("Error. Please input a 1 or 0: ");
         }
         if (drawDeckChoice == 1) {
-            deckPullChoice = deckPull(play, deck, drawDeck, playerCardChoice, inc);
+            deckPullChoice = deckPull(play, deck, cardPos, draw, hidden, dropDeck);
             break;
         } else {
             printf("Please input the column you would like to select for a move (1-7): ");
@@ -216,7 +216,7 @@ void playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int
 
 }
 
-int deckPull(int play[21][7], int deck[53], int drawDeck, int cardPos, int inc, int hidden[21][7], int dropDeck[4]) {
+int deckPull(int play[21][7], int deck[53], int cardPos, int inc, int hidden[21][7], int dropDeck[4]) {
     int deckPullChoice;
     do {
         printf("Deck Pull choices: (1: select the card, 2:cycle deck, 3:reset to start menu\n");
@@ -227,13 +227,11 @@ int deckPull(int play[21][7], int deck[53], int drawDeck, int cardPos, int inc, 
         switch (deckPullChoice) {
             case 1:
                 printf("You have selected the card.\n");
-                play[20][6] = drawDeck;
-                drawDeck = deck[inc + 30];
-                deck[inc + 30] = 0;
-                while (deck[inc + 30] == 0) {
+                play[20][6] = deck[inc];
+                deck[inc] = 0;
+                while (deck[inc] == 0) {
                     inc++;
                 }
-                drawDeck = deck[inc + 30];
                 sleep(3);
                 return;
             case 2:
@@ -248,9 +246,10 @@ int deckPull(int play[21][7], int deck[53], int drawDeck, int cardPos, int inc, 
                     inc = 30;
                     drawDeck = deck[inc];
                 }
+                deck[inc] = 0;
                 inc++;
                 sleep(3);
-                frameGen(play, hidden, deck, dropDeck, drawDeck);
+                frameGen(play, hidden, deck, dropDeck, inc);
                 break;
             case 3:
                 printf("You have reset to the start menu.\n");
