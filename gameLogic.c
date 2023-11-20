@@ -216,7 +216,7 @@ void playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int
 
 }
 
-int deckPull(int play[21][7], int deck[53], int cardPos[2], int inc, int hidden[21][7], int dropDeck[4]) {
+int deckPull(int play[21][7], int deck[53], int cardPos[2], int draw, int hidden[21][7], int dropDeck[4]) {
     int deckPullChoice;
     do {
         printf("Deck Pull choices: (1: select the card, 2:cycle deck, 3:reset to start menu\n");
@@ -229,12 +229,12 @@ int deckPull(int play[21][7], int deck[53], int cardPos[2], int inc, int hidden[
                 printf("You have selected the card.\n");
                 cardPos[0] = 20
                 cardPos[1] = 6
-                play[cardPos[0]][cardPos[1]] = deck[inc];
-                deck[inc] = 0;
-                while (deck[inc] == 0) {
-                    inc++;
-                    if (inc == 54) {
-                        inc = 30;
+                play[cardPos[0]][cardPos[1]] = deck[draw];
+                deck[draw] = 0;
+                while (deck[draw] == 0) {
+                    draw++;
+                    if (draw == 54) {
+                        draw = 30;
                         break;
                     }
                 }
@@ -243,17 +243,17 @@ int deckPull(int play[21][7], int deck[53], int cardPos[2], int inc, int hidden[
             case 2:
                 printf("You have cycled the deck.\n");
                 if (inc < 53) {
-                    while (deck[inc] == 0) {
-                        inc++;
-                        if (inc == 54) {
-                            inc = 30;
+                    while (deck[draw] == 0) {
+                        draw++;
+                        if (draw == 54) {
+                            draw = 30;
                             break;
                         }
                     }
                 } else {
                     inc = 30;
                 }
-                deck[inc] = 0;
+                deck[draw] = 0;
                 inc++;
                 sleep(3);
                 frameGen(play, hidden, deck, dropDeck, draw);
