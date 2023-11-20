@@ -6,7 +6,7 @@
 
 int main() {
     int yesNo, moveYesNo, game = 0, draw = 30;
-    int deck[53], hidden[19][7], play[21][7], dropDeck[4];
+    int deck[53], hidden[19][7], play[22][7], dropDeck[4];
     int playerCardChoice[2], playerMoveChoice[2], i, j;
     time_t t;
     srand(time(&t));

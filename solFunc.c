@@ -28,9 +28,9 @@ void hiddenGen(int hidden[19][7]) {
     }
 }
 
-void playGen(int play[21][7], int deck[53]) {
+void playGen(int play[22][7], int deck[53]) {
     int count = 0, i, j, a = 1;
-    for (i = 0; i < 21; i++) {
+    for (i = 0; i < 22; i++) {
         for (j = 0; j < 7; j++) {
             play[i][j] = 0;
         }
