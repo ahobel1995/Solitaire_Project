@@ -71,7 +71,6 @@ int cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMov
         // Drop Deck evaluation
     } else if (cardMovePos[1] == 7) {
         if (play[cardPos[0] + 1][cardPos[1]] != 0) {
-            printf("%d", play[cardPos[0]][cardPos[1] + 1])
             printf("Invalid Selection. Your card must be singular and not in a stack for the drop deck.\n");
             sleep(3);
         } else {
