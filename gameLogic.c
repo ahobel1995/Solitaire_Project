@@ -52,7 +52,8 @@ void cardMoveDrop(int play[19][7], int hidden[19][7], int cardPos[2], int dropDe
     sleep(3);
 }
 
-void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMovePos[2], int dropDeck[4]) {
+void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMovePos[2], int dropDeck[4], int deck[53],
+                   int draw) {
     // This checks if the card is hidden.
     if (hidden[cardPos[0]][cardPos[1]] == 99) {
         printf("Error. You cannot choose a hidden card.\n");
@@ -111,6 +112,18 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
                     break;
             }
         }
+        if (play[cardPos[0]][cardPos[1]] == deck[draw]) {
+            deck[draw] = 0;
+            for (i = 0; i <= 1; i++) {
+                while (deck[draw] == 0) {
+                    draw++;
+                    if (draw == 53) {
+                        draw = 29;
+                        break;
+                    }
+                }
+            }
+        }
         return;
 
         // The following check is to ensure the card is one value lower, opposite suit for a valid move.
@@ -121,6 +134,18 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
                  (play[cardMovePos[0] - 1][cardMovePos[1]] >= 27 && play[cardMovePos[0] - 1][cardMovePos[1]] <= 39)))) {
         cardMove(play, hidden, cardPos, cardMovePos);
         printf("Valid move (Normal Move).\n");
+        if (play[cardPos[0]][cardPos[1]] == deck[draw]) {
+            deck[draw] = 0;
+            for (i = 0; i <= 1; i++) {
+                while (deck[draw] == 0) {
+                    draw++;
+                    if (draw == 53) {
+                        draw = 29;
+                        break;
+                    }
+                }
+            }
+        }
         sleep(3);
         return;
 
@@ -128,6 +153,18 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
     } else if (cardMovePos[0] == 0 && play[cardMovePos[0]][cardMovePos[1]] == 0) {
         cardMove(play, hidden, cardPos, cardMovePos);
         printf("Valid move (0 move).\n");
+        if (play[cardPos[0]][cardPos[1]] == deck[draw]) {
+            deck[draw] = 0;
+            for (i = 0; i <= 1; i++) {
+                while (deck[draw] == 0) {
+                    draw++;
+                    if (draw == 53) {
+                        draw = 29;
+                        break;
+                    }
+                }
+            }
+        }
         sleep(3);
         return;
 
@@ -230,11 +267,9 @@ int deckPull(int play[21][7], int deck[53], int cardPos[2], int draw, int hidden
                 cardPos[0] = 20;
                 cardPos[1] = 6;
                 play[cardPos[0]][cardPos[1]] = deck[draw];
-                deck[draw] = 0;
-                draw++;
                 for (i = 0; i <= 1; i++) {
                     while (deck[draw] == 0) {
-                        draw += 1;
+                        draw++;
                         if (draw == 53) {
                             draw = 29;
                             break;
@@ -265,7 +300,5 @@ int deckPull(int play[21][7], int deck[53], int cardPos[2], int draw, int hidden
                 break;
         }
     } while (deckPullChoice == 2);
-    sleep(3);
-    printf("Draw Value Before Exiting Function: %d\n", draw);
     return draw;
 }
