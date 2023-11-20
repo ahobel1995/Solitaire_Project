@@ -150,7 +150,7 @@ void playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int
             printf("Error. Please input a 1 or 0: ");
         }
         if (drawDeckChoice == 1) {
-            deckPull(play, deck, playerCardChoice, draw, hidden, dropDeck, deckPullChoice);
+            deckPull(play, deck, playerCardChoice, *draw, hidden, dropDeck, deckPullChoice);
             break;
         } else {
             printf("Please input the column you would like to select for a move (1-7): ");
@@ -217,7 +217,7 @@ void deckPull(int play[21][7], int deck[53], int cardPos[2], int *draw, int hidd
               int deckPullChoice) {
     int i;
     do {
-        printf("Deck Pull choices: (1: select the card, 2:cycle deck, 3:reset to start menu\n");
+        printf("Deck Pull choices: (1: select the card, 2: cycle deck, 3: reset to start menu)\n");
         while (scanf("%d", &deckPullChoice) != 1 || deckPullChoice < 1 || deckPullChoice > 3) {
             while (getchar() != '\n');
             printf("Error. Please input a number between 1 and 3: ");
@@ -227,14 +227,14 @@ void deckPull(int play[21][7], int deck[53], int cardPos[2], int *draw, int hidd
                 printf("You have selected the card.\n");
                 cardPos[0] = 20;
                 cardPos[1] = 6;
-                play[cardPos[0]][cardPos[1]] = deck[draw];
-                deck[draw] = 0;
-                draw++;
+                play[cardPos[0]][cardPos[1]] = deck[*draw];
+                deck[*draw] = 0;
+                *draw += 1;
                 for (i = 0; i <= 1; i++) {
-                    while (deck[draw] == 0) {
-                        draw++;
-                        if (draw == 53) {
-                            draw = 30;
+                    while (deck[*draw] == 0) {
+                        *draw += 1;
+                        if (*draw == 53) {
+                            *draw = 30;
                             break;
                         }
                     }
@@ -242,21 +242,22 @@ void deckPull(int play[21][7], int deck[53], int cardPos[2], int *draw, int hidd
                 break;
             case 2:
                 printf("You have cycled the deck.\n");
-                draw++;
-                if (draw < 53) {
+                *draw += 1;
+                if (*draw < 53) {
                     for (i = 0; i <= 1; i++) {
-                        while (deck[draw] == 0) {
-                            draw++;
-                            if (draw == 53) {
-                                draw = 30;
+                        while (deck[*draw] == 0) {
+                            *draw += 1;
+                            if (*draw == 53) {
+                                *draw = 30;
                                 break;
                             }
                         }
                     }
                 } else {
-                    draw = 30;
+                    *draw = 30;
                 }
-                frameGen(play, hidden, deck, dropDeck, draw);
+                // Call to frameGen may need to be updated if it also uses draw
+                frameGen(play, hidden, deck, dropDeck, *draw);
                 break;
             case 3:
                 printf("You have reset to the start menu.\n");
