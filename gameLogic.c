@@ -227,29 +227,36 @@ int deckPull(int play[21][7], int deck[53], int cardPos, int inc, int hidden[21]
         switch (deckPullChoice) {
             case 1:
                 printf("You have selected the card.\n");
-                play[20][6] = deck[inc];
+                cardPos[0] = 20
+                cardPos[1] = 6
+                play[cardPos[0]][cardPos[1]] = deck[inc];
                 deck[inc] = 0;
                 while (deck[inc] == 0) {
                     inc++;
+                    if (inc == 54) {
+                        inc = 30;
+                        break;
+                    }
                 }
                 sleep(3);
                 return;
             case 2:
                 printf("You have cycled the deck.\n");
-                if (inc <= 53) {
+                if (inc < 53) {
                     while (deck[inc] == 0) {
                         inc++;
+                        if (inc == 54) {
+                            inc = 30;
+                            break;
+                        }
                     }
-                    printf("drawDeck: %d\n", drawDeck);
-                    drawDeck = deck[inc];
                 } else {
                     inc = 30;
-                    drawDeck = deck[inc];
                 }
                 deck[inc] = 0;
                 inc++;
                 sleep(3);
-                frameGen(play, hidden, deck, dropDeck, inc);
+                frameGen(play, hidden, deck, dropDeck, draw);
                 break;
             case 3:
                 printf("You have reset to the start menu.\n");
