@@ -58,7 +58,7 @@ int main() {
                 cardMoveEval(play, hidden, playerCardChoice, playerMoveChoice);
             }
         }
-        printf("Would you like to play again? (y=1,n=0) ");
+        printf("Would you like to play again?  (y=1, n=0) ");
     } while (yesNo == 1);
     system("clear");
     switch (rand() % 2) {
