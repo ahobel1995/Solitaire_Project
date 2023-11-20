@@ -150,8 +150,8 @@ int playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int 
             printf("Error. Please input a 1 or 0: ");
         }
         if (drawDeckChoice == 1) {
-            deckPull(play, deck, playerCardChoice, draw, hidden, dropDeck, deckPullChoice);
-            printf("%d", draw);
+            draw = deckPull(play, deck, playerCardChoice, draw, hidden, dropDeck, deckPullChoice);
+            printf("Draw number after exiting deckPull: %d", draw);
             break;
         } else {
             printf("Please input the column you would like to select for a move (1-7): ");
@@ -215,7 +215,7 @@ int playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int 
     return draw;
 }
 
-void deckPull(int play[21][7], int deck[53], int cardPos[2], int draw, int hidden[21][7], int dropDeck[4],
+int deckPull(int play[21][7], int deck[53], int cardPos[2], int draw, int hidden[21][7], int dropDeck[4],
               int deckPullChoice) {
     int i;
     do {
@@ -266,4 +266,6 @@ void deckPull(int play[21][7], int deck[53], int cardPos[2], int draw, int hidde
         }
     } while (deckPullChoice == 2);
     sleep(3);
+    printf("Draw Value Before Exiting Function: %d\n", draw);
+    return draw;
 }
