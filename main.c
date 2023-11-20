@@ -11,7 +11,7 @@ int main() {
 
     time_t t;
     srand(time(&t));
-    draw = 15;
+    draw = 29;
     printf("%d", draw);
     printf("Welcome to Solitaire! Would you like to play? (y=1, n=0) ");
     do {
@@ -41,7 +41,7 @@ int main() {
             if (moveYesNo == 0) {
                 break;
             } else {
-                playerMoveDecision(play, hidden, dropDeck, deck, playerCardChoice, playerMoveChoice, draw);
+                playerMoveDecision(play, hidden, dropDeck, deck, playerCardChoice, playerMoveChoice, &draw);
                 cardMoveEval(play, hidden, playerCardChoice, playerMoveChoice, dropDeck);
             }
         }
