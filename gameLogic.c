@@ -204,6 +204,8 @@ void playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int
     }
 
     //DEBUG
+    printf("\nPlayer Card Position: [%d, %d]", playerCardChoice[0], playerCardChoice[1]);
+    printf("\nPlayer Move Position: [%d, %d]", playerMoveChoice[0], playerMoveChoice[1]);
     printf("\nPlayer Choice: %d", play[playerCardChoice[0]][playerCardChoice[1]]);
     printf("\nPlayer Move: %d", play[playerMoveChoice[0]][playerMoveChoice[1]]);
     printf("\nPlayer Move Above: %d", play[playerMoveChoice[0] - 1][playerMoveChoice[1]]);
