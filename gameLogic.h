@@ -1,5 +1,5 @@
 void cardMove();
 void cardMoveDrop();
-void cardMoveEval();
+int cardMoveEval();
 int playerMoveDecision();
 int deckPull();

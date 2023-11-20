@@ -43,7 +43,7 @@ int main() {
             } else {
                 draw = playerMoveDecision(play, hidden, dropDeck, deck, playerCardChoice, playerMoveChoice, draw);
                 printf("Draw Value After Exiting Function: %d\n", draw);
-                cardMoveEval(play, hidden, playerCardChoice, playerMoveChoice, dropDeck, deck, draw);
+                draw = cardMoveEval(play, hidden, playerCardChoice, playerMoveChoice, dropDeck, deck, draw);
             }
         }
         printf("Would you like to play again?  (y=1, n=0) ");
