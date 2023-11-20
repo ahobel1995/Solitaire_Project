@@ -50,7 +50,6 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
     if (play[cardPos[0]][cardPos[1]] == 0) {
         printf("Error. Please choose a card.\n");
         sleep(3);
-        return;
 
         // The following check is to ensure the card is one value lower, opposite suit for a valid move.
     } else if ((play[cardPos[0]][cardPos[1]] - 1) % 13 == ((play[cardMovePos[0] - 1][cardMovePos[1]] - 1) % 13 - 1) &&
@@ -71,7 +70,6 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
         if (play[cardPos[0]][cardPos[1] + 1] != 0) {
             printf("Invalid Selection. Your card must be singular and not in a stack for the drop deck.\n");
             sleep(3);
-            return;
         } else {
             switch (play[cardPos[0]][cardPos[1]]) {
                 case 1 ... 13 :
@@ -82,7 +80,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
                         printf("Invalid move. Please Select Valid Card for Hearts Drop Deck.\n");
                         sleep(3);
                     }
-                    return;
+                    break;
                 case 14 ... 26 :
                     if (play[cardMovePos[0]][cardMovePos[1]]%13 == (dropDeck[1] + 1)%13) {
                         cardMoveDrop(play, cardPos, dropDeck);
@@ -90,7 +88,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
                     } else {
                         printf("Invalid move. Please Select Valid Card for Clubs Drop Deck.\n");
                         sleep(3);
-                    return;
+                    break;
                 case 27 ... 39 :
                     if (play[cardMovePos[0]][cardMovePos[1]]%13 == (dropDeck[2] + 1)%13) {
                         cardMoveDrop(play, cardPos, dropDeck);
@@ -99,7 +97,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
                         printf("Invalid move. Please Select Valid Card for Diamonds Drop Deck.\n");
                         sleep(3);
                     }
-                    return;
+                    break;
                 case 40 ... 52 :
                     if (play[cardMovePos[0]][cardMovePos[1]]%13 == (dropDeck[3] + 1)%13) {
                         cardMoveDrop(play, cardPos, dropDeck);
@@ -108,16 +106,13 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
                         printf("Invalid move. Please Select Valid Card for Hearts Drop Deck.\n");
                         sleep(3);
                     }
-                    return;
+                    break;
             }
-            sleep(3);
-            return;
         }
     } else {
         printf("Error. Please choose a valid move position.\n");
         sleep(3);
-        return;
-    }
+    }d
 }
 
 int playerMoveDecision(int play[19][7], int playerCardChoice[2], int playerMoveChoice[2]) {
