@@ -58,12 +58,6 @@ void deckResetShuffle(int deck[53]) {
     }
 }
 
-void drawDeckReset(int deck[53], int drawCard, int inc) {
-    inc = 0;
-    drawCard = deck[inc + 30];
-    inc++;
-}
-
 void frameGen(int play[19][7], int hidden[19][7], int deck[53], int dropDeck[4], int drawCard) {
     int i, j;
     setlocale(LC_CTYPE, "");
