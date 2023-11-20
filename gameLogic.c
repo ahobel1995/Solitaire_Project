@@ -151,6 +151,7 @@ int playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int 
         }
         if (drawDeckChoice == 1) {
             draw = deckPull(play, deck, playerCardChoice, &draw, hidden, dropDeck, deckPullChoice);
+            printf("%d", draw);
             break;
         } else {
             printf("Please input the column you would like to select for a move (1-7): ");
