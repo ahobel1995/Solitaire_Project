@@ -232,6 +232,7 @@ int deckPull(int play[21][7], int deck[53], int cardPos[2], int draw, int hidden
                 cardPos[1] = 6;
                 play[cardPos[0]][cardPos[1]] = deck[draw];
                 deck[draw] = 0;
+                draw++;
                 while (deck[draw] == 0) {
                     draw++;
                     if (draw == 54) {
@@ -239,8 +240,7 @@ int deckPull(int play[21][7], int deck[53], int cardPos[2], int draw, int hidden
                         break;
                     }
                 }
-                sleep(3);
-                return;
+                return 0;
             case 2:
                 printf("You have cycled the deck.\n");
                 if (draw < 53) {
@@ -262,12 +262,10 @@ int deckPull(int play[21][7], int deck[53], int cardPos[2], int draw, int hidden
                     draw = 30;
                 }
                 draw++;
-                sleep(3);
                 frameGen(play, hidden, deck, dropDeck, draw);
                 break;
             case 3:
                 printf("You have reset to the start menu.\n");
-                sleep(3);
                 break;
         }
     } while (deckPullChoice == 2);
