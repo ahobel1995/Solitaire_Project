@@ -113,7 +113,40 @@ int cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMov
                     break;
             }
         }
-        if (play[cardMovePos[0]][cardMovePos[1]] == deck[draw]) {
+        if (dropDeck[0] == deck[draw]) {
+            deck[draw] = 0;
+            for (i = 0; i <= 1; i++) {
+                while (deck[draw] == 0) {
+                    draw++;
+                    if (draw == 53) {
+                        draw = 29;
+                        break;
+                    }
+                }
+            }
+        } else if (dropDeck[1] == deck[draw]) {
+            deck[draw] = 0;
+            for (i = 0; i <= 1; i++) {
+                while (deck[draw] == 0) {
+                    draw++;
+                    if (draw == 53) {
+                        draw = 29;
+                        break;
+                    }
+                }
+            }
+        } else if (dropDeck[2] == deck[draw]) {
+            deck[draw] = 0;
+            for (i = 0; i <= 1; i++) {
+                while (deck[draw] == 0) {
+                    draw++;
+                    if (draw == 53) {
+                        draw = 29;
+                        break;
+                    }
+                }
+            }
+        } else if (dropDeck[3] == deck[draw]) {
             deck[draw] = 0;
             for (i = 0; i <= 1; i++) {
                 while (deck[draw] == 0) {
