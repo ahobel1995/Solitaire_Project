@@ -203,7 +203,7 @@ void deckPull(int play[53], int deck[53], int drawDeck, int cardPos, int inc) {
     switch (deckPullChoice) {
         case 1:
             printf("You have selected the card.\n");
-            play[21][7] = drawDeck;
+            play[20][6] = drawDeck;
             drawDeck = deck[inc + 30];
             deck[inc + 30] = 0;
             while (deck[inc + 30] == 0) {
