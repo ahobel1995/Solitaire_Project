@@ -227,39 +227,12 @@ void deckPull(int play[21][7], int deck[53], int cardPos[2], int *draw, int hidd
                 printf("You have selected the card.\n");
                 cardPos[0] = 20;
                 cardPos[1] = 6;
-                play[cardPos[0]][cardPos[1]] = deck[*draw];
-                deck[*draw] = 0;
-                draw++;
-                /*
-                for (i = 0; i <= 1; i++) {
-                    while (deck[*draw] == 0) {
-                        *draw += 1;
-                        if (*draw == 53) {
-                            *draw = 30;
-                            break;
-                        }
-                    }
-                }
-                */
+                play[cardPos[20]][cardPos[6]] == deck[*draw];
+                *draw++;
                 break;
             case 2:
                 printf("You have cycled the deck.\n");
-                *draw += 1;
-                /*
-                if (*draw < 53) {
-                    for (i = 0; i <= 1; i++) {
-                        while (deck[*draw] == 0) {
-                            *draw += 1;
-                            if (*draw == 53) {
-                                *draw = 30;
-                                break;
-                            }
-                        }
-                    }
-                } else {
-                    *draw = 30;
-                }
-                 */
+                *draw++;
                 frameGen(play, hidden, deck, dropDeck, (*draw));
                 break;
             case 3:
