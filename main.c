@@ -24,7 +24,7 @@ int main() {
         }
         // RESET FUNCTIONS:
 
-        deckResetShuffle(deck);
+        deckResetShuffle(deck, draw);
         hiddenGen(hidden);
         playGen(play, deck);
         dropDeckReset(dropDeck);
