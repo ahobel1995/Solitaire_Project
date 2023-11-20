@@ -242,7 +242,14 @@ int deckPull(int play[21][7], int deck[53], int cardPos[2], int draw, int hidden
                 return;
             case 2:
                 printf("You have cycled the deck.\n");
-                if (inc < 53) {
+                if (draw < 53) {
+                    while (deck[draw] == 0) {
+                        draw++;
+                        if (draw == 54) {
+                            draw = 30;
+                            break;
+                        }
+                    }
                     while (deck[draw] == 0) {
                         draw++;
                         if (draw == 54) {
@@ -251,10 +258,9 @@ int deckPull(int play[21][7], int deck[53], int cardPos[2], int draw, int hidden
                         }
                     }
                 } else {
-                    inc = 30;
+                    draw = 30;
                 }
-                deck[draw] = 0;
-                inc++;
+                draw++;
                 sleep(3);
                 frameGen(play, hidden, deck, dropDeck, draw);
                 break;
