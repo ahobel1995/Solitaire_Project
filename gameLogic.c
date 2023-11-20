@@ -150,7 +150,7 @@ void playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int
             printf("Error. Please input a 1 or 0: ");
         }
         if (drawDeckChoice == 1) {
-            deckPull(play, deck, playerCardChoice, *draw, hidden, dropDeck, deckPullChoice);
+            deckPull(play, deck, playerCardChoice, &draw, hidden, dropDeck, deckPullChoice);
             break;
         } else {
             printf("Please input the column you would like to select for a move (1-7): ");
@@ -227,9 +227,9 @@ void deckPull(int play[21][7], int deck[53], int cardPos[2], int *draw, int hidd
                 printf("You have selected the card.\n");
                 cardPos[0] = 20;
                 cardPos[1] = 6;
-                play[cardPos[0]][cardPos[1]] = deck[*draw];
-                deck[*draw] = 0;
-                *draw += 1;
+                play[cardPos[0]][cardPos[1]] = deck[draw];
+                deck[*drawPtr] = 0;
+                draw++;
                 for (i = 0; i <= 1; i++) {
                     while (deck[*draw] == 0) {
                         *draw += 1;
