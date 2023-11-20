@@ -139,7 +139,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
     }
 }
 
-void playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int deck[53],
+int playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int deck[53],
                         int playerCardChoice[2], int playerMoveChoice[2], int draw) {
     int i, drawDeckChoice, deckPullChoice = 0;
     do {
@@ -150,7 +150,7 @@ void playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int
             printf("Error. Please input a 1 or 0: ");
         }
         if (drawDeckChoice == 1) {
-            deckPull(play, deck, playerCardChoice, &draw, hidden, dropDeck, deckPullChoice);
+            draw = deckPull(play, deck, playerCardChoice, &draw, hidden, dropDeck, deckPullChoice);
             break;
         } else {
             printf("Please input the column you would like to select for a move (1-7): ");
@@ -211,9 +211,10 @@ void playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int
     printf("\nPlayer Choice mod: %d\n", (play[playerCardChoice[0]][playerCardChoice[1]] - 1) % 13);
     //DEBUG
 
+    return draw;
 }
 
-void deckPull(int play[21][7], int deck[53], int cardPos[2], int *draw, int hidden[21][7], int dropDeck[4],
+int deckPull(int play[21][7], int deck[53], int cardPos[2], int *draw, int hidden[21][7], int dropDeck[4],
               int deckPullChoice) {
     int i;
     do {
@@ -227,12 +228,37 @@ void deckPull(int play[21][7], int deck[53], int cardPos[2], int *draw, int hidd
                 printf("You have selected the card.\n");
                 cardPos[0] = 20;
                 cardPos[1] = 6;
-                play[cardPos[20]][cardPos[6]] == deck[*draw];
-                *draw++;
+                play[cardPos[0]][cardPos[1]] = deck[*draw];
+                deck[*draw] = 0;
+                draw++;
+                for (i = 0; i <= 1; i++) {
+                    while (deck[*draw] == 0) {
+                        *draw += 1;
+                        if (*draw == 53) {
+                            *draw = 30;
+                            break;
+                        }
+                    }
+                }
                 break;
             case 2:
                 printf("You have cycled the deck.\n");
-                *draw++;
+                *draw += 1;
+                /*
+                if (*draw < 53) {
+                    for (i = 0; i <= 1; i++) {
+                        while (deck[*draw] == 0) {
+                            *draw += 1;
+                            if (*draw == 53) {
+                                *draw = 30;
+                                break;
+                            }
+                        }
+                    }
+                } else {
+                    *draw = 30;
+                }
+                 */
                 frameGen(play, hidden, deck, dropDeck, (*draw));
                 break;
             case 3:
@@ -241,4 +267,5 @@ void deckPull(int play[21][7], int deck[53], int cardPos[2], int *draw, int hidd
         }
     } while (deckPullChoice == 2);
     sleep(3);
+    return *draw;
 }
