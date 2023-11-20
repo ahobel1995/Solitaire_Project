@@ -59,7 +59,7 @@ void deckResetShuffle(int deck[53]) {
     }
 }
 
-void frameGen(int play[21][7], int hidden[21][7], int deck[53], int dropDeck[4], int drawPtr) {
+void frameGen(int play[21][7], int hidden[21][7], int deck[53], int dropDeck[4], int draw) {
     int i, j;
     setlocale(LC_CTYPE, "");
     system("clear");
@@ -68,7 +68,7 @@ void frameGen(int play[21][7], int hidden[21][7], int deck[53], int dropDeck[4],
     printf("                ");
     printf("\033[0;30m\033[48;5;240m");  // Black text, grey background
     printf("Top of Draw Deck:   ");
-    numCardPrint(deck[drawPtr]);
+    numCardPrint(deck[draw]);
     printf("\033[0;30m\033[48;5;240m");  // Black text, grey background
     printf("    ");
     printf("\033[0m"); // Reset text to default
@@ -120,7 +120,7 @@ void frameGen(int play[21][7], int hidden[21][7], int deck[53], int dropDeck[4],
         }
         printf("\n");
     }
-    printf("draw: %d\ndeck draw: %d\n", drawPtr, deck[drawPtr]);
+    printf("draw: %d\ndeck draw: %d\n", draw, deck[draw]);
 }
 
 void numCardPrint(int card) {

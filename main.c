@@ -8,10 +8,10 @@ int main() {
     int yesNo, moveYesNo, game = 0, draw = 15;
     int deck[53], hidden[19][7], play[22][7], dropDeck[4];
     int playerCardChoice[2], playerMoveChoice[2], i, j;
-    int *drawPtr = &draw;
+
     time_t t;
     srand(time(&t));
-    printf("%d", *drawPtr);
+    printf("%d", draw);
     printf("Welcome to Solitaire! Would you like to play? (y=1, n=0) ");
     do {
         while (scanf("%d", &yesNo) != 1 || (yesNo != 1 && yesNo != 0)) {
@@ -30,7 +30,7 @@ int main() {
 
         // GAME GOES HERE:
         while (game == 0) {
-            frameGen(play, hidden, deck, dropDeck, *drawPtr);
+            frameGen(play, hidden, deck, dropDeck, draw);
             printf("Would you like to move a card? (y=1, n=0) ");
             while (scanf("%d", &moveYesNo) != 1 || (moveYesNo != 1 && moveYesNo != 0)) {
                 while (getchar() != '\n');
@@ -40,7 +40,7 @@ int main() {
             if (moveYesNo == 0) {
                 break;
             } else {
-                playerMoveDecision(play, hidden, dropDeck, deck, playerCardChoice, playerMoveChoice, *drawPtr);
+                playerMoveDecision(play, hidden, dropDeck, deck, playerCardChoice, playerMoveChoice, draw);
                 cardMoveEval(play, hidden, playerCardChoice, playerMoveChoice, dropDeck);
             }
         }

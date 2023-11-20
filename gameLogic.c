@@ -140,7 +140,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
 }
 
 void playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int deck[53],
-                        int playerCardChoice[2], int playerMoveChoice[2], int *draw) {
+                        int playerCardChoice[2], int playerMoveChoice[2], int draw) {
     int i, drawDeckChoice, deckPullChoice = 0;
     do {
         deckPullChoice = 0;
@@ -227,8 +227,8 @@ void deckPull(int play[21][7], int deck[53], int cardPos[2], int *draw, int hidd
                 printf("You have selected the card.\n");
                 cardPos[0] = 20;
                 cardPos[1] = 6;
-                play[cardPos[0]][cardPos[1]] = deck[draw];
-                deck[*drawPtr] = 0;
+                play[cardPos[0]][cardPos[1]] = deck[*draw];
+                deck[*draw] = 0;
                 draw++;
                 for (i = 0; i <= 1; i++) {
                     while (deck[*draw] == 0) {
