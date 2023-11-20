@@ -230,6 +230,7 @@ void deckPull(int play[21][7], int deck[53], int cardPos[2], int draw, int hidde
                 play[cardPos[0]][cardPos[1]] = deck[draw];
                 deck[draw] = 0;
                 draw++;
+                printf("%d", draw);
                 for (i = 0; i <= 1; i++) {
                     while (deck[draw] == 0) {
                         draw += 1;
