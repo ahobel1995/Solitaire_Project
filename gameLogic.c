@@ -121,6 +121,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
                  (play[cardMovePos[0] - 1][cardMovePos[1]] >= 27 && play[cardMovePos[0] - 1][cardMovePos[1]] <= 39)))) {
         cardMove(play, hidden, cardPos, cardMovePos);
         printf("Valid move (Normal Move).\n");
+        sleep(3);
         return;
 
         // If the move position is the top row, this ensures it is empty.
