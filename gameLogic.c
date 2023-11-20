@@ -252,7 +252,7 @@ int playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int 
                     break;
                 }
             }
-            return;
+            return draw;
         }
     } while (deckPullChoice == 3);
 
