@@ -219,7 +219,7 @@ int playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int 
             }
             if (drawDeckChoice == 1) {
                 draw = deckPull(play, deck, playerCardChoice, draw, hidden, dropDeck, deckPullChoice);
-                printf("Draw number after exiting deckPull: %d", draw);
+                // printf("Draw number after exiting deckPull: %d", draw);
                 break;
             }
         } else {
