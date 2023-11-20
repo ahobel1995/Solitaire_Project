@@ -29,7 +29,7 @@ int main() {
 
         // GAME GOES HERE:
         while (game == 0) {
-            frameGen(play, hidden, deck, dropDeck, draw);
+            frameGen(play, hidden, deck, dropDeck, *drawPtr);
             printf("Would you like to move a card? (y=1, n=0) ");
             while (scanf("%d", &moveYesNo) != 1 || (moveYesNo != 1 && moveYesNo != 0)) {
                 while (getchar() != '\n');
