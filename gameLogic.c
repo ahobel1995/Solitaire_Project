@@ -150,7 +150,7 @@ void playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int
             printf("Error. Please input a 1 or 0: ");
         }
         if (drawDeckChoice == 1) {
-            deckPullChoice = deckPull(play, deck, playerCardChoice, draw, hidden, dropDeck);
+            deckPullChoice, draw = deckPull(play, deck, playerCardChoice, draw, hidden, dropDeck);
             break;
         } else {
             printf("Please input the column you would like to select for a move (1-7): ");
@@ -235,7 +235,6 @@ int deckPull(int play[21][7], int deck[53], int cardPos[2], int draw, int hidden
                 for (i = 0; i <= 1; i++) {
                     while (deck[draw] == 0) {
                         draw++;
-                        printf("Draw: %d\n", draw);
                         if (draw == 53) {
                             draw = 30;
                             break;
@@ -267,5 +266,5 @@ int deckPull(int play[21][7], int deck[53], int cardPos[2], int draw, int hidden
         }
     } while (deckPullChoice == 2);
     sleep(3);
-    return deckPullChoice;
+    return deckPullChoice, draw;
 }
