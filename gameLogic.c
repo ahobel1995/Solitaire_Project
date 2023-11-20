@@ -53,7 +53,7 @@ void cardMoveDrop(int play[19][7], int hidden[19][7], int cardPos[2], int dropDe
 }
 
 int cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMovePos[2], int dropDeck[4], int deck[53],
-                   int draw) {
+                 int draw) {
     int i;
     // This checks if the card is hidden.
     if (hidden[cardPos[0]][cardPos[1]] == 99) {
@@ -70,7 +70,7 @@ int cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMov
 
         // Drop Deck evaluation
     } else if (cardMovePos[1] == 7) {
-        if (play[cardPos[0]][cardPos[1] + 1] != 0) {
+        if (play[cardPos[0] + 1][cardPos[1]] != 0) {
             printf("%d", play[cardPos[0]][cardPos[1] + 1])
             printf("Invalid Selection. Your card must be singular and not in a stack for the drop deck.\n");
             sleep(3);
@@ -179,7 +179,7 @@ int cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMov
 }
 
 int playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int deck[53],
-                        int playerCardChoice[2], int playerMoveChoice[2], int draw) {
+                       int playerCardChoice[2], int playerMoveChoice[2], int draw) {
     int i, drawDeckChoice, deckPullChoice = 0;
     do {
         deckPullChoice = 0;
@@ -255,7 +255,7 @@ int playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int 
 }
 
 int deckPull(int play[21][7], int deck[53], int cardPos[2], int draw, int hidden[21][7], int dropDeck[4],
-              int deckPullChoice) {
+             int deckPullChoice) {
     int i;
     do {
         printf("Deck Pull choices: (1: select the card, 2: cycle deck, 3: reset to start menu)\n");
