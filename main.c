@@ -8,6 +8,7 @@ int main() {
     int yesNo, moveYesNo, game = 0, draw = 30;
     int deck[53], hidden[19][7], play[22][7], dropDeck[4];
     int playerCardChoice[2], playerMoveChoice[2], i, j;
+    int *drawPtr = &draw;
     time_t t;
     srand(time(&t));
     printf("Welcome to Solitaire! Would you like to play? (y=1, n=0) ");
@@ -38,7 +39,7 @@ int main() {
             if (moveYesNo == 0) {
                 break;
             } else {
-                playerMoveDecision(play, hidden, dropDeck, deck, playerCardChoice, playerMoveChoice, draw);
+                playerMoveDecision(play, hidden, dropDeck, deck, playerCardChoice, playerMoveChoice, *drawPtr);
                 cardMoveEval(play, hidden, playerCardChoice, playerMoveChoice, dropDeck);
             }
         }
