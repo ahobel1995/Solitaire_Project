@@ -44,6 +44,8 @@ void cardMoveDrop(int play[19][7], int cardPos[2], int dropDeck[4]) {
             dropDeck[3] = play[cardPos[0]][cardPos[1]];
             break;
     }
+    printf("Drop Deck Updated.\n");
+    sleep(3);
 }
 
 void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMovePos[2], int dropDeck[4]) {
@@ -56,6 +58,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
         if (play[cardPos[0]][cardPos[1] + 1] != 0) {
             printf("Invalid Selection. Your card must be singular and not in a stack for the drop deck.\n");
             sleep(3);
+            return;
         } else {
             switch (play[cardPos[0]][cardPos[1]]) {
                 case 1 ... 13 :
@@ -95,6 +98,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
                     }
                     break;
             }
+            return;
         }
 
         // The following check is to ensure the card is one value lower, opposite suit for a valid move.
@@ -104,16 +108,20 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
                 ((play[cardMovePos[0] - 1][cardMovePos[1]] >= 1 && play[cardMovePos[0] - 1][cardMovePos[1]] <= 13) ||
                  (play[cardMovePos[0] - 1][cardMovePos[1]] >= 27 && play[cardMovePos[0] - 1][cardMovePos[1]] <= 39)))) {
         cardMove(play, hidden, cardPos, cardMovePos);
-        printf("Valid move.\n");
+        printf("Valid move (Normal Move).\n");
+        return;
 
         // If the move position is the top row, this ensures it is empty.
     } else if (cardMovePos[0] == 0 && play[cardMovePos[0]][cardMovePos[1]] == 0) {
         cardMove(play, hidden, cardPos, cardMovePos);
-        printf("Valid move.\n");
+        printf("Valid move (0 move).\n");
+        sleep(3);
+        return;
 
     } else {
         printf("Error. Please choose a valid move position.\n");
         sleep(3);
+        return;
     }
 }
 
