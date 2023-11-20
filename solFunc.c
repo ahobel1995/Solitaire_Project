@@ -4,6 +4,7 @@
 #include <wchar.h>
 #include <locale.h>
 #include "solFunc.h"
+#include "gameLogic.h"
 
 void dropDeckReset(int dropDeck[4]) {
     int i;
