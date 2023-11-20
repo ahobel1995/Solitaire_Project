@@ -27,7 +27,7 @@ int main() {
         hiddenGen(hidden);
         playGen(play, deck);
         dropDeckReset(dropDeck);
-        drawDeck=deck[inc + 30];
+        int drawDeck = deck[inc + 30];
         inc = 1;
 
         // GAME GOES HERE:
