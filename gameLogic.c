@@ -141,7 +141,6 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
 int playerMoveDecision(int play[19][7], int drawDeck, int deck[53], int playerCardChoice[2], int playerMoveChoice[2], int inc) {
     int i, drawDeckChoice, deckPullChoice;
     do{
-        deckPullChoice = 0;
         printf("Would you like to pull from the draw deck? (y=1, n=0) ");
         while (scanf("%d", &drawDeckChoice) != 1 || (drawDeckChoice != 1 && drawDeckChoice != 0)) {
             while (getchar() != '\n');
@@ -185,7 +184,7 @@ int playerMoveDecision(int play[19][7], int drawDeck, int deck[53], int playerCa
         } else {
             playerMoveChoice[0] = 0;
         }
-    } while (deckPullChoice = 3);
+    } while (deckPullChoice = 0);
     printf("Would you like to pull from the draw deck? (y=1, n=0) ");
     while (scanf("%d", &drawDeckChoice) != 1 || (drawDeckChoice != 1 && drawDeckChoice != 0)) {
         while (getchar() != '\n');
