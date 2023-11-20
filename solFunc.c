@@ -103,18 +103,8 @@ void frameGen(int play[21][7], int hidden[21][7], int deck[53], int dropDeck[4],
             }
         }
     }
-
-    // Print Instructions:
-    printf("\033[0;30m\033[48;5;240m"); // Black text, grey background
-    printf("\n\nInstructions:                                               \n");
-    printf("1. Enter the column number of the card you want to move.    \n");
-    printf("2. Enter the row number of the card you want to move.       \n");
-    printf("3. Enter the column number of the card you want to move to. \n");
-    printf("4. Enter 0 to draw a card from the draw deck.               \n");
-    printf("5. Enter 100 to cycle to the next draw deck card.           \n");
-    printf("6. Enter 99 to reset the game.                              \n");
-    printf("7. Enter 98 to quit the game.                               \n");
-    printf("\033[0m"); // Reset text to default
+    printf("\n\n");
+    //DEBUG:
     /*
     for (i = 0; i <= 3; i++) {
         for (j = 1; j <= 13; j++) {
