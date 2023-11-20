@@ -227,8 +227,8 @@ int deckPull(int play[21][7], int deck[53], int cardPos[2], int draw, int hidden
         switch (deckPullChoice) {
             case 1:
                 printf("You have selected the card.\n");
-                cardPos[0] = 20
-                cardPos[1] = 6
+                cardPos[0] = 20;
+                cardPos[1] = 6;
                 play[cardPos[0]][cardPos[1]] = deck[draw];
                 deck[draw] = 0;
                 while (deck[draw] == 0) {
