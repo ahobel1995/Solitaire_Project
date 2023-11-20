@@ -150,7 +150,7 @@ void playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int
             printf("Error. Please input a 1 or 0: ");
         }
         if (drawDeckChoice == 1) {
-            deckPullChoice = deckPull(play, deck, cardPos, draw, hidden, dropDeck);
+            deckPullChoice = deckPull(play, deck, playerCardChoice, draw, hidden, dropDeck);
             break;
         } else {
             printf("Please input the column you would like to select for a move (1-7): ");
