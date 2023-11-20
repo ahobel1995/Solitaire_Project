@@ -193,7 +193,7 @@ int playerMoveDecision(int play[19][7], int drawDeck, int deck[53], int playerCa
     return 0;
 }
 
-void deckPull(play[53], deck[53], drawDeck, cardPos, inc) {
+void deckPull(int play[53], int deck[53], int drawDeck, int cardPos, int inc) {
     int deckPullChoice;
     printf("Deck Pull choices: (1: select the card, 2:cycle deck, 3:reset to start menu\n");
     while(scanf("%d", &deckPullChoice) != 1 || deckPullChoice < 1 || deckPullChoice > 3) {
