@@ -41,7 +41,7 @@ int main() {
             if (moveYesNo == 0) {
                 break;
             } else {
-                playerMoveDecision(play, hidden, dropDeck, deck, playerCardChoice, playerMoveChoice, draw);
+                draw = playerMoveDecision(play, hidden, dropDeck, deck, playerCardChoice, playerMoveChoice, draw);
                 printf("Draw Value After Exiting Function: %d\n", draw);
                 cardMoveEval(play, hidden, playerCardChoice, playerMoveChoice, dropDeck);
             }

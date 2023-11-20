@@ -139,7 +139,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
     }
 }
 
-void playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int deck[53],
+int playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int deck[53],
                         int playerCardChoice[2], int playerMoveChoice[2], int draw) {
     int i, drawDeckChoice, deckPullChoice = 0;
     do {
@@ -212,6 +212,7 @@ void playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int
     printf("\nPlayer Choice mod: %d\n", (play[playerCardChoice[0]][playerCardChoice[1]] - 1) % 13);
     printf("Draw Value Before Exiting Function: %d\n", draw);
     //DEBUG
+    return draw;
 }
 
 void deckPull(int play[21][7], int deck[53], int cardPos[2], int draw, int hidden[21][7], int dropDeck[4],
