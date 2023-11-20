@@ -210,6 +210,7 @@ void playerMoveDecision(int play[19][7], int hidden[19][7], int dropDeck[4], int
     printf("\nPlayer Move Above mod: %d", (play[playerMoveChoice[0] - 1][playerMoveChoice[1]] - 1) % 13);
     printf("\nPlayer Move Above mod - 1: %d", ((play[playerMoveChoice[0] - 1][playerMoveChoice[1]] - 1) % 13) - 1);
     printf("\nPlayer Choice mod: %d\n", (play[playerCardChoice[0]][playerCardChoice[1]] - 1) % 13);
+    printf("Draw Value Before Exiting Function: %d\n", draw);
     //DEBUG
 }
 

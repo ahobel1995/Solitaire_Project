@@ -42,7 +42,8 @@ int main() {
                 break;
             } else {
                 playerMoveDecision(play, hidden, dropDeck, deck, playerCardChoice, playerMoveChoice, &draw);
-                printf("%d", draw);
+                printf("Draw Value After Exiting Function: %d\n", draw);
+                sleep(3);
                 cardMoveEval(play, hidden, playerCardChoice, playerMoveChoice, dropDeck);
             }
         }
