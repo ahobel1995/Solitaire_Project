@@ -180,7 +180,6 @@ int cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMov
                 }
             }
         }
-        sleep(3);
         return draw;
 
         // If the move position is the top row, this ensures it is empty.
@@ -199,7 +198,6 @@ int cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMov
                 }
             }
         }
-        sleep(3);
         return draw;
 
         // Catch all error if nothing else is working.
@@ -271,7 +269,7 @@ int playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int 
             break;
         }
     }
-
+    /*
     //DEBUG
     printf("\nPlayer Card Position: [%d, %d]", playerCardChoice[0], playerCardChoice[1]);
     printf("\nPlayer Move Position: [%d, %d]", playerMoveChoice[0], playerMoveChoice[1]);
@@ -283,6 +281,7 @@ int playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int 
     printf("\nPlayer Choice mod: %d\n", (play[playerCardChoice[0]][playerCardChoice[1]] - 1) % 13);
     printf("Draw Value Before Exiting Function: %d\n", draw);
     //DEBUG
+     */
     return draw;
 }
 
