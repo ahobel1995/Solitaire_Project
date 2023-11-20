@@ -113,7 +113,7 @@ int cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMov
                     break;
             }
         }
-        if (play[cardPos[0]][cardPos[1]] == deck[draw]) {
+        if (play[20][6] == deck[draw]) {
             deck[draw] = 0;
             for (i = 0; i <= 1; i++) {
                 while (deck[draw] == 0) {
@@ -135,7 +135,7 @@ int cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMov
                  (play[cardMovePos[0] - 1][cardMovePos[1]] >= 27 && play[cardMovePos[0] - 1][cardMovePos[1]] <= 39)))) {
         cardMove(play, hidden, cardPos, cardMovePos);
         printf("Valid move (Normal Move).\n");
-        if (play[cardPos[0]][cardPos[1]] == deck[draw]) {
+        if (play[cardPos[20]][cardPos[6]] == deck[draw]) {
             deck[draw] = 0;
             for (i = 0; i <= 1; i++) {
                 while (deck[draw] == 0) {
@@ -154,7 +154,7 @@ int cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMov
     } else if (cardMovePos[0] == 0 && play[cardMovePos[0]][cardMovePos[1]] == 0) {
         cardMove(play, hidden, cardPos, cardMovePos);
         printf("Valid move (0 move).\n");
-        if (play[cardPos[0]][cardPos[1]] == deck[draw]) {
+        if (play[cardPos[20]][cardPos[7]] == deck[draw]) {
             deck[draw] = 0;
             for (i = 0; i <= 1; i++) {
                 while (deck[draw] == 0) {
