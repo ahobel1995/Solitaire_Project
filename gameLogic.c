@@ -62,7 +62,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
         } else {
             switch (play[cardPos[0]][cardPos[1]]) {
                 case 1 ... 13 :
-                    if (play[cardMovePos[0]][cardMovePos[1]] % 13 == (dropDeck[0] + 1) % 13) {
+                    if (play[cardMovePos[0]][cardMovePos[1]] % 13 == dropDeck[0] % 13 + 1) {
                         cardMoveDrop(play, cardPos, dropDeck);
                         printf("Valid move.\n");
                     } else {
@@ -71,7 +71,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
                     }
                     break;
                 case 14 ... 26 :
-                    if (play[cardMovePos[0]][cardMovePos[1]] % 13 == (dropDeck[1] + 1) % 13) {
+                    if (play[cardMovePos[0]][cardMovePos[1]] % 13 == dropDeck[1] % 13 + 1) {
                         cardMoveDrop(play, cardPos, dropDeck);
                         printf("Valid move.\n");
                     } else {
@@ -80,7 +80,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
                     }
                     break;
                 case 27 ... 39 :
-                    if (play[cardMovePos[0]][cardMovePos[1]] % 13 == (dropDeck[2] + 1) % 13) {
+                    if (play[cardMovePos[0]][cardMovePos[1]] % 13 == dropDeck[2] % 13 + 1) {
                         cardMoveDrop(play, cardPos, dropDeck);
                         printf("Valid move.\n");
                     } else {
@@ -89,7 +89,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
                     }
                     break;
                 case 40 ... 52 :
-                    if (play[cardMovePos[0]][cardMovePos[1]] % 13 == (dropDeck[3] + 1) % 13) {
+                    if (play[cardMovePos[0]][cardMovePos[1]] % 13 == dropDeck[3] % 13 + 1) {
                         cardMoveDrop(play, cardPos, dropDeck);
                         printf("Valid move.\n");
                     } else {
