@@ -257,7 +257,7 @@ void deckPull(int play[21][7], int deck[53], int cardPos[2], int *draw, int hidd
                     *draw = 30;
                 }
                 // Call to frameGen may need to be updated if it also uses draw
-                frameGen(play, hidden, deck, dropDeck, *draw);
+                frameGen(play, hidden, *deck, dropDeck, *draw);
                 break;
             case 3:
                 printf("You have reset to the start menu.\n");
