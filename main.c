@@ -5,12 +5,13 @@
 #include "gameLogic.h"
 
 int main() {
-    int yesNo, moveYesNo, game = 0, draw = 15;
+    int yesNo, moveYesNo, game = 0, draw;
     int deck[53], hidden[19][7], play[22][7], dropDeck[4];
     int playerCardChoice[2], playerMoveChoice[2], i, j;
 
     time_t t;
     srand(time(&t));
+    draw = 15;
     printf("%d", draw);
     printf("Welcome to Solitaire! Would you like to play? (y=1, n=0) ");
     do {
