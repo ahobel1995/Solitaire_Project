@@ -229,6 +229,8 @@ int playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int 
             draw = deckPull(play, deck, playerCardChoice, draw, hidden, dropDeck, deckPullChoice);
             // printf("Draw number after exiting deckPull: %d", draw);
             if (play[20][6] = deck[draw]) {
+                printf("\n\ndeck[draw] = %d", deck[draw]);
+                printf("\nplay[20][6] = %d\n\n", play[20][6]);
                 deckPullChoice = 1;
             }
         }
