@@ -102,7 +102,11 @@ void frameGen(int play[21][7], int hidden[21][7], int deck[53], int dropDeck[4],
                 numCardPrint(play[i-1][j]);
             }
         }
-        printf("%2.d", i);
+        if (i<10) {
+            printf("%1.d", i);
+        } else {
+            printf("%2.d", i);
+        }
     }
     printf("\n\n");
     //DEBUG:
