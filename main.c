@@ -48,7 +48,6 @@ int main() {
             if (moveYesNo == 0) {
                 break;
             } else {
-                printf("MoveCount: %d\n", *moveptr);
                 playerMoveDecision(play, hidden, dropDeck, deck, playerCardChoice, playerMoveChoice, drawptr);
                 cardMoveEval(play, hidden, playerCardChoice, playerMoveChoice, dropDeck, deck, drawptr, moveptr);
             }
