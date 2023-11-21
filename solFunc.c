@@ -90,7 +90,7 @@ void frameGen(int play[21][7], int hidden[21][7], int deck[53], int dropDeck[4],
 
     // Print Game Board:
     for (i = 0; i <= 19; i++) {
-        printf("\n  %2.d", i);
+        printf("\n     %2.d", i);
         for (j = 0; j < 7; j++) {
             if (i == 0) {
                 printf("\033[0;30m\033[48;5;240m"); // Black text, grey background
