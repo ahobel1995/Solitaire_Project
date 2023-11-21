@@ -30,7 +30,7 @@ void cardMove(int play[19][7], int hidden[19][7], int cardPos[2], int cardMovePo
     }
 }
 
-void cardMoveDrop(int play[19][7], int hidden[19][7], int cardPos[2], int dropDeck[4]) {
+void cardMoveDrop(int play[19][7], int hidden[19][7], int cardPos[2], int dropDeck[4], int moveCount) {
     switch (play[cardPos[0]][cardPos[1]]) {
         case 1 ... 13 :
             dropDeck[0] = play[cardPos[0]][cardPos[1]];
