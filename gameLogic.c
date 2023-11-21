@@ -227,6 +227,7 @@ int playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int 
         }
         if (drawDeckChoice == 1) {
             draw = deckPull(play, deck, playerCardChoice, draw, hidden, dropDeck, deckPullChoice);
+            printf("\nplay[20][6] = %d\n\n", play[20][6]);
             // printf("Draw number after exiting deckPull: %d", draw);
             if (play[20][6] = deck[draw]) {
                 printf("\n\ndeck[draw] = %d", deck[draw]);
@@ -316,7 +317,7 @@ int deckPull(int play[21][7], int deck[53], int cardPos[2], int draw, int hidden
                 cardPos[0] = 20;
                 cardPos[1] = 6;
                 play[cardPos[0]][cardPos[1]] = deck[draw];
-                break;
+                return draw;
             case 2:
                 printf("You have cycled the deck.\n");
                 draw++;
@@ -336,8 +337,9 @@ int deckPull(int play[21][7], int deck[53], int cardPos[2], int draw, int hidden
                 frameGen(play, hidden, deck, dropDeck, draw);
                 break;
             case 3:
+                play[20][6] = 0;
                 printf("You have reset to the start menu.\n");
-                break;
+                return draw;
         }
     } while (deckPullChoice == 2);
     return draw;
