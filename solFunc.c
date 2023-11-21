@@ -206,6 +206,7 @@ void faceCardPrint(int card) {
 }
 
 void gigaChad(){
+    system("clear");
     printf("⠀⠀⠘⡀⠀⠀⠀⠀Thanks for playing⠀⠀⠀⡜⠀⠀⠀\n"
            "⠀⠀⠀⠑⡀⠀⠀⠀⠀you gigaChad⠀⠀⠀⠀⠀⠀⡔⠁⠀⠀⠀\n"
            "⠀⠀⠀⠀⠈⠢⢄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⣀⠴⠊⠀⠀⠀⠀⠀\n"
@@ -240,6 +241,7 @@ void gigaChad(){
 }
 
 void mikeDisappointed(){
+    system("clear");
     printf("               You Lost...\n"
            "                     Mike is Disappointed...\n"
            "⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀\n"
