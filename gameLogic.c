@@ -191,7 +191,7 @@ int cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMov
 
         // If the move position is the top row, this ensures it is empty.
     } else if (cardMovePos[0] == 0 && play[cardMovePos[0]][cardMovePos[1]] == 0) {
-        cardMove(play, hidden, cardPos, cardMovePos);
+        cardMove(play, hidden, cardPos, cardMovePos, moveCount);
         printf("Valid move (0 move).\n");
         if (play[cardMovePos[0]][cardMovePos[1]] == deck[draw]) {
             deck[draw] = 0;
