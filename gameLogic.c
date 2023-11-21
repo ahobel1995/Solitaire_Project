@@ -231,7 +231,6 @@ int playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int 
             if (play[20][6] = deck[draw]) {
                 deckPullChoice = 1;
             }
-            break;
         }
     }
     if (drawDeckChoice == 0) {
