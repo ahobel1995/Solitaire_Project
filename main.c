@@ -27,7 +27,7 @@ int main() {
         *drawptr = 29; // Used to reset the draw pointer.
 
         // RESET FUNCTIONS:
-        deckResetShuffle(deck, drawptr); // Assuming deckResetShuffle() is now void
+        deckResetShuffle(deck); // Assuming deckResetShuffle() is now void
         hiddenGen(hidden);
         playGen(play, deck);
         dropDeckReset(dropDeck);

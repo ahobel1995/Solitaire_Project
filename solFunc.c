@@ -47,7 +47,7 @@ void playGen(int play[22][7], int deck[53]) {
     play[18][6] = 52;
 }
 
-void deckResetShuffle(int deck[53], int *draw) {
+void deckResetShuffle(int deck[53]) {
     int x, count;
     for (x = 0; x < 53; x++) {
         deck[x] = x;
@@ -60,7 +60,6 @@ void deckResetShuffle(int deck[53], int *draw) {
             deck[r] = temp;
         }
     }
-    *draw = 29;
 }
 
 void frameGen(int play[21][7], int hidden[21][7], int deck[53], int dropDeck[4], int* draw) {
