@@ -47,7 +47,7 @@ int main() {
             }
             if (dropDeck[0] == 13 && dropDeck[1] == 26 && dropDeck[2] == 39 && dropDeck[3] == 52) {
                 frameGen(play, hidden, deck, dropDeck, drawptr);
-                printf("\nCongratulations! You win! \nYou made %d moves.\n", *moveptr);
+                printf("\nCongratulations! You win! \nYou made %d move(s) to finish.\n", *moveptr);
                 game = 1;
             }
         }
