@@ -9,7 +9,7 @@
 int cardMove(int play[19][7], int hidden[19][7], int cardPos[2], int cardMovePos[2], int* moveCount) {
     int i, j;
     int temp[13];
-    *moveCount++;
+    (*moveCount)++;
     for (i = 0; i < 13; i++) {
         if (play[cardPos[0] + i][cardPos[1]] == 0) {
             temp[i] = 0;
@@ -35,19 +35,19 @@ int cardMoveDrop(int play[19][7], int hidden[19][7], int cardPos[2], int dropDec
     switch (play[cardPos[0]][cardPos[1]]) {
         case 1 ... 13 :
             dropDeck[0] = play[cardPos[0]][cardPos[1]];
-            *moveCount++;
+            (*moveCount)++;
             break;
         case 14 ... 26 :
             dropDeck[1] = play[cardPos[0]][cardPos[1]];
-            *moveCount++;
+            (*moveCount)++;
             break;
         case 27 ... 39 :
             dropDeck[2] = play[cardPos[0]][cardPos[1]];
-            *moveCount++;
+            (*moveCount)++;
             break;
         case 40 ... 52 :
             dropDeck[3] = play[cardPos[0]][cardPos[1]];
-            *moveCount++;
+            (*moveCount)++;
             break;
     }
     play[cardPos[0]][cardPos[1]] = 0;
