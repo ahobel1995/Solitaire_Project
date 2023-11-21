@@ -11,6 +11,11 @@ void dropDeckReset(int dropDeck[4]) {
     for (i = 0; i < 4; i++) {
         dropDeck[i] = 0;
     }
+    //DEBUG WIN CONDITION:
+    dropDeck[0] = 13;
+    dropDeck[1] = 26;
+    dropDeck[2] = 39;
+    dropDeck[3] = 51;
 }
 
 void hiddenGen(int hidden[19][7]) {
@@ -42,6 +47,7 @@ void playGen(int play[22][7], int deck[53]) {
         }
         count++;
     }
+    play[19][6] = 52
 }
 
 int deckResetShuffle(int deck[53], int draw) {
