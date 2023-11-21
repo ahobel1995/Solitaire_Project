@@ -23,6 +23,8 @@ int main() {
         }
 
         game = 0; // Used to start a new game.
+        *moveptr = 0; // Used to reset the move counter.
+        *drawptr = 29; // Used to reset the draw pointer.
 
         // RESET FUNCTIONS:
         deckResetShuffle(deck, drawptr); // Assuming deckResetShuffle() is now void
