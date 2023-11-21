@@ -186,8 +186,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
 
 void playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int deck[53],
                         int playerCardChoice[2], int playerMoveChoice[2], int* draw) {
-    int i, drawDeckChoice, deckPullChoice = 0;
-    deckPullChoice = 0;
+    int i, drawDeckChoice = 0, deckPullChoice = 0;
     if (deck[*draw] != 0) {
         printf("Would you like to enter draw deck menu? (y=1, n=0) ");
         while (scanf("%d", &drawDeckChoice) != 1 || (drawDeckChoice != 1 && drawDeckChoice != 0)) {
