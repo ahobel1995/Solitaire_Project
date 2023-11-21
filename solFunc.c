@@ -108,8 +108,8 @@ void frameGen(int play[21][7], int hidden[21][7], int deck[53], int dropDeck[4],
         } else {
             printf("%2.d", i);
         }
+        printf("\033[0m"); // Reset text to default
     }
-    printf("\033[0m"); // Reset text to default
     printf("\n\n");
     //DEBUG:
     /*
