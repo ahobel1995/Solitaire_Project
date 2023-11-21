@@ -304,6 +304,7 @@ int deckPull(int play[21][7], int deck[53], int cardPos[2], int draw, int hidden
              int deckPullChoice) {
     int i;
     do {
+        printf("play[20][6] = %d", play[20][6]);
         printf("Deck Pull choices: (1: select the card, 2: cycle deck, 3: reset to start menu)\n");
         while (scanf("%d", &deckPullChoice) != 1 || deckPullChoice < 1 || deckPullChoice > 3) {
             while (getchar() != '\n');
