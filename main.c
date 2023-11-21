@@ -51,8 +51,15 @@ int main() {
                 game = 1;
             }
         }
+        printf("Would you like to play again? (y=1, n=0) ");
     } while (yesNo != 0);
-
-    printf("Thank you for playing!\n");
+    switch (game) {
+        case 0:
+            mikeDisappointed();
+            break;
+        case 1:
+            gigaChad();
+            break;
+    }
     return 0;
 }
