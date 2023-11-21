@@ -312,15 +312,6 @@ int deckPull(int play[21][7], int deck[53], int cardPos[2], int draw, int hidden
                 cardPos[0] = 20;
                 cardPos[1] = 6;
                 play[cardPos[0]][cardPos[1]] = deck[draw];
-                for (i = 0; i <= 1; i++) {
-                    while (deck[draw] == 0) {
-                        draw++;
-                        if (draw == 53) {
-                            draw = 29;
-                            break;
-                        }
-                    }
-                }
                 break;
             case 2:
                 printf("You have cycled the deck.\n");

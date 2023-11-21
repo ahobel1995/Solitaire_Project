@@ -12,7 +12,6 @@ int main() {
     time_t t;
     srand(time(&t));
     draw = 29;
-    printf("%d", draw);
     printf("Welcome to Solitaire! Would you like to play? (y=1, n=0) ");
     do {
         while (scanf("%d", &yesNo) != 1 || (yesNo != 1 && yesNo != 0)) {
