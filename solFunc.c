@@ -102,12 +102,14 @@ void frameGen(int play[21][7], int hidden[21][7], int deck[53], int dropDeck[4],
                 numCardPrint(play[i-1][j]);
             }
         }
+        printf("\033[0;30m\033[48;5;240m "); // Black text, grey background
         if (i<10) {
             printf("%1.d", i);
         } else {
             printf("%2.d", i);
         }
     }
+    printf("\033[0m"); // Reset text to default
     printf("\n\n");
     //DEBUG:
     /*
