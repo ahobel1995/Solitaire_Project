@@ -6,7 +6,7 @@
 #include "solFunc.h"
 #include "gameLogic.h"
 
-void cardMove(int play[19][7], int hidden[19][7], int cardPos[2], int cardMovePos[2], int moveCount) {
+int cardMove(int play[19][7], int hidden[19][7], int cardPos[2], int cardMovePos[2], int moveCount) {
     int i, j;
     int temp[13];
     moveCount++;
@@ -28,9 +28,10 @@ void cardMove(int play[19][7], int hidden[19][7], int cardPos[2], int cardMovePo
     if (hidden[cardPos[0] - 1][cardPos[1]] == 99) {
         hidden[cardPos[0] - 1][cardPos[1]] = 0;
     }
+    return moveCount;
 }
 
-void cardMoveDrop(int play[19][7], int hidden[19][7], int cardPos[2], int dropDeck[4], int moveCount) {
+int cardMoveDrop(int play[19][7], int hidden[19][7], int cardPos[2], int dropDeck[4], int moveCount) {
     switch (play[cardPos[0]][cardPos[1]]) {
         case 1 ... 13 :
             dropDeck[0] = play[cardPos[0]][cardPos[1]];
@@ -53,6 +54,7 @@ void cardMoveDrop(int play[19][7], int hidden[19][7], int cardPos[2], int dropDe
     if (hidden[cardPos[0] - 1][cardPos[1]] == 99) {
         hidden[cardPos[0] - 1][cardPos[1]] = 0;
     }
+    return moveCount;
 }
 
 int cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMovePos[2], int dropDeck[4], int deck[53],
@@ -62,14 +64,14 @@ int cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMov
     if (hidden[cardPos[0]][cardPos[1]] == 99) {
         printf("Error. You cannot choose a hidden card.\n");
         sleep(3);
-        return draw;
+        return draw, moveCount;
     }
 
         // This checks if the card selected is not empty.
     else if (play[cardPos[0]][cardPos[1]] == 0) {
         printf("Error. Please choose a card.\n");
         sleep(3);
-        return draw;
+        return draw, moveCount;
 
         // Drop Deck evaluation
     } else if (cardMovePos[1] == 7) {
@@ -165,7 +167,7 @@ int cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMov
                 }
             }
         }
-        return draw;
+        return draw, moveCount;
 
         // The following check is to ensure the card is one value lower, opposite suit for a valid move.
     } else if ((play[cardPos[0]][cardPos[1]] - 1) % 13 == ((play[cardMovePos[0] - 1][cardMovePos[1]] - 1) % 13 - 1) &&
@@ -187,7 +189,7 @@ int cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMov
                 }
             }
         }
-        return draw;
+        return draw, moveCount;
 
         // If the move position is the top row, this ensures it is empty.
     } else if (cardMovePos[0] == 0 && play[cardMovePos[0]][cardMovePos[1]] == 0) {
@@ -205,13 +207,13 @@ int cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMov
                 }
             }
         }
-        return draw;
+        return draw, moveCount;
 
         // Catch all error if nothing else is working.
     } else {
         printf("Returning to menu.\n");
         sleep(3);
-        return draw;
+        return draw, moveCount;
     }
 }
 
