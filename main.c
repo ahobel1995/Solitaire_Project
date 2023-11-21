@@ -46,7 +46,8 @@ int main() {
                 draw = cardMoveEval(play, hidden, playerCardChoice, playerMoveChoice, dropDeck, deck, draw, moveCount);
             }
             if (dropDeck[0] == 13 && dropDeck[1] == 26 && dropDeck[2] == 39 && dropDeck[3] == 52) {
-                printf("\nCongratulations! You win! \nYou made %d moves to win!", moveCount);
+                frameGen(play, hidden, deck, dropDeck, draw);
+                printf("\nCongratulations! You win! \nYou made %d moves to win!\n\n", moveCount);
                 game = 1;
             }
         }
