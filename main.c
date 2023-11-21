@@ -5,7 +5,7 @@
 #include "gameLogic.h"
 
 int main() {
-    int yesNo, moveYesNo, game, draw;
+    int yesNo, moveYesNo, game = 0, draw;
     int deck[53], hidden[19][7], play[22][7], dropDeck[4];
     int playerCardChoice[2], playerMoveChoice[2], i, j, moveCount = 0;
 
@@ -14,7 +14,6 @@ int main() {
     draw = 29;
     printf("Welcome to Solitaire! Would you like to play? (y=1, n=0) ");
     do {
-        game = 0; // Used to start a new game.
         while (scanf("%d", &yesNo) != 1 || (yesNo != 1 && yesNo != 0)) {
             while (getchar() != '\n');
             printf("Error. Please input a 1 or 0: ");
@@ -22,6 +21,8 @@ int main() {
         if (yesNo == 0) {
             break;
         }
+
+        game = 0; // Used to start a new game.
 
         // RESET FUNCTIONS:
         draw = deckResetShuffle(deck, draw);
@@ -56,10 +57,10 @@ int main() {
     system("clear");
     switch (game) {
         case 0:
-            gigaChad();
+            mikeDisappointed();
             break;
         case 1:
-            mikeDisappointed();
+            gigaChad();
             break;
     }
     return 0;
