@@ -1,7 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
-#include <wchar.h>
 #include <locale.h>
 #include "solFunc.h"
 #include "gameLogic.h"

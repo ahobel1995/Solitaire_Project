@@ -4,12 +4,6 @@
 #include "solFunc.h"
 #include "gameLogic.h"
 
-#include <stdio.h>
-#include <stdlib.h>
-#include <time.h>
-#include "solFunc.h"
-#include "gameLogic.h"
-
 int main() {
     int yesNo, moveYesNo, game = 0, draw = 29;
     int deck[53], hidden[19][7], play[22][7], dropDeck[4];
