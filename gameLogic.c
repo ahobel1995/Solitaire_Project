@@ -68,7 +68,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
 
         // This checks if the card selected is not empty.
     else if (play[cardPos[0]][cardPos[1]] == 0) {
-        printf("Error. Please choose a card.\n");
+        printf("Returning to menu.\n");
         sleep(3);
         return;
 
