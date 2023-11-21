@@ -8,7 +8,7 @@ int main() {
     int yesNo, moveYesNo, game = 0, draw;
     int deck[53], hidden[19][7], play[22][7], dropDeck[4];
     int playerCardChoice[2], playerMoveChoice[2], i, j, moveCount = 0;
-    int *moveptr = &moveCount
+    int *moveptr = &moveCount;
 
     time_t t;
     srand(time(&t));
