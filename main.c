@@ -42,9 +42,9 @@ int main() {
             if (moveYesNo == 0) {
                 break;
             } else {
-                draw = playerMoveDecision(play, hidden, dropDeck, deck, playerCardChoice, playerMoveChoice, draw);
+                moveCount = playerMoveDecision(play, hidden, dropDeck, deck, playerCardChoice, playerMoveChoice, draw);
                 // printf("Draw Value After Exiting Function: %d\n", draw);
-                draw = cardMoveEval(play, hidden, playerCardChoice, playerMoveChoice, dropDeck, deck, draw, moveCount);
+                draw = cardMoveEval(play, hidden, playerCardChoice, playerMoveChoice, dropDeck, deck, draw, &moveCount);
             }
             if (dropDeck[0] == 13 && dropDeck[1] == 26 && dropDeck[2] == 39 && dropDeck[3] == 52) {
                 frameGen(play, hidden, deck, dropDeck, draw);

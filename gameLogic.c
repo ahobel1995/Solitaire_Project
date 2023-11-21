@@ -58,20 +58,20 @@ int cardMoveDrop(int play[19][7], int hidden[19][7], int cardPos[2], int dropDec
 }
 
 int cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMovePos[2], int dropDeck[4], int deck[53],
-                 int draw, int moveCount) {
+                 int draw, int *moveCount) {
     int i;
     // This checks if the card is hidden.
     if (hidden[cardPos[0]][cardPos[1]] == 99) {
         printf("Error. You cannot choose a hidden card.\n");
         sleep(3);
-        return draw, moveCount;
+        return draw;
     }
 
         // This checks if the card selected is not empty.
     else if (play[cardPos[0]][cardPos[1]] == 0) {
         printf("Error. Please choose a card.\n");
         sleep(3);
-        return draw, moveCount;
+        return draw;
 
         // Drop Deck evaluation
     } else if (cardMovePos[1] == 7) {
@@ -167,7 +167,7 @@ int cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMov
                 }
             }
         }
-        return draw, moveCount;
+        return draw;
 
         // The following check is to ensure the card is one value lower, opposite suit for a valid move.
     } else if ((play[cardPos[0]][cardPos[1]] - 1) % 13 == ((play[cardMovePos[0] - 1][cardMovePos[1]] - 1) % 13 - 1) &&
@@ -189,7 +189,7 @@ int cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMov
                 }
             }
         }
-        return draw, moveCount;
+        return draw;
 
         // If the move position is the top row, this ensures it is empty.
     } else if (cardMovePos[0] == 0 && play[cardMovePos[0]][cardMovePos[1]] == 0) {
@@ -207,13 +207,13 @@ int cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMov
                 }
             }
         }
-        return draw, moveCount;
+        return draw;
 
         // Catch all error if nothing else is working.
     } else {
         printf("Returning to menu.\n");
         sleep(3);
-        return draw, moveCount;
+        return draw;
     }
 }
 
