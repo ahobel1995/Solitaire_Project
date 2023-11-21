@@ -7,7 +7,7 @@
 int main() {
     int yesNo, moveYesNo, game = 0, draw;
     int deck[53], hidden[19][7], play[22][7], dropDeck[4];
-    int playerCardChoice[2], playerMoveChoice[2], i, j;
+    int playerCardChoice[2], playerMoveChoice[2], i, j, moveCount = 0;
 
     time_t t;
     srand(time(&t));
@@ -22,8 +22,8 @@ int main() {
         if (yesNo == 0) {
             break;
         }
-        // RESET FUNCTIONS:
 
+        // RESET FUNCTIONS:
         draw = deckResetShuffle(deck, draw);
         hiddenGen(hidden);
         playGen(play, deck);
@@ -43,7 +43,11 @@ int main() {
             } else {
                 draw = playerMoveDecision(play, hidden, dropDeck, deck, playerCardChoice, playerMoveChoice, draw);
                 // printf("Draw Value After Exiting Function: %d\n", draw);
-                draw = cardMoveEval(play, hidden, playerCardChoice, playerMoveChoice, dropDeck, deck, draw);
+                draw = cardMoveEval(play, hidden, playerCardChoice, playerMoveChoice, dropDeck, deck, draw, moveCount);
+            }
+            if (dropDeck[0] == 13 && dropDeck[1] == 26 && dropDeck[2] == 39 && dropDeck[3] == 52) {
+                printf("\nCongratulations! You win!");
+                game = 1;
             }
         }
         printf("Would you like to play again?  (y=1, n=0) ");

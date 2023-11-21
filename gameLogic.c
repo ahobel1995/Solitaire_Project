@@ -6,9 +6,10 @@
 #include "solFunc.h"
 #include "gameLogic.h"
 
-void cardMove(int play[19][7], int hidden[19][7], int cardPos[2], int cardMovePos[2]) {
+void cardMove(int play[19][7], int hidden[19][7], int cardPos[2], int cardMovePos[2], int moveCount) {
     int i, j;
     int temp[13];
+    moveCount++;
     for (i = 0; i < 13; i++) {
         if (play[cardPos[0] + i][cardPos[1]] == 0) {
             temp[i] = 0;
@@ -33,15 +34,19 @@ void cardMoveDrop(int play[19][7], int hidden[19][7], int cardPos[2], int dropDe
     switch (play[cardPos[0]][cardPos[1]]) {
         case 1 ... 13 :
             dropDeck[0] = play[cardPos[0]][cardPos[1]];
+            moveCount++;
             break;
         case 14 ... 26 :
             dropDeck[1] = play[cardPos[0]][cardPos[1]];
+            moveCount++;
             break;
         case 27 ... 39 :
             dropDeck[2] = play[cardPos[0]][cardPos[1]];
+            moveCount++;
             break;
         case 40 ... 52 :
             dropDeck[3] = play[cardPos[0]][cardPos[1]];
+            moveCount++;
             break;
     }
     play[cardPos[0]][cardPos[1]] = 0;
@@ -51,7 +56,7 @@ void cardMoveDrop(int play[19][7], int hidden[19][7], int cardPos[2], int dropDe
 }
 
 int cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMovePos[2], int dropDeck[4], int deck[53],
-                 int draw) {
+                 int draw, int moveCount) {
     int i;
     // This checks if the card is hidden.
     if (hidden[cardPos[0]][cardPos[1]] == 99) {
@@ -74,8 +79,9 @@ int cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMov
         } else {
             switch (play[cardPos[0]][cardPos[1]]) {
                 case 1 ... 13 :
-                    if (play[cardPos[0]][cardPos[1]] % 13 == dropDeck[0] % 13 + 1) {
-                        cardMoveDrop(play, hidden, cardPos, dropDeck);
+                    if (play[cardPos[0]][cardPos[1]] % 13 == dropDeck[0] % 13 + 1 ||
+                        play[cardPos[0]][cardPos[1]] == 13) {
+                        cardMoveDrop(play, hidden, cardPos, dropDeck, moveCount);
                         printf("Valid move.\n");
                     } else {
                         printf("Invalid move. Please Select Valid Card for Hearts Drop Deck.\n");
@@ -83,8 +89,9 @@ int cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMov
                     }
                     break;
                 case 14 ... 26 :
-                    if (play[cardPos[0]][cardPos[1]] % 13 == dropDeck[1] % 13 + 1) {
-                        cardMoveDrop(play, hidden, cardPos, dropDeck);
+                    if (play[cardPos[0]][cardPos[1]] % 13 == dropDeck[1] % 13 + 1 ||
+                        play[cardPos[0]][cardPos[1]] == 26) {
+                        cardMoveDrop(play, hidden, cardPos, dropDeck, moveCount);
                         printf("Valid move.\n");
                     } else {
                         printf("Invalid move. Please Select Valid Card for Clubs Drop Deck.\n");
@@ -92,8 +99,9 @@ int cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMov
                     }
                     break;
                 case 27 ... 39 :
-                    if (play[cardPos[0]][cardPos[1]] % 13 == dropDeck[2] % 13 + 1) {
-                        cardMoveDrop(play, hidden, cardPos, dropDeck);
+                    if (play[cardPos[0]][cardPos[1]] % 13 == dropDeck[2] % 13 + 1 ||
+                        play[cardPos[0]][cardPos[1]] == 39) {
+                        cardMoveDrop(play, hidden, cardPos, dropDeck, moveCount);
                         printf("Valid move.\n");
                     } else {
                         printf("Invalid move. Please Select Valid Card for Diamonds Drop Deck.\n");
@@ -101,8 +109,9 @@ int cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMov
                     }
                     break;
                 case 40 ... 52 :
-                    if (play[cardPos[0]][cardPos[1]] % 13 == dropDeck[3] % 13 + 1) {
-                        cardMoveDrop(play, hidden, cardPos, dropDeck);
+                    if (play[cardPos[0]][cardPos[1]] % 13 == dropDeck[3] % 13 + 1 ||
+                        play[cardPos[0]][cardPos[1]] == 52) {
+                        cardMoveDrop(play, hidden, cardPos, dropDeck, moveCount);
                         printf("Valid move.\n");
                     } else {
                         printf("Invalid move. Please Select Valid Card for Hearts Drop Deck.\n");
@@ -164,7 +173,7 @@ int cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMov
                  (play[cardPos[0]][cardPos[1]] >= 27 && play[cardPos[0]][cardPos[1]] <= 39)) !=
                 ((play[cardMovePos[0] - 1][cardMovePos[1]] >= 1 && play[cardMovePos[0] - 1][cardMovePos[1]] <= 13) ||
                  (play[cardMovePos[0] - 1][cardMovePos[1]] >= 27 && play[cardMovePos[0] - 1][cardMovePos[1]] <= 39)))) {
-        cardMove(play, hidden, cardPos, cardMovePos);
+        cardMove(play, hidden, cardPos, cardMovePos, moveCount);
         printf("Valid move (Normal Move).\n");
         if (play[cardMovePos[0]][cardMovePos[1]] == deck[draw]) {
             deck[draw] = 0;
