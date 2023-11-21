@@ -47,7 +47,7 @@ void playGen(int play[22][7], int deck[53]) {
         }
         count++;
     }
-    play[19][6] = 52
+    play[19][6] = 52;
 }
 
 int deckResetShuffle(int deck[53], int draw) {
