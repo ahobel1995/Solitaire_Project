@@ -56,10 +56,10 @@ int main() {
     system("clear");
     switch (game) {
         case 0:
-            mikeDisappointed();
+            gigaChad();
             break;
         case 1:
-            gigaChad();
+            mikeDisappointed();
             break;
     }
     return 0;
