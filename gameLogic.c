@@ -231,8 +231,6 @@ int playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int 
             draw = deckPull(play, deck, playerCardChoice, draw, hidden, dropDeck, deckPullChoice);
             // printf("Draw number after exiting deckPull: %d", draw);
             if (play[20][6] == deck[draw]) {
-                printf("\n\ndeck[draw] = %d", deck[draw]);
-                printf("\nplay[20][6] = %d\n\n", play[20][6]);
                 deckPullChoice = 1;
             }
         }
@@ -306,7 +304,6 @@ int deckPull(int play[21][7], int deck[53], int cardPos[2], int draw, int hidden
              int deckPullChoice) {
     int i;
     do {
-        printf("play[20][6] = %d\n", play[20][6]);
         printf("Deck Pull choices: (1: select the card, 2: cycle deck, 3: reset to start menu)\n");
         while (scanf("%d", &deckPullChoice) != 1 || deckPullChoice < 1 || deckPullChoice > 3) {
             while (getchar() != '\n');
