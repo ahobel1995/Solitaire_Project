@@ -318,7 +318,7 @@ int deckPull(int play[21][7], int deck[53], int cardPos[2], int draw, int hidden
                 cardPos[0] = 20;
                 cardPos[1] = 6;
                 play[cardPos[0]][cardPos[1]] = deck[draw];
-                return draw;
+                break;
             case 2:
                 printf("You have cycled the deck.\n");
                 draw++;
@@ -340,7 +340,7 @@ int deckPull(int play[21][7], int deck[53], int cardPos[2], int draw, int hidden
             case 3:
                 play[20][6] = 0;
                 printf("You have reset to the start menu.\n");
-                return draw;
+                break;
         }
     } while (deckPullChoice == 2);
     return draw;
