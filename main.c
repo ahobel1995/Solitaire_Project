@@ -5,7 +5,7 @@
 #include "gameLogic.h"
 
 int main() {
-    int yesNo, moveYesNo, game = 0, draw = 29;
+    int yesNo, moveYesNo, game, draw;
     int deck[53], hidden[19][7], play[22][7], dropDeck[4];
     int playerCardChoice[2], playerMoveChoice[2], i, j, moveCount = 0;
     int *moveptr = &moveCount, *drawptr = &draw;
@@ -27,7 +27,7 @@ int main() {
         *drawptr = 29; // Used to reset the draw pointer.
 
         // RESET FUNCTIONS:
-        deckResetShuffle(deck); // Assuming deckResetShuffle() is now void
+        deckResetShuffle(deck);
         hiddenGen(hidden);
         playGen(play, deck);
         dropDeckReset(dropDeck);
