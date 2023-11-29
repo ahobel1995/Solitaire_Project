@@ -23,6 +23,7 @@ int main() {
             break;
         }
 
+        while (getchar() != '\n' && getchar() != EOF);
         game = 0; // Used to start a new game.
         *moveptr = 0; // Used to reset the move counter.
         *drawptr = 29; // Used to reset the draw pointer.

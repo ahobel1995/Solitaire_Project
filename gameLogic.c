@@ -185,7 +185,6 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
     int i;
     int correct = 0; // Flag to check if a valid input is entered
 
-    while (getchar() != '\n' && getchar() != EOF);
     while (correct == 0) { // Loop until a valid input is entered
         frameGen(play, hidden, deck, dropDeck, draw); // Display the game board
 
