@@ -304,12 +304,10 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
                 playerCardChoice[0] = decisionArray[1] - 48;          // Set row of the card to move
             }   //Checks if no row is selected, picking top-most card of input column
             else if (decisionArray[2] == '\n' && decisionArray[0] >= '1' && decisionArray[0] <= '7') {
-                for (i = 19; i > 0; i--) {
-                    playerCardChoice[0] = i - 1;
-                    printf("row: %d\n", i-1);
-                    printf("card: %d\n\n", play[playerCardChoice[0]][playerCardChoice[1]]);
-                    if (play[playerCardChoice[0]][playerCardChoice[1]] != 0) {
-                        playerCardChoice[0] = i + 1;
+                // Iterate through the column to find the topmost card
+                for (i = 0; i < 22; i++) {
+                    if (play[i][playerCardChoice[1]] != 0) {
+                        playerCardChoice[0] = i; // Set the row of the topmost card to move
                         correct = 1;
                         break;
                     }
