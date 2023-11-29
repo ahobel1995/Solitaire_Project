@@ -194,6 +194,9 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
             printf("Error allocating memory for decision matrix.\n");
             break;
         }
+        for (i = 0; i < 6; i++) {
+            decisionArray[i] = '\0';
+        }
 
         fgets(decisionArray, 6, stdin); // Get user input
 
