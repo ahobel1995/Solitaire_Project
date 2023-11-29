@@ -333,7 +333,7 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
             } else if (decisionArray[3] >= '0' && decisionArray[3] <= '8') {
                 // Handle double digit row input
                 if (decisionArray[3] >= '0' && decisionArray[3] <= '9') {
-                    playerMoveChoice[1] = 10 + decisionArray[3] - 48; // Adjust for 10-card selection (row)
+                    playerMoveChoice[1] = decisionArray[3] - 48; // Adjust for 10-card selection (row)
                     correct = 1;
                 } else {
                     printf("Invalid move syntax (decisionMatrix[2 or 3]), invalid move.\n");
