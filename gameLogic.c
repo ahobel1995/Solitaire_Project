@@ -352,5 +352,7 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
                 break;
             }
         }
+        printf("Player Card Choice: %d, %d\n", playerCardChoice[0], playerCardChoice[1]);
+        printf("Player Move Choice: %d, %d\n", playerMoveChoice[0], playerMoveChoice[1]);
     }
 }
