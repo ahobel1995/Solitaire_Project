@@ -1,0 +1,25 @@
+<=================================CONTROLS=================================>
+  Enter "h" to print this menu
+  Enter "q" to quit your current game
+  Enter "c" to cycle the stock pile
+  
+  To make a move:
+  1) Type the column # of the card you'd like to move (1-7 for Tableau, 
+      0 if pulling from stock)
+  
+  2) (OPTIONAL, ignoring this step will simply select all face up cards from 
+      the column you selected) 
+      Type the row # of the card you'd like to move (1-19). If there are 
+      descending cards beneath your row selection, they will be moved too. 
+      If you entered 0 for step 1, always skip this step. 
+  
+  3) Type the column # you'd like to move your selected cards to (1-7 for 
+      Tableau, 8 for foundation. You can only move a single card to the
+      foundation at a time.
+  
+  Make sure to add no spaces.
+  Ex: Entering 2174 takes the card at column 2, row 17 and moves it to the 
+       bottom of column 4.
+      Entering 08 takes the top card from the stock pile and places it in 
+       the foundation.
+<==========================================================================>
