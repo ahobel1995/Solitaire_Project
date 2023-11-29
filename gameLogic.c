@@ -133,6 +133,9 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
                     }
                 }
             }
+            if (*draw >= 53) {
+                *draw = 29;
+            }
         }
         return;
     }   // The following check is to ensure the card is one value lower, opposite suit for a valid move.
@@ -155,6 +158,9 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
                     }
                 }
             }
+            if (*draw >= 53) {
+                *draw = 29;
+            }
         }
         return;
     }   // If the move position is the top row, this ensures it is empty.
@@ -172,6 +178,9 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
                         break;
                     }
                 }
+            }
+            if (*draw >= 53) {
+                *draw = 29;
             }
         }
         return;
@@ -244,6 +253,9 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
                                     break;
                                 }
                             }
+                        }
+                        if (*draw >= 53) {
+                            *draw = 29;
                         }
                         correct = 3;
                         break;
