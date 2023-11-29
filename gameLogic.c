@@ -285,7 +285,8 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
                 printf("Invalid move syntax (decisionMatrix[1 or 2]), invalid row input\n");
                 sleep(2);
             }   // Handle draw deck input for move position
-            if (decisionArray[0] == '0' && decisionArray[1] >= '1' && decisionArray[1] <= '8' && decisionArray[2] == '\n' && correct == 0) {
+            if (decisionArray[0] == '0' && decisionArray[1] >= '1' && decisionArray[1] <= '8' &&
+                decisionArray[2] == '\n' && correct == 0) {
                 playerMoveChoice[1] = decisionArray[1] - 48; // Set target column for the move
                 correct = 1;
             } else if (decisionArray[3] == '\n') {
