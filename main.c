@@ -57,9 +57,11 @@ int main() {
     switch (game) {
         case 2:
             mikeDisappointed();
+            printf("\nYou lost in %d move(s)!\n\n", *moveptr);
             break;
         case 3:
             gigaChad();
+            printf("\nCongratulations! You win! \nYou made %d move(s) to finish.\n\n", *moveptr);
             break;
     }
     printf("\nCongratulations! You win! \nYou made %d move(s) to finish.\n\n", *moveptr);
