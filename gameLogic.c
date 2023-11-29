@@ -3,8 +3,8 @@
 #include "solFunc.h"
 #include "gameLogic.h"
 
-void cardMove(int play[19][7], int hidden[19][7], int cardPos[2], int cardMovePos[2], int* moveCount) {
-    int i, j;
+void cardMove(int play[19][7], int hidden[19][7], int cardPos[2], int cardMovePos[2], int *moveCount) {
+    int i;
     int temp[13];
     (*moveCount)++;
     for (i = 0; i < 13; i++) {
@@ -27,7 +27,7 @@ void cardMove(int play[19][7], int hidden[19][7], int cardPos[2], int cardMovePo
     }
 }
 
-void cardMoveDrop(int play[19][7], int hidden[19][7], int cardPos[2], int dropDeck[4], int* moveCount) {
+void cardMoveDrop(int play[19][7], int hidden[19][7], int cardPos[2], int dropDeck[4], int *moveCount) {
     switch (play[cardPos[0]][cardPos[1]]) {
         case 1 ... 13 :
             dropDeck[0] = play[cardPos[0]][cardPos[1]];
@@ -54,7 +54,7 @@ void cardMoveDrop(int play[19][7], int hidden[19][7], int cardPos[2], int dropDe
 
 
 void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMovePos[2], int dropDeck[4], int deck[53],
-                  int* draw, int* moveCount) {
+                  int *draw, int *moveCount) {
     int i;
     // This checks if the card is hidden.
     if (hidden[cardPos[0]][cardPos[1]] == 99) {
@@ -119,7 +119,8 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
             }
         }
         // Update draw deck based on dropDeck
-        if (dropDeck[0] == deck[*draw] || dropDeck[1] == deck[*draw] || dropDeck[2] == deck[*draw] || dropDeck[3] == deck[*draw]) {
+        if (dropDeck[0] == deck[*draw] || dropDeck[1] == deck[*draw] || dropDeck[2] == deck[*draw] ||
+            dropDeck[3] == deck[*draw]) {
             deck[*draw] = 0;
             for (i = 0; i <= 1; i++) {
                 while (deck[*draw] == 0) {
@@ -182,86 +183,232 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
 }
 
 void playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int deck[53],
-                        int playerCardChoice[2], int playerMoveChoice[2], int* draw) {
-    int i, drawDeckChoice = 0, deckPullChoice = 0;
-    if (deck[*draw] != 0) {
-        printf("Would you like to enter draw deck menu? (y=1, n=0) ");
-        while (scanf("%d", &drawDeckChoice) != 1 || (drawDeckChoice != 1 && drawDeckChoice != 0)) {
-            while (getchar() != '\n');
-            printf("Error. Please input a 1 or 0: ");
-        }
-        if (drawDeckChoice == 1) {
-            deckPull(play, deck, playerCardChoice, draw, hidden, dropDeck, deckPullChoice);
-            // printf("Draw number after exiting deckPull: %d", *draw);
-            if (play[20][6] == deck[*draw]) {
-                deckPullChoice = 1;
-            }
-        }
-    }
-    if (drawDeckChoice == 0) {
-        printf("Please input the column you would like to select for a move (1-7): ");
-        while (scanf("%d", &playerCardChoice[1]) != 1 || playerCardChoice[1] < 1 || playerCardChoice[1] > 7) {
-            while (getchar() != '\n');
-            printf("Error. Please input a number between 1 and 7: ");
-        }
-        printf("Please input the row of the card you would like to move (1-19): ");
-        while (scanf("%d", &playerCardChoice[0]) != 1 || playerCardChoice[0] < 1 || playerCardChoice[0] > 19) {
-            while (getchar() != '\n');
-            printf("Error. Please input a number between 1 and 19: ");
-        }
-        printf("Please input the column you would like to move to (1-8), 8 is for drop deck: ");
-        while (scanf("%d", &playerMoveChoice[1]) != 1 || playerMoveChoice[1] < 1 || playerMoveChoice[1] > 8) {
-            while (getchar() != '\n');
-            printf("Error. Please input a number between 1 and 8 (8 for the drop decks): ");
+                        int playerCardChoice[2], int playerMoveChoice[2], int *draw) {
+    int i;
+    char decisionArray[6]; // Main array to store user input
+    int correct = 0; // Flag to check if a valid input is entered
+
+    while (correct == 0) { // Loop until a valid input is entered
+        for (i = 0; i < 6; i++) {
+            decisionArray[i] = '\0'; // Initialize decision array with NULLs each loop iteration
         }
 
+        printf("Enter your move: ");
+        fgets(decisionArray, 6, stdin); // Get user input
+
+        // Check if input is longer than expected, triggering cleanup if so
+        if ((decisionArray[4] != '\0' && decisionArray[4] != '\n')) {
+            while (getchar() != '\n'); // Clean up overflowed chars
+        }
+
+        printf("%c | %c | %c | %c\n", decisionArray[0], decisionArray[1], decisionArray[2],
+               decisionArray[3]); // Debug output
+
+        // Check if the input is within the expected length
+        if ((decisionArray[4] == '\n') || (decisionArray[4] == '\0')) {
+            // Check if the first character is a valid column number for player's card choice
+            if ((decisionArray[0] >= 48) && (decisionArray[0] <= 55)) {
+                // Check if the move is valid or if it's a draw from the deck
+                if (((decisionArray[0] == 48) && (deck[*draw] != 0)) || (decisionArray[0] != 48)) {
+                    playerCardChoice[1] = decisionArray[0] - 48; // Set the column of the card to move
+
+                    // Check if the move involves a card to another column
+                    if (((decisionArray[3] >= 49) && (decisionArray[3] <= 56)) && (decisionArray[0] != 48)) {
+                        playerMoveChoice[1] = decisionArray[3] - 48; // Set the target column for the move
+
+                        // Check if the move syntax is correct for a 10-card
+                        if ((decisionArray[1] == 49) && ((decisionArray[2] >= 48) && (decisionArray[2] <= 57))) {
+                            playerCardChoice[0] = 10 + decisionArray[2] - 48; // Adjust for 10-card selection (row)
+                            correct = 1; // Mark input as valid
+                        } else {
+                            printf("Invalid move syntax 1\n"); // Error for invalid 10-card syntax
+                        }
+                    } else if ((decisionArray[3] == '\n') && (decisionArray[0] != 48)) {
+                        // Check if move is to another column without specifying 10-card
+                        if ((decisionArray[2] >= 49) && (decisionArray[2] <= 56)) {
+                            playerMoveChoice[1] = decisionArray[2] - 48; // Set target column for the move
+
+                            // Check if the card choice (row) is valid
+                            if ((decisionArray[1] >= 49) && (decisionArray[1] <= 57)) {
+                                playerCardChoice[0] = decisionArray[1] - 48; // Set row of the card to move
+                                correct = 1; // Mark input as valid
+                            } else {
+                                printf("Invalid move syntax 2\n"); // Error for invalid card choice (row)
+                            }
+                        } else {
+                            printf("Invalid move syntax 3\n"); // Error for invalid move syntax
+                        }
+                    } else if ((decisionArray[2] == '\n') && (decisionArray[3] == '\0')) {
+                        // Check for draw move syntax
+                        if ((decisionArray[1] >= 49) && (decisionArray[1] <= 56)) {
+                            playerMoveChoice[1] = decisionArray[1] - 48; // Set target column for draw move
+
+                            // Special handling for draw move
+                            if (decisionArray[0] == 48) {
+                                playerCardChoice[0] = 20;
+                                playerCardChoice[1] = 6;
+                                play[playerCardChoice[0]][playerCardChoice[1]] = deck[*draw]; // Update play array for draw
+
+                                playerMoveChoice[1]--;
+
+                                for (i = 19; i > 0; i--) {
+                                    playerMoveChoice[0] = i - 1;
+                                    if (play[playerMoveChoice[0]][playerMoveChoice[1]] != 0) {
+                                        playerMoveChoice[0] = i;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                } else {
+                    printf("No more cards in stock"); // Error for no more cards in the deck
+                }
+            } else {
+                printf("Invalid move syntax 4\n"); // Error for invalid first character (column number)
+            }
+        } else {
+            printf("Invalid move syntax 5\n"); // Error for incorrect input length
+        }
+    }
+
+    // Handle special single-character commands
+    if (decisionArray[1] == '\n') {
+        // Convert uppercase letters to lowercase for command processing
+        if ((decisionArray[0] >= 67) && (decisionArray[0] <= 81)) {
+            decisionArray[0] = decisionArray[0] + 32; // Convert to lowercase
+        }
+        // Process single-character commands
+        if (decisionArray[0] == 'q') {
+            printf("Quit\n");
+            correct = 2;
+        } else if (decisionArray[0] == 'c') {
+            (*draw)++;
+            // Logic for cycling through the deck
+            if (*draw < 53) {
+                for (i = 0; i <= 1; i++) {
+                    while (deck[*draw] == 0) {
+                        (*draw)++;
+                        if (*draw == 53) {
+                            *draw = 29;
+                            break;
+                        }
+                    }
+                }
+            } else {
+                *draw = 29;
+            }
+            frameGen(play, hidden, deck, dropDeck, draw);
+            break;
+        } else if (decisionArray[0] == 'h') {
+            printf("Help\n");
+            correct = 2;
+        } else {
+            printf("Invalid move syntax letter\n"); // Error for invalid single-character command
+        }
+    } else if (playerCardChoice[1] != decisionArray[0] - 48) {
+        printf("Invalid move syntax\n"); // Error for mismatch in column selection
+    } else {
+        printf("Too many characters\n"); // Error for excessive input characters
+    }
+
+// Finalize the move if input is correct
+    if (correct == 1) {
         playerCardChoice[0]--;
         playerCardChoice[1]--;
         playerMoveChoice[1]--;
 
-        for (i = 19; i > 0; i--) {
+        for (
+                i = 19;
+                i > 0; i--) {
             playerMoveChoice[0] = i - 1;
             if (play[playerMoveChoice[0]][playerMoveChoice[1]] != 0) {
-                playerMoveChoice[0] = i;
+                playerMoveChoice[0] =
+                        i;
                 break;
             }
         }
     }
-
-    if (deckPullChoice == 1) {
-        printf("Please input the column you would like to move to (1-8), 8 is for drop deck: ");
-        while (scanf("%d", &playerMoveChoice[1]) != 1 || playerMoveChoice[1] < 1 || playerMoveChoice[1] > 8) {
-            while (getchar() != '\n');
-            printf("Error. Please input a number between 1 and 8 (8 for the drop decks): ");
-        }
-
-        playerMoveChoice[1]--;
-
-        for (i = 19; i > 0; i--) {
-            playerMoveChoice[0] = i - 1;
-            if (play[playerMoveChoice[0]][playerMoveChoice[1]] != 0) {
-                playerMoveChoice[0] = i;
-                break;
-            }
+/*
+int i, drawDeckChoice = 0, deckPullChoice = 0;
+if (deck[*draw] != 0) {
+    printf("Would you like to enter draw deck menu? (y=1, n=0) ");
+    while (scanf("%d", &drawDeckChoice) != 1 || (drawDeckChoice != 1 && drawDeckChoice != 0)) {
+        while (getchar() != '\n');
+        printf("Error. Please input a 1 or 0: ");
+    }
+    if (drawDeckChoice == 1) {
+        deckPull(play, deck, playerCardChoice, draw, hidden, dropDeck, deckPullChoice);
+        // printf("Draw number after exiting deckPull: %d", *draw);
+        if (play[20][6] == deck[*draw]) {
+            deckPullChoice = 1;
         }
     }
+}
+if (drawDeckChoice == 0) {
+    printf("Please input the column you would like to select for a move (1-7): ");
+    while (scanf("%d", &playerCardChoice[1]) != 1 || playerCardChoice[1] < 1 || playerCardChoice[1] > 7) {
+        while (getchar() != '\n');
+        printf("Error. Please input a number between 1 and 7: ");
+    }
+    printf("Please input the row of the card you would like to move (1-19): ");
+    while (scanf("%d", &playerCardChoice[0]) != 1 || playerCardChoice[0] < 1 || playerCardChoice[0] > 19) {
+        while (getchar() != '\n');
+        printf("Error. Please input a number between 1 and 19: ");
+    }
+    printf("Please input the column you would like to move to (1-8), 8 is for drop deck: ");
+    while (scanf("%d", &playerMoveChoice[1]) != 1 || playerMoveChoice[1] < 1 || playerMoveChoice[1] > 8) {
+        while (getchar() != '\n');
+        printf("Error. Please input a number between 1 and 8 (8 for the drop decks): ");
+    }
 
-    // DEBUG:
-    /*
-    printf("\nPlayer Card Position: [%d, %d]", playerCardChoice[0], playerCardChoice[1]);
-    printf("\nPlayer Move Position: [%d, %d]", playerMoveChoice[0], playerMoveChoice[1]);
-    printf("\nPlayer Choice: %d", play[playerCardChoice[0]][playerCardChoice[1]]);
-    printf("\nPlayer Move: %d", play[playerMoveChoice[0]][playerMoveChoice[1]]);
-    printf("\nPlayer Move Above: %d", play[playerMoveChoice[0] - 1][playerMoveChoice[1]]);
-    printf("\nPlayer Move Above mod: %d", (play[playerMoveChoice[0] - 1][playerMoveChoice[1]] - 1) % 13);
-    printf("\nPlayer Move Above mod - 1: %d", ((play[playerMoveChoice[0] - 1][playerMoveChoice[1]] - 1) % 13) - 1);
-    printf("\nPlayer Choice mod: %d\n", (play[playerCardChoice[0]][playerCardChoice[1]] - 1) % 13);
-    printf("Draw Value Before Exiting Function: %d\n", *draw);
-    */
+    playerCardChoice[0]--;
+    playerCardChoice[1]--;
+    playerMoveChoice[1]--;
+
+    for (i = 19; i > 0; i--) {
+        playerMoveChoice[0] = i - 1;
+        if (play[playerMoveChoice[0]][playerMoveChoice[1]] != 0) {
+            playerMoveChoice[0] = i;
+            break;
+        }
+    }
+}
+
+if (deckPullChoice == 1) {
+    printf("Please input the column you would like to move to (1-8), 8 is for drop deck: ");
+    while (scanf("%d", &playerMoveChoice[1]) != 1 || playerMoveChoice[1] < 1 || playerMoveChoice[1] > 8) {
+        while (getchar() != '\n');
+        printf("Error. Please input a number between 1 and 8 (8 for the drop decks): ");
+    }
+
+    playerMoveChoice[1]--;
+
+    for (i = 19; i > 0; i--) {
+        playerMoveChoice[0] = i - 1;
+        if (play[playerMoveChoice[0]][playerMoveChoice[1]] != 0) {
+            playerMoveChoice[0] = i;
+            break;
+        }
+    }
+}
+
+// DEBUG:
+/*
+printf("\nPlayer Card Position: [%d, %d]", playerCardChoice[0], playerCardChoice[1]);
+printf("\nPlayer Move Position: [%d, %d]", playerMoveChoice[0], playerMoveChoice[1]);
+printf("\nPlayer Choice: %d", play[playerCardChoice[0]][playerCardChoice[1]]);
+printf("\nPlayer Move: %d", play[playerMoveChoice[0]][playerMoveChoice[1]]);
+printf("\nPlayer Move Above: %d", play[playerMoveChoice[0] - 1][playerMoveChoice[1]]);
+printf("\nPlayer Move Above mod: %d", (play[playerMoveChoice[0] - 1][playerMoveChoice[1]] - 1) % 13);
+printf("\nPlayer Move Above mod - 1: %d", ((play[playerMoveChoice[0] - 1][playerMoveChoice[1]] - 1) % 13) - 1);
+printf("\nPlayer Choice mod: %d\n", (play[playerCardChoice[0]][playerCardChoice[1]] - 1) % 13);
+printf("Draw Value Before Exiting Function: %d\n", *draw);
+*/
 }
 
 
-void deckPull(int play[21][7], int deck[53], int cardPos[2], int* draw, int hidden[21][7], int dropDeck[4],
+void deckPull(int play[21][7], int deck[53], int cardPos[2], int *draw, int hidden[21][7], int dropDeck[4],
               int deckPullChoice) {
     int i;
     do {
@@ -281,7 +428,7 @@ void deckPull(int play[21][7], int deck[53], int cardPos[2], int* draw, int hidd
                 printf("You have cycled the deck.\n");
                 (*draw)++;
                 if (*draw < 53) {
-                    for (i = 0; i <= 1; i++) {
+                    for (i = 0; i <= 2; i++) {
                         while (deck[*draw] == 0) {
                             (*draw)++;
                             if (*draw == 53) {
