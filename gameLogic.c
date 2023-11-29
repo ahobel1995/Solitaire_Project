@@ -243,9 +243,11 @@ void playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int
                         correct = 2; //exits while loop
                         break;
                 }
+                // Exits loop
                 if (correct == 2) {
                     break;
                 }
+                // Repeats Loop to start after draw deck cycle
                 if (correct == 3) {
                     continue;
                 }
