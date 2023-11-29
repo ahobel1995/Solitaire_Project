@@ -180,13 +180,14 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
 }
 
 void playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int deck[53],
-                        int playerCardChoice[2], int playerMoveChoice[2], int *draw) {
+                        int playerCardChoice[2], int playerMoveChoice[2], int *draw, int *game) {
     int i;
     char decisionArray[6]; // Main array to store user input
     int correct = 0; // Flag to check if a valid input is entered
 
     while (correct == 0) { // Loop until a valid input is entered
         correct = 0; // Reset flag each loop iteration
+        frameGen(play, hidden, deck, dropDeck, draw); // Display the game board
         for (i = 0; i < 6; i++) {
             decisionArray[i] = '\0'; // Initialize decision array with NULLs each loop iteration
         }
@@ -228,8 +229,6 @@ void playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int
                                     }
                                 }
                             }
-                        } else {
-                            *draw = 29;
                         }
                         frameGen(play, hidden, deck, dropDeck, draw);
                         correct = 3;
@@ -240,6 +239,12 @@ void playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int
                         break;
                     case 'q':
                         printf("Quit\n");
+                        *game = 1; //game exits
+                        correct = 2; //exits while loop
+                        break;
+                    case 'r':
+                        printf("Reset\n");
+                        *game = 0; //game resets
                         correct = 2; //exits while loop
                         break;
                 }
@@ -299,11 +304,9 @@ void playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int
                 correct = 1; // Set flag for valid input
             } else {
                 printf("Invalid move syntax (decisionMatrix[3]), invalid move.\n"); // Error for invalid move syntax
-                break;
             }
         } else {
             printf("Invalid syntax, too many characters.\n"); // Error for invalid move syntax
-            break;
         }
     }
     // Finalize the move if input is correct
