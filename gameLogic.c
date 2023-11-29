@@ -125,7 +125,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
             deck[*draw] = 0;
             (*draw)++;
             for (i = 0; i <= 1; i++) {
-                while (deck[*draw] == 0) {
+                while (deck[*draw] == 0 || *draw >= 53) {
                     (*draw)++;
                     if (*draw >= 53) {
                         *draw = 29;
@@ -147,7 +147,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
             deck[*draw] = 0;
             (*draw)++;
             for (i = 0; i <= 1; i++) {
-                while (deck[*draw] == 0) {
+                while (deck[*draw] == 0 || *draw >= 53) {
                     (*draw)++;
                     if (*draw >= 53) {
                         *draw = 29;
@@ -165,7 +165,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
             deck[*draw] = 0;
             (*draw)++;
             for (i = 0; i <= 1; i++) {
-                while (deck[*draw] == 0) {
+                while (deck[*draw] == 0 || *draw >= 53) {
                     (*draw)++;
                     if (*draw >= 53) {
                         *draw = 29;
@@ -237,7 +237,7 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
                         // Logic for cycling through the draw deck, skips blank cards
                         (*draw)++;
                         for (i = 0; i <= 1; i++) {
-                            while (deck[*draw] == 0) {
+                            while (deck[*draw] == 0 || *draw >= 53) {
                                 (*draw)++;
                                 if (*draw >= 53) {
                                     *draw = 29;
