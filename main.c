@@ -24,7 +24,7 @@
 #include "gameLogic.h"
 
 int main() {
-    int yesNo, moveYesNo, game, draw;
+    int yesNo, game, draw;
     int deck[53], hidden[19][7], play[22][7], dropDeck[4];
     int playerCardChoice[2] = {0, 0}, playerMoveChoice[2] = {0, 0}, moveCount;
     int *moveptr = &moveCount, *drawptr = &draw;
