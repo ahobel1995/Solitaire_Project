@@ -12,8 +12,9 @@ int main() {
 
     time_t t;
     srand(time(&t));
-    printf("Welcome to Solitaire! Would you like to play? (y=1, n=0) ");
     do {
+        system("clear");
+        printf("Welcome to Solitaire! Would you like to play? (y=1, n=0) ");
         while (scanf("%d", &yesNo) != 1 || (yesNo != 1 && yesNo != 0)) {
             while (getchar() != '\n');
             printf("Error. Please input a 1 or 0: ");
