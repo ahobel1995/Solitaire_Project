@@ -202,7 +202,7 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
     while (correct == 0) { // Loop until a valid input is entered
         frameGen(play, hidden, deck, dropDeck, draw); // Display the game board
 
-        printf("Enter your move: ");
+        printf("Enter your move (type 'h' for help): ");
         char *decisionArray = malloc(sizeof(char) * 6);
         if (decisionArray == NULL) {
             printf("Error allocating memory for decision matrix.\n");
