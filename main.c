@@ -26,12 +26,6 @@ int main() {
         *moveptr = 0; // Used to reset the move counter.
         *drawptr = 29; // Used to reset the draw pointer.
 
-        // RESET CARD VARIABLES:
-        playerCardChoice[0] = 0;
-        playerCardChoice[1] = 0;
-        playerMoveChoice[0] = 0;
-        playerMoveChoice[1] = 0;
-
         // RESET FUNCTIONS:
         deckResetShuffle(deck);
         hiddenGen(hidden);
@@ -40,9 +34,17 @@ int main() {
 
         // GAME GOES HERE:
         while (game == 0) {
+            // Reset variables every turn:
+            playerCardChoice[0] = 0;
+            playerCardChoice[1] = 0;
+            playerMoveChoice[0] = 0;
+            playerMoveChoice[1] = 0;
+            // Generate frame:
             frameGen(play, hidden, deck, dropDeck, drawptr);
+            // Player move:
             playerMoveDecision(play, hidden, dropDeck, deck, playerCardChoice, playerMoveChoice, drawptr, &game);
             cardMoveEval(play, hidden, playerCardChoice, playerMoveChoice, dropDeck, deck, drawptr, moveptr);
+            // Check for win:
             if (dropDeck[0] == 13 && dropDeck[1] == 26 && dropDeck[2] == 39 && dropDeck[3] == 52) {
                 frameGen(play, hidden, deck, dropDeck, drawptr);
                 printf("\nCongratulations! You win! \nYou made %d move(s) to finish.\n\n", *moveptr);
