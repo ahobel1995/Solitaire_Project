@@ -7,7 +7,7 @@
   1) Type the column # of the card you'd like to move (1-7 for Tableau, 
       0 if pulling from stock)
   
-  2) (OPTIONAL, ignoring this step will simply select all face up cards from 
+  2) (OPTIONAL, ignoring this step will simply select the lowest card from 
       the column you selected) 
       Type the row # of the card you'd like to move (1-19). If there are 
       descending cards beneath your row selection, they will be moved too. 
