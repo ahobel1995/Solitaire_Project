@@ -184,16 +184,17 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
                         int playerCardChoice[2], int playerMoveChoice[2], int *draw, int *game) {
     int i;
     int correct = 0; // Flag to check if a valid input is entered
-    char decisionArray[6]; // Array to hold user input
 
     while (correct == 0) { // Loop until a valid input is entered
         correct = 0; // Reset flag each loop iteration
         frameGen(play, hidden, deck, dropDeck, draw); // Display the game board
 
         printf("Enter your move: ");
+        char *decisionArray = malloc(sizeof(char) * 6);
         for (i = 0; i < 6; i++) {
             decisionArray[i] = '\0'; // Initialize decision array with NULLs each loop iteration
         }
+        while (getchar() != '\n'); // Clean up input buffer prior to input
         fgets(decisionArray, 6, stdin); // Get user input
 
         // Check if input is longer than expected, triggering cleanup if so
@@ -315,6 +316,7 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
             printf("Invalid syntax, too many characters.\n"); // Error for invalid move syntax
             sleep(2);
         }
+        free(decisionArray);
     }
     // Finalize the move if input is correct
     if (correct == 1) {
