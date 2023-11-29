@@ -190,7 +190,7 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
         frameGen(play, hidden, deck, dropDeck, draw); // Display the game board
 
         printf("Enter your move: ");
-        char* decisionArray = malloc(sizeof(char) * 6);
+        char *decisionArray = malloc(sizeof(char) * 6);
         for (i = 0; i < 6; i++) {
             decisionArray[i] = '\0'; // Initialize decision array with NULLs each loop iteration
         }
