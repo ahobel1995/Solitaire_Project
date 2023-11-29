@@ -308,7 +308,7 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
                 // Iterate through the column to find the topmost card
                 for (i = 19; i > 0; i--) {
                     if (play[i][playerCardChoice[1]-1] != 0) {
-                        playerCardChoice[0] = i; // Set the row of the topmost card to move
+                        playerCardChoice[0] = i+1; // Set the row of the topmost card to move
                         correct = 1;
                         break;
                     }
