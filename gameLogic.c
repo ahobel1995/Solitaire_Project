@@ -269,7 +269,6 @@ void playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int
                 }
             } else {
                 printf("Invalid move syntax (decisionMatrix[0]), invalid column input\n"); // Error for invalid first character (column number)
-                break;
             }
             // Checks for 3 number input for single-digit row input
             if (decisionArray[3] != '\n') {
@@ -288,7 +287,6 @@ void playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int
                 correct = 1; // Set flag for valid input
             } else {
                 printf("Invalid move syntax (decisionMatrix[1 or 2]), invalid row input\n");
-                break;
             }
             // Check if the row is single-digit for move choice location in array
             if (decisionArray[3] == '\n') {
@@ -296,7 +294,6 @@ void playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int
                     playerMoveChoice[1] = decisionArray[2] - 48; // Set target column for the move
                 } else {
                     printf("Invalid move syntax (decisionMatrix[2]), invalid move.\n"); // Error for invalid move syntax
-                    break;
                 }
             }   // Check if the row is double-digit for move choice location in array
             else if (decisionArray[3] >= '1' && decisionArray[3] <= '8') {
@@ -317,8 +314,7 @@ void playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int
         for (i = 19; i > 0; i--) {
             playerMoveChoice[0] = i - 1;
             if (play[playerMoveChoice[0]][playerMoveChoice[1]] != 0) {
-                playerMoveChoice[0] =
-                        i;
+                playerMoveChoice[0] = i;
                 break;
             }
         }
