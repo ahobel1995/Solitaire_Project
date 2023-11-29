@@ -123,6 +123,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
         if (dropDeck[0] == deck[*draw] || dropDeck[1] == deck[*draw] || dropDeck[2] == deck[*draw] ||
             dropDeck[3] == deck[*draw]) {
             deck[*draw] = 0;
+            (*draw)++;
             for (i = 0; i <= 1; i++) {
                 while (deck[*draw] == 0) {
                     (*draw)++;
@@ -144,6 +145,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
         printf("Valid move (Normal Move).\n");
         if (play[cardMovePos[0]][cardMovePos[1]] == deck[*draw]) {
             deck[*draw] = 0;
+            (*draw)++;
             for (i = 0; i <= 1; i++) {
                 while (deck[*draw] == 0) {
                     (*draw)++;
@@ -161,6 +163,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
         printf("Valid move (0 move).\n");
         if (play[cardMovePos[0]][cardMovePos[1]] == deck[*draw]) {
             deck[*draw] = 0;
+            (*draw)++;
             for (i = 0; i <= 1; i++) {
                 while (deck[*draw] == 0) {
                     (*draw)++;
