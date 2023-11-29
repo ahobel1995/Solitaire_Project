@@ -2,6 +2,7 @@
   Enter "h" to print this menu
   Enter "q" to quit your current game
   Enter "c" to cycle the stock pile
+  Enter "r" to reset the game
   
   To make a move:
   1) Type the column # of the card you'd like to move (1-7 for Tableau, 
