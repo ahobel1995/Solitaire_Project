@@ -218,7 +218,8 @@ void playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int
                             correct = 2;
                             break;
                         }
-                        // Logic for cycling through the draw deck
+                        // Logic for cycling through the draw deck, skips blank cards
+                        (*draw)++;
                         if (*draw < 53) {
                             for (i = 0; i <= 1; i++) {
                                 while (deck[*draw] == 0) {
@@ -230,7 +231,6 @@ void playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int
                                 }
                             }
                         }
-                        frameGen(play, hidden, deck, dropDeck, draw);
                         correct = 3;
                         break;
                     case 'h':
