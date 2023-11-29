@@ -275,7 +275,7 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
                 sleep(2);
             }
             // Checks for 3 number input for single-digit row input
-            if (decisionArray[3] != '\n') {
+            if (decisionArray[3] != '\0') {
                 if (decisionArray[1] == '1' && decisionArray[2] >= '0' && decisionArray[2] <= '9') {
                     playerCardChoice[0] = 10 + decisionArray[2] - 48; // Adjust for 10-card selection (row)
                 }
