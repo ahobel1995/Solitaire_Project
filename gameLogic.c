@@ -190,6 +190,11 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
 
     while (correct == 0) { // Loop until a valid input is entered
         frameGen(play, hidden, deck, dropDeck, draw); // Display the game board
+        for (i = 29; i < 53; i++) {
+            printf("%d ", deck[i]);
+            printf("\n%d\n", *draw);
+            printf("%d\n", deck[*draw]);
+        }
 
         printf("Enter your move: ");
         char *decisionArray = malloc(sizeof(char) * 6);
