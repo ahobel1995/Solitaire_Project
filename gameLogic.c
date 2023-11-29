@@ -277,6 +277,7 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
                 if (correct == 3) {
                     continue;
                 }
+                // Column Input:
             } else if (decisionArray[0] >= '0' && decisionArray[0] <= '7') {
                 switch (decisionArray[0]) {
                     case '1' ... '7':
@@ -291,7 +292,9 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
             } else {
                 printf("Invalid move syntax (decisionMatrix[0]), invalid column input\n"); // Error for invalid first character (column number)
                 sleep(2);
-            }   // Checks for 4 number input for double-digit row input
+            }
+            // Row input:
+            // Checks for 4 number input for double-digit row input
             if (decisionArray[3] != '\n' && correct == 0) {
                 if (decisionArray[1] == '1' && decisionArray[2] >= '0' && decisionArray[2] <= '9') {
                     playerCardChoice[0] = 10 + decisionArray[2] - 48; // Adjust for 10-card selection (row)
@@ -302,7 +305,9 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
             } else {
                 printf("Invalid move syntax (decisionMatrix[1 or 2]), invalid row input\n");
                 sleep(2);
-            }   // Handle draw deck input for move position
+            }
+            // Move position input:
+            // Handle draw deck input for move position
             if (decisionArray[0] == '0' && decisionArray[1] >= '1' && decisionArray[1] <= '8' &&
                 decisionArray[2] == '\n' && correct == 0) {
                 playerMoveChoice[1] = decisionArray[1] - 48; // Set target column for the move
@@ -316,6 +321,18 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
                     printf("Invalid move syntax (decisionMatrix[2 or 3]), invalid move.\n");
                     sleep(2);
                 }
+            } else if (decisionArray[3] >= '0' && decisionArray[3] <= '8') {
+                // Handle double digit row input
+                if (decisionArray[2] == '1' && decisionArray[3] >= '0' && decisionArray[3] <= '9') {
+                    playerMoveChoice[1] = 10 + decisionArray[3] - 48; // Adjust for 10-card selection (row)
+                    correct = 1;
+                } else {
+                    printf("Invalid move syntax (decisionMatrix[2 or 3]), invalid move.\n");
+                    sleep(2);
+                }
+            } else {
+                printf("Invalid move syntax (decisionMatrix[2 or 3]), invalid move.\n");
+                sleep(2);
             }
         } else {
             printf("Invalid syntax, too many characters.\n"); // Error for invalid move syntax
