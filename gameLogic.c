@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <unistd.h>
+#include <ctype.h>
 #include "solFunc.h"
 #include "gameLogic.h"
 
@@ -185,6 +186,7 @@ void playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int
     int correct = 0; // Flag to check if a valid input is entered
 
     while (correct == 0) { // Loop until a valid input is entered
+        correct = 0; // Reset flag each loop iteration
         for (i = 0; i < 6; i++) {
             decisionArray[i] = '\0'; // Initialize decision array with NULLs each loop iteration
         }
@@ -205,7 +207,7 @@ void playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int
             // Special handling for single-character commands
             if (decisionArray[1] == '\n') {
                 if ((decisionArray[0] >= 67) && (decisionArray[0] <= 81)) {
-                    decisionArray[0] = decisionArray[0] + 32; // Convert to lowercase
+                    tolower(decisionArray[0]); // Convert to lowercase
                 }
                 switch (decisionArray[0]) {
                     case 'c':
@@ -230,6 +232,7 @@ void playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int
                             *draw = 29;
                         }
                         frameGen(play, hidden, deck, dropDeck, draw);
+                        correct = 3;
                         break;
                     case 'h':
                         printf("Help\n");
@@ -242,6 +245,9 @@ void playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int
                 }
                 if (correct == 2) {
                     break;
+                }
+                if (correct == 3) {
+                    continue;
                 }
             } else if ((decisionArray[0] >= '0') && (decisionArray[0] <= '7')) {
                 switch (decisionArray[0]) {
