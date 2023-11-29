@@ -194,6 +194,7 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
         for (i = 0; i < 6; i++) {
             decisionArray[i] = '\0'; // Initialize decision array with NULLs each loop iteration
         }
+        sleep(0.1);
         fgets(decisionArray, 6, stdin); // Get user input
 
         // Check if input is longer than expected, triggering cleanup if so
