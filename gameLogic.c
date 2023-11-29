@@ -299,7 +299,6 @@ void playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int
                 *draw = 29;
             }
             frameGen(play, hidden, deck, dropDeck, draw);
-            break;
         } else if (decisionArray[0] == 'h') {
             printf("Help\n");
             correct = 2;
