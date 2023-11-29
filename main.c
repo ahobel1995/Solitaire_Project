@@ -1,3 +1,22 @@
+/*
+ * Project Title: Solitaire
+ * Authors: Adrien Hobelman and Levi Campbell
+ * Date: 11/28/2023 (finished)
+ * Description: This program is a text-based version of the card game Solitaire. It uses a 2D array to represent the
+ *             game board, and a 1D array to represent the deck. The game board is printed to the screen using ASCII
+ *             characters. The game board is made up of 4 sections: the tableau, the hidden array, the stock, and the
+ *             foundation. The tableau is a 2D array that holds the cards that are currently in play. The hidden array
+ *             is a 2D array that masks the cards that are currently hidden. The stock is a 1D array that holds the
+ *             cards that are currently read to draw. The foundation is a 1D 4 value array that holds the cards that
+ *             have been collected. Once the foundation is full, the game is won. The game is lost when there are no
+ *             more moves to be made, and the foundation is incomplete.
+ * Resources:   ChatGPT, For assistance with bug-fixing and general help with the project (to include using pointers
+ *             appropriately).
+ *              Wikipedia, For assistance with the Fisher-Yates shuffle algorithm.
+ *              Github Copilot, For assistance with rapid development of the project, by giving inline suggestions
+ *             for writing longer more mundane lines of code. It saved time.
+ */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
