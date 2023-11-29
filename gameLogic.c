@@ -194,8 +194,10 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
 
 void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int deck[53],
                         int playerCardChoice[2], int playerMoveChoice[2], int *draw, int *game) {
-    int i, drawSignal = 0;
+    int i;
     int correct = 0; // Flag to check if a valid input is entered
+    FILE* file;
+    char ch; //used for printing from file
 
     while (correct == 0) { // Loop until a valid input is entered
         frameGen(play, hidden, deck, dropDeck, draw); // Display the game board
@@ -255,7 +257,19 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
                         correct = 3;
                         break;
                     case 'h':
-                        printf("Help\n");
+                        file = fopen("help.txt","r");
+                          if (file == NULL){
+                            printf("Error. help.txt file is missing\n");
+                          }
+                          else {
+                            while (!feof(file)) {
+                              ch = fgetc(file);
+                              printf("%c",ch);
+                            }
+                          }
+                        fclose(file);
+                        printf("Press Enter to Continue");
+                        scanf("%c",&ch);
                         correct = 2; //exits while loop
                         break;
                     case 'q':
@@ -287,7 +301,6 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
                         playerCardChoice[1] = 7;
                         playerCardChoice[0] = 21;
                         play[20][6] = deck[*draw];
-                        drawSignal = 1;
                         break;
                 }
             } else {
@@ -303,7 +316,7 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
             else if (decisionArray[2] != '\n' && decisionArray[1] >= '1' && decisionArray[1] <= '9') {
                 playerCardChoice[0] = decisionArray[1] - 48;          // Set row of the card to move
             }   //Checks if no row is selected, picking top-most card of input column
-            else if (decisionArray[2] == '\n' && decisionArray[0] >= '0' && decisionArray[0] <= '7' && drawSignal != 1) {
+            else if (decisionArray[2] == '\n' && decisionArray[0] >= '0' && decisionArray[0] <= '7') {
                 // Iterate through the column to find the topmost card
                 for (i = 19; i > 0; i--) {
                     if (play[i-1][playerCardChoice[1]-1] != 0) {
@@ -312,8 +325,7 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
                         break;
                     }
                 }
-            }   // Error assuming no draw card was selected.
-            else if (drawSignal != 1) {
+            } else {
                 printf("Invalid move syntax (decisionMatrix[1 or 2]), invalid row input\n");
                 sleep(2);
             }
