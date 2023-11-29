@@ -51,7 +51,7 @@ int main() {
                 game = 2;
             }
         }
-    } while (game != 0);
+    } while (game == 0);
     switch (game) {
         case 1:
             mikeDisappointed();

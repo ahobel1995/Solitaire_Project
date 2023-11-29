@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <unistd.h>
 #include <ctype.h>
+#include <malloc.h>
 #include "solFunc.h"
 #include "gameLogic.h"
 
@@ -179,20 +180,20 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
     }
 }
 
-void playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int deck[53],
+void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int deck[53],
                         int playerCardChoice[2], int playerMoveChoice[2], int *draw, int *game) {
     int i;
-    char decisionArray[6]; // Main array to store user input
     int correct = 0; // Flag to check if a valid input is entered
 
     while (correct == 0) { // Loop until a valid input is entered
         correct = 0; // Reset flag each loop iteration
         frameGen(play, hidden, deck, dropDeck, draw); // Display the game board
+
+        printf("Enter your move: ");
+        char* decisionArray = malloc(sizeof(char) * 6);
         for (i = 0; i < 6; i++) {
             decisionArray[i] = '\0'; // Initialize decision array with NULLs each loop iteration
         }
-
-        printf("Enter your move: ");
         fgets(decisionArray, 6, stdin); // Get user input
 
         // Check if input is longer than expected, triggering cleanup if so
@@ -202,6 +203,7 @@ void playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int
 
         printf("%c | %c | %c | %c\n", decisionArray[0], decisionArray[1], decisionArray[2],
                decisionArray[3]); // Debug output
+        sleep(2);
 
         // Check if the input is within the expected length
         if ((decisionArray[4] == '\n') || (decisionArray[4] == '\0')) {
@@ -239,12 +241,12 @@ void playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int
                         break;
                     case 'q':
                         printf("Quit\n");
-                        *game = 1; //game exits
+                        *game = 2; //game exits
                         correct = 2; //exits while loop
                         break;
                     case 'r':
                         printf("Reset\n");
-                        *game = 0; //game resets
+                        *game = 1; //game resets
                         correct = 2; //exits while loop
                         break;
                 }
@@ -256,7 +258,7 @@ void playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int
                 if (correct == 3) {
                     continue;
                 }
-            } else if ((decisionArray[0] >= '0') && (decisionArray[0] <= '7')) {
+            } else if (decisionArray[0] >= '0' && decisionArray[0] <= '7') {
                 switch (decisionArray[0]) {
                     case '1' ... '7':
                         playerCardChoice[1] = decisionArray[0] - 48; // Set the column of the card to move
@@ -305,6 +307,7 @@ void playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int
         } else {
             printf("Invalid syntax, too many characters.\n"); // Error for invalid move syntax
         }
+        free(decisionArray);
     }
     // Finalize the move if input is correct
     if (correct == 1) {
