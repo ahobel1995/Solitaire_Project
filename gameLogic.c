@@ -68,7 +68,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
         return;
     }   // This checks if the card selected is not empty.
     else if (play[cardPos[0]][cardPos[1]] == 0) {
-        printf("Returning to menu.\n");
+        printf("You must pick a card.\n");
         sleep(3);
         return;
     }   // Drop Deck evaluation
@@ -186,7 +186,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
         return;
     } // Catch all error if nothing else is working.
     else {
-        printf("Returning to menu.\n");
+        printf("Invalid. Returning to menu.\n");
         sleep(3);
         return;
     }
