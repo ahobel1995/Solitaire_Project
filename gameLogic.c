@@ -202,7 +202,7 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
             while (getchar() != '\n'); // Clean up overflowed chars
         }
 
-        printf("%c | %c | %c | %c\n", decisionArray[0], decisionArray[1], decisionArray[2],
+        printf("1:%c 2:%c 3:%c 4:%c\n", decisionArray[0], decisionArray[1], decisionArray[2],
                decisionArray[3]); // Debug output
         sleep(2);
 
