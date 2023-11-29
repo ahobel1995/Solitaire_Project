@@ -7,7 +7,7 @@
 int main() {
     int yesNo, moveYesNo, game, draw;
     int deck[53], hidden[19][7], play[22][7], dropDeck[4];
-    int playerCardChoice[2], playerMoveChoice[2], i, j, moveCount = 0;
+    int playerCardChoice[2] = {0,0}, playerMoveChoice[2] = {0,0}, moveCount;
     int *moveptr = &moveCount, *drawptr = &draw;
 
     time_t t;
@@ -25,6 +25,12 @@ int main() {
         game = 0; // Used to start a new game.
         *moveptr = 0; // Used to reset the move counter.
         *drawptr = 29; // Used to reset the draw pointer.
+
+        // RESET CARD VARIABLES:
+        playerCardChoice[0] = 0;
+        playerCardChoice[1] = 0;
+        playerMoveChoice[0] = 0;
+        playerMoveChoice[1] = 0;
 
         // RESET FUNCTIONS:
         deckResetShuffle(deck);
