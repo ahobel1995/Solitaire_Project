@@ -190,16 +190,11 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
 
         printf("Enter your move: ");
         char *decisionArray = malloc(sizeof(char) * 6);
+        while (getchar() != '\n');
         if (decisionArray == NULL) {
             printf("Error allocating memory for decision matrix.\n");
             break;
         }
-
-        // Clear the input buffer prior to input
-        int c;
-        do {
-            c = getchar();
-        } while (c != '\n' && c != EOF);
 
         fgets(decisionArray, 6, stdin); // Get user input
 
