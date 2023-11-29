@@ -262,8 +262,8 @@ void playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int
                         playerCardChoice[1] = decisionArray[0] - 48; // Set the column of the card to move
                         break;
                     case '0':
-                        playerCardChoice[0] = 20;
-                        playerCardChoice[1] = 6;
+                        playerCardChoice[0] = 21;
+                        playerCardChoice[1] = 7;
                         play[20][6] = deck[*draw];
                         break;
                 }
@@ -278,7 +278,7 @@ void playerMoveDecision(int play[21][7], int hidden[19][7], int dropDeck[4], int
                 }
             }   // Checks for 2 number input for draw deck selection
             else if (decisionArray[0] == '0' && decisionArray[1] >= '1' && decisionArray[1] <= '8') {
-                playerMoveChoice[1] = decisionArray[1] - 48;          // Set row of the card to move to
+                playerMoveChoice[1] = decisionArray[1] - 48;          // Set column destination of the move
                 correct = 1;
                 break;
             }
