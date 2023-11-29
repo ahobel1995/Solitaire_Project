@@ -191,8 +191,8 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
         printf("Enter your move: ");
         char *decisionArray = malloc(sizeof(char) * 6);
         if (decisionArray == NULL) {
-            perror("Failed to allocate memory for decisionArray");
-            exit(EXIT_FAILURE);
+            printf("Error allocating memory for decision matrix.\n");
+            break;
         }
 
         // Clear the input buffer prior to input
