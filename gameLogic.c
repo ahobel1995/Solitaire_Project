@@ -312,7 +312,8 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
                         break;
                     }
                 }
-            } else {
+            }   // Error assuming no draw card was selected.
+            else if (drawSignal != 1) {
                 printf("Invalid move syntax (decisionMatrix[1 or 2]), invalid row input\n");
                 sleep(2);
             }
