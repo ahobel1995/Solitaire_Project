@@ -202,7 +202,7 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
             while (getchar() != '\n'); // Clean up overflowed chars
         }
 
-        printf("1:%c 2:%c 3:%c 4:%c\n", decisionArray[0], decisionArray[1], decisionArray[2],
+        printf("%c | %c | %c | %c\n", decisionArray[0], decisionArray[1], decisionArray[2],
                decisionArray[3]); // Debug output
         sleep(2);
 
@@ -265,7 +265,6 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
                         playerCardChoice[1] = decisionArray[0] - 48; // Set the column of the card to move
                         break;
                     case '0':
-                        playerCardChoice[0] = 21;
                         playerCardChoice[1] = 7;
                         play[20][6] = deck[*draw];
                         break;
@@ -273,33 +272,33 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
             } else {
                 printf("Invalid move syntax (decisionMatrix[0]), invalid column input\n"); // Error for invalid first character (column number)
                 sleep(2);
-            }
-            // Checks for 3 number input for single-digit row input
+            }   // Checks for 3 number input for single-digit row input
             if (decisionArray[3] != '\n') {
                 if (decisionArray[1] == '1' && decisionArray[2] >= '0' && decisionArray[2] <= '9') {
                     playerCardChoice[0] = 10 + decisionArray[2] - 48; // Adjust for 10-card selection (row)
                 }
             }   // Checks for 2 number input for draw deck selection
-            else if (decisionArray[0] == '0' && decisionArray[1] >= '1' && decisionArray[1] <= '8') {
-                playerMoveChoice[1] = decisionArray[1] - 48;          // Set column destination of the move
+            else if (decisionArray[0] == '0' && decisionArray[2] == '\n') {
+                playerCardChoice[0] = 21;                             // Sets draw deck card position in play array
                 correct = 1;
                 printf("Draw Deck Working.\n");
-                break;
-            }
-                // Checks for single digit column input instead
+            }   // Checks for single digit row input instead
             else if (decisionArray[1] >= '0' && decisionArray[1] <= '9') {
                 playerCardChoice[0] = decisionArray[1] - 48;          // Set row of the card to move
-                correct = 1; // Set flag for valid input
             } else {
                 printf("Invalid move syntax (decisionMatrix[1 or 2]), invalid row input\n");
                 sleep(2);
             }
             // Check if the row is single-digit for move choice location in array
             if (decisionArray[3] == '\n') {
+                    // Checks for single digit row input
                 if (decisionArray[2] >= '1' && decisionArray[2] <= '8') {
                     playerMoveChoice[1] = decisionArray[2] - 48; // Set target column for the move
-                } else if (decisionArray[2] == '\n') {
-                    playerMoveChoice[1] = decisionArray[1] - 48;
+                    correct = 1;
+                }   // Checks for draw deck input
+                else if (decisionArray[2] == '\n' && decisionArray[1] >= '1' && decisionArray[1] <= '8') {
+                    playerMoveChoice[1] = decisionArray[1] - 48; // Set target column for the move
+                    correct = 1;
                 } else {
                     printf("Invalid move syntax (decisionMatrix[2]), invalid move.\n"); // Error for invalid move syntax
                     sleep(2);
