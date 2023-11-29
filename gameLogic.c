@@ -306,7 +306,7 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
             }   //Checks if no row is selected, picking top-most card of input column
             else if (decisionArray[2] == '\n' && decisionArray[0] >= '1' && decisionArray[0] <= '7') {
                 // Iterate through the column to find the topmost card
-                for (i = 0; i < 22; i++) {
+                for (i = 19; i > 0; i--) {
                     if (play[i][playerCardChoice[1]] != 0) {
                         playerCardChoice[0] = i; // Set the row of the topmost card to move
                         correct = 1;
