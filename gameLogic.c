@@ -275,7 +275,7 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
                 sleep(2);
             }
             // Checks for 3 number input for single-digit row input
-            if (decisionArray[3] != '\0') {
+            if (decisionArray[3] != '\n') {
                 if (decisionArray[1] == '1' && decisionArray[2] >= '0' && decisionArray[2] <= '9') {
                     playerCardChoice[0] = 10 + decisionArray[2] - 48; // Adjust for 10-card selection (row)
                 }
@@ -295,10 +295,10 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
                 sleep(2);
             }
             // Check if the row is single-digit for move choice location in array
-            if (decisionArray[3] == '\0') {
+            if (decisionArray[3] == '\n') {
                 if (decisionArray[2] >= '1' && decisionArray[2] <= '8') {
                     playerMoveChoice[1] = decisionArray[2] - 48; // Set target column for the move
-                } else if (decisionArray[2] == '\0') {
+                } else if (decisionArray[2] == '\n') {
                     playerMoveChoice[1] = decisionArray[1] - 48;
                 } else {
                     printf("Invalid move syntax (decisionMatrix[2]), invalid move.\n"); // Error for invalid move syntax
@@ -331,47 +331,4 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
             }
         }
     }
-}
-
-
-void deckPull(int play[21][7], int deck[53], int cardPos[2], int *draw, int hidden[21][7], int dropDeck[4],
-              int deckPullChoice) {
-    int i;
-    do {
-        printf("Deck Pull choices: (1: select the card, 2: cycle deck, 3: reset to start menu)\n");
-        while (scanf("%d", &deckPullChoice) != 1 || deckPullChoice < 1 || deckPullChoice > 3) {
-            while (getchar() != '\n');
-            printf("Error. Please input a number between 1 and 3: ");
-        }
-        switch (deckPullChoice) {
-            case 1:
-                printf("You have selected the card.\n");
-                cardPos[0] = 20;
-                cardPos[1] = 6;
-                play[cardPos[0]][cardPos[1]] = deck[*draw];
-                break;
-            case 2:
-                printf("You have cycled the deck.\n");
-                (*draw)++;
-                if (*draw < 53) {
-                    for (i = 0; i <= 2; i++) {
-                        while (deck[*draw] == 0) {
-                            (*draw)++;
-                            if (*draw == 53) {
-                                *draw = 29;
-                                break;
-                            }
-                        }
-                    }
-                } else {
-                    *draw = 29;
-                }
-                frameGen(play, hidden, deck, dropDeck, draw);
-                break;
-            case 3:
-                play[20][6] = 0;
-                printf("You have reset to the start menu.\n");
-                break;
-        }
-    } while (deckPullChoice == 2);
 }
