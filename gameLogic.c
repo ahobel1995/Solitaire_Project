@@ -186,20 +186,28 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
     int correct = 0; // Flag to check if a valid input is entered
 
     while (correct == 0) { // Loop until a valid input is entered
-        correct = 0; // Reset flag each loop iteration
         frameGen(play, hidden, deck, dropDeck, draw); // Display the game board
 
         printf("Enter your move: ");
         char *decisionArray = malloc(sizeof(char) * 6);
-        for (i = 0; i < 6; i++) {
-            decisionArray[i] = '\0'; // Initialize decision array with NULLs each loop iteration
+        if (decisionArray == NULL) {
+            perror("Failed to allocate memory for decisionArray");
+            exit(EXIT_FAILURE);
         }
-        while (getchar() != '\n'); // Clean up input buffer prior to input
+
+        // Clear the input buffer prior to input
+        int c;
+        do {
+            c = getchar();
+        } while (c != '\n' && c != EOF);
+
         fgets(decisionArray, 6, stdin); // Get user input
 
-        // Check if input is longer than expected, triggering cleanup if so
-        if ((decisionArray[4] != '\0' && decisionArray[4] != '\n')) {
-            while (getchar() != '\n'); // Clean up overflowed chars
+        // Check if the input is empty or newline only
+        if (decisionArray[0] == '\n' || decisionArray[0] == '\0') {
+            printf("No input detected, please enter a move.\n");
+            free(decisionArray);
+            continue; // Skip the rest of the loop and prompt for input again
         }
 
         printf("%c | %c | %c | %c\n", decisionArray[0], decisionArray[1], decisionArray[2],
