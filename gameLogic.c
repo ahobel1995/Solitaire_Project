@@ -206,11 +206,11 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
             free(decisionArray);
             continue; // Skip the rest of the loop and prompt for input again
         }
-
+        /*
         printf("%c | %c | %c | %c\n", decisionArray[0], decisionArray[1], decisionArray[2],
                decisionArray[3]); // Debug output
         sleep(2);
-
+        */
         // Check if the input is within the expected length
         if ((decisionArray[4] == '\n') || (decisionArray[4] == '\0')) {
             // Special handling for single-character commands
