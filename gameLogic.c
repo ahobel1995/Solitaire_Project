@@ -127,7 +127,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
             for (i = 0; i <= 1; i++) {
                 while (deck[*draw] == 0) {
                     (*draw)++;
-                    if (*draw == 53) {
+                    if (*draw >= 53) {
                         *draw = 29;
                         break;
                     }
@@ -149,7 +149,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
             for (i = 0; i <= 1; i++) {
                 while (deck[*draw] == 0) {
                     (*draw)++;
-                    if (*draw == 53) {
+                    if (*draw >= 53) {
                         *draw = 29;
                         break;
                     }
@@ -167,7 +167,7 @@ void cardMoveEval(int play[19][7], int hidden[19][7], int cardPos[2], int cardMo
             for (i = 0; i <= 1; i++) {
                 while (deck[*draw] == 0) {
                     (*draw)++;
-                    if (*draw == 53) {
+                    if (*draw >= 53) {
                         *draw = 29;
                         break;
                     }
@@ -236,18 +236,13 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
                         }
                         // Logic for cycling through the draw deck, skips blank cards
                         (*draw)++;
-                        while (deck[*draw] == 0) {
-                            (*draw)++;
-                            if (*draw == 53) {
-                                *draw = 29;
-                                break;
-                            }
-                        }
-                        while (deck[*draw] == 0) {
-                            (*draw)++;
-                            if (*draw == 53) {
-                                *draw = 29;
-                                break;
+                        for (i = 0; i <= 1; i++) {
+                            while (deck[*draw] == 0) {
+                                (*draw)++;
+                                if (*draw >= 53) {
+                                    *draw = 29;
+                                    break;
+                                }
                             }
                         }
                         correct = 3;
