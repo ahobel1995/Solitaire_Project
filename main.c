@@ -18,13 +18,13 @@ int main() {
         while (getchar() != '\n');
         printf("Error. Please input a 1 or 0: ");
     }
+    while (getchar() != '\n' && getchar() != EOF);
 
     do {
         if (yesNo == 0) {
             break;
         }
 
-        while (getchar() != '\n' && getchar() != EOF);
         game = 0; // Used to start a new game.
         *moveptr = 0; // Used to reset the move counter.
         *drawptr = 29; // Used to reset the draw pointer.
