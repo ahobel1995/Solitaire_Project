@@ -307,7 +307,7 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
                 for (i = 19; i > 0; i--) {
                     playerCardChoice[0] = i - 1;
                     if (play[playerCardChoice[0]][playerCardChoice[1]] != 0) {
-                        playerCardChoice[0] = i;
+                        playerCardChoice[0]--;
                         correct = 1;
                         break;
                     }
