@@ -64,6 +64,5 @@ int main() {
             printf("\nCongratulations! You win! \nYou made %d move(s) to finish.\n\n", *moveptr);
             break;
     }
-    printf("\nCongratulations! You win! \nYou made %d move(s) to finish.\n\n", *moveptr);
     return 0;
 }
