@@ -290,26 +290,19 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
                 sleep(2);
             }
             // Check if the row is single-digit for move choice location in array
-            if (decisionArray[3] == '\n') {
-                    // Checks for single digit row input
+            if (decisionArray[0] == '0' && decisionArray[1] >= '1' && decisionArray[1] <= '8' && decisionArray[2] == '\n') {
+                // Handle draw deck input
+                playerMoveChoice[1] = decisionArray[1] - 48; // Set target column for the move
+                correct = 1;
+            } else if (decisionArray[3] == '\n') {
+                // Handle single digit row input
                 if (decisionArray[2] >= '1' && decisionArray[2] <= '8') {
                     playerMoveChoice[1] = decisionArray[2] - 48; // Set target column for the move
                     correct = 1;
-                }   // Checks for draw deck input
-                else if (decisionArray[2] == '\n' && decisionArray[1] >= '1' && decisionArray[1] <= '8') {
-                    playerMoveChoice[1] = decisionArray[1] - 48; // Set target column for the move
-                    correct = 1;
                 } else {
-                    printf("Invalid move syntax (decisionMatrix[2]), invalid move.\n"); // Error for invalid move syntax
+                    printf("Invalid move syntax (decisionMatrix[2 or 3]), invalid move.\n");
                     sleep(2);
                 }
-            }   // Check if the row is double-digit for move choice location in array
-            else if (decisionArray[3] >= '1' && decisionArray[3] <= '8') {
-                playerMoveChoice[1] = decisionArray[3] - 48; // Set target column for the move
-                correct = 1; // Set flag for valid input
-            } else {
-                printf("Invalid move syntax (decisionMatrix[3]), invalid move.\n"); // Error for invalid move syntax
-                sleep(2);
             }
         } else {
             printf("Invalid syntax, too many characters.\n"); // Error for invalid move syntax
