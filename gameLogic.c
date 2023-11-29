@@ -185,12 +185,12 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
     int i;
     int correct = 0; // Flag to check if a valid input is entered
 
+    while (getchar() != '\n');
     while (correct == 0) { // Loop until a valid input is entered
         frameGen(play, hidden, deck, dropDeck, draw); // Display the game board
 
         printf("Enter your move: ");
         char *decisionArray = malloc(sizeof(char) * 6);
-        while (getchar() != '\n');
         if (decisionArray == NULL) {
             printf("Error allocating memory for decision matrix.\n");
             break;
