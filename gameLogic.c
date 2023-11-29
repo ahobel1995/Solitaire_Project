@@ -298,9 +298,11 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
             if (decisionArray[3] != '\n' && decisionArray[1] == '1' && decisionArray[2] >= '1' &&
                 decisionArray[2] <= '9') {
                 playerCardChoice[0] = 10 + decisionArray[2] - 48; // Adjust for 10-card selection (row)
+                printf("1\n);
             }   // Checks for 3 number input for single-digit row input
             else if (decisionArray[2] != '\n' && decisionArray[1] >= '1' && decisionArray[1] <= '9') {
                 playerCardChoice[0] = decisionArray[1] - 48;          // Set row of the card to move
+                printf("2\n");
             }   //Checks if no row is selected, picking top-most card of input column
             else if (decisionArray[2] == '\n' && decisionArray[0] >= '1' && decisionArray[0] <= '7') {
                 // Iterate through the column to find the topmost card
@@ -311,6 +313,7 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
                         break;
                     }
                 }
+                printf("3\n");
             } else {
                 printf("Invalid move syntax (decisionMatrix[1 or 2]), invalid row input\n");
                 sleep(2);
@@ -365,7 +368,7 @@ void playerMoveDecision(int play[22][7], int hidden[19][7], int dropDeck[4], int
             }
         }
     }
-    printf("Player Card Choice: %d, %d\n", playerCardChoice[0], playerCardChoice[1]);
-    printf("Player Move Choice: %d, %d\n", playerMoveChoice[0], playerMoveChoice[1]);
+    printf("Player Card Choice: %d, %d\n", playerCardChoice[0]+1, playerCardChoice[1]+1);
+    printf("Player Move Choice: %d, %d\n", playerMoveChoice[0]+1, playerMoveChoice[1]+1);
     sleep(2);
 }
